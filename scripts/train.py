@@ -528,7 +528,6 @@ def main():
 
     seq_len = cfg['training'].get('seq_len', 64)
     if tokenizer:
-        from materia_v3_full import TextDatasetSeq
         train_ds = TextDatasetSeq(train_texts, tokenizer, seq_len)
         val_ds = TextDatasetSeq(val_texts, tokenizer, seq_len)
     else:
