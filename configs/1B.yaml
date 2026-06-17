@@ -12,8 +12,8 @@ model:
   hsaq_sparsity: 0.15
 
 tokenizer:
-  type: char                  # bpe: primero entrenar con prepare_data.py --train-tokenizer
-  vocab_size: 1024
+  type: bpe
+  vocab_size: 32768
   model_path: data/multilingual/tokenizer/materia_multilingual_v3.model
 
 training:

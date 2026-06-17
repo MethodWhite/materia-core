@@ -9,6 +9,7 @@ MEMORIA: monitoreo activo de RAM/VRAM, liberacion automatica,
 manejo graceful de OOM con reduccion de batch_size.
 """
 import os, sys, yaml, time, pickle, gc, argparse, signal, warnings
+from glob import glob
 import numpy as np
 import torch
 import torch.nn as nn
@@ -259,16 +260,24 @@ def load_hf_dataset(dataset_spec, max_lines=500_000, split='train'):
 
 
 def select_tokenizer(cfg):
-    """Retorna tokenizer segun config. Fallback a char-level si no hay BPE."""
+    """Retorna tokenizer segun config. Busca .model disponible si no encuentra el path exacto."""
     tok_type = cfg.get('tokenizer', {}).get('type', 'char')
     if tok_type == 'bpe':
         model_path = cfg.get('tokenizer', {}).get('model_path')
         if model_path and not os.path.isabs(model_path):
             model_path = os.path.join(MATERIA_HOME, model_path)
-        if os.path.exists(model_path or ''):
-            return BPETokenizer(model_path), None, None
-        else:
-            log(f"BPE model not found at {model_path}, falling back to char-level")
+        if not os.path.exists(model_path or ''):
+            # Buscar cualquier .model disponible
+            tok_dir = os.path.join(MATERIA_HOME, 'data', 'multilingual', 'tokenizer')
+            models = sorted(glob(os.path.join(tok_dir, '*.model')))
+            if models:
+                model_path = models[-1]
+                log(f"BPE model not found at configured path, using {model_path}")
+            else:
+                log(f"No BPE model found. Train with: python scripts/prepare_data.py --train-tokenizer")
+                log(f"Falling back to char-level tokenizer")
+                return None, None, None
+        return BPETokenizer(model_path), None, None
     return None, None, None  # char-level: returns (None, stoi, itos)
 
 
