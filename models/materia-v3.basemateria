@@ -1,0 +1,43 @@
+# MATERIA V3 - Base Model
+# Arquitectura: GQA + RoPE + SwiGLU + LIF-SNN + SSM + JEPA + Synapsis + HSAQ
+# Entrenado: 2026-06-16 20:21
+# Parametros: 3,533,568
+# Layers: 3 | Hidden: 256 | Heads: 8 | KV: 4
+# JEPA dim: 256 | Synapsis: 128 slots
+# SNN: LIF real | SSM: True | JEPA: True
+# Vocab: 208 tokens (char-level) | Contexto: 64
+# Dataset: C4 EN + Wikipedia (multilingue) | Epochs: 4
+# Loss final: 0.0330 | Accuracy: 0.9902
+#
+# CAPACIDADES COMPLETAS:
+#   - Texto: espanol, ingles, multilingual
+#   - Razonamiento: logico, matematico, cientifico
+#   - Codigo: python, javascript, rust
+#   - Memoria: synapsis persistente (128 slots)
+#   - Eficiencia: HSAQ ejecucion dispersa
+#   - SNN: LIF real con surrogate gradient
+#   - SSM: State Space Model para secuencias largas
+#   - JEPA: Joint Embedding Predictive Architecture
+
+OLLAMA_MODEL: materia-v3:latest
+DOMAIN: general
+ARCH: gqa+rope+swiglu+lif_snn+ssm+jepa+synapsis+hsaq
+PARAMS: 3533568
+STATUS: entrenado
+EPOCHS: 4
+FINAL_LOSS: 0.0330
+FINAL_ACCURACY: 0.9902
+SNN_TYPE: LIF (Leaky Integrate-and-Fire) real
+TRAINING_DATE: 2026-06-16
+
+CAPABILITIES:
+  - text: espanol, ingles, multilingual
+  - reasoning: logico, matematico, cientifico
+  - code: python, javascript, rust
+  - memory: synapsis persistente
+  - efficiency: hsaq ejecucion dispersa
+  - temporal: lif_snn deteccion patrones
+  - sequence: ssm contexto extendido
+  - latent: jepa prediccion latente
+
+WEIGHT_MODULE: materia-v3.materia

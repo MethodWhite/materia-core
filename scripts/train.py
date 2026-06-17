@@ -442,7 +442,7 @@ def main():
     parser.add_argument('--resume', '-r', type=str, default=None)
     parser.add_argument('--data', '-d', type=str, default=None)
     parser.add_argument('--dataset', type=str, default=None,
-                        help='Dataset HF: hf:allenai/c4, hf:bigcode/the-stack')
+                        help='Dataset HF: hf:allenai/c4, hf:allenai/c4:en')
     parser.add_argument('--max-lines', type=int, default=None,
                         help='Max lineas a cargar')
     parser.add_argument('--memory-limit', '-m', type=float, default=0.80,
@@ -472,7 +472,13 @@ def main():
     tok_type = cfg.get('tokenizer', {}).get('type', 'char')
 
     if args.dataset and args.dataset.startswith('hf:'):
-        texts = load_hf_dataset(args.dataset, max_lines=max_lines)
+        ds_spec = args.dataset
+        # Si no incluye config, agregar desde YAML
+        if ds_spec.count(':') < 2:
+            ds_config = cfg.get('dataset', {}).get('config', '')
+            if ds_config:
+                ds_spec = f"{ds_spec}:{ds_config}"
+        texts = load_hf_dataset(ds_spec, max_lines=max_lines)
         if tok_type == 'bpe':
             tokenizer, stoi, itos = select_tokenizer(cfg)
             vocab_size = tokenizer.vocab_size
