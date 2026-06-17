@@ -149,21 +149,47 @@ def download_wikipedia(languages=None, max_lines=500_000):
             log(f"  {lang}: error - {e}")
 
 
-def train_bpe_tokenizer(vocab_size=32768):
-    """Entrena tokenizer BPE desde los datos descargados."""
+def train_bpe_tokenizer(vocab_size=32768, max_lines=50000):
+    """Entrena tokenizer BPE. Descarga datos de HF si no hay locales."""
     try:
         import sentencepiece as spm
     except ImportError:
         log("ERROR: pip install sentencepiece"); sys.exit(1)
 
     input_files = []
-    for fname in os.listdir(DATA_DIR):
-        if fname.endswith('.txt') and not fname.startswith('combined'):
-            input_files.append(os.path.join(DATA_DIR, fname))
+    if os.path.exists(DATA_DIR):
+        for fname in os.listdir(DATA_DIR):
+            if fname.endswith('.txt') and not fname.startswith('combined'):
+                input_files.append(os.path.join(DATA_DIR, fname))
 
-    # Create combined file for training
     combined_path = os.path.join(DATA_DIR, 'combined_for_spm.txt')
-    if not os.path.exists(combined_path) or os.path.getsize(combined_path) < 1_000_000:
+
+    # Si no hay datos locales, descargar muestra de HF
+    if not input_files:
+        log("No local data found. Downloading sample from HuggingFace for tokenizer training...")
+        try:
+            from datasets import load_dataset
+            dataset = load_dataset('allenai/c4', 'en', split='train', streaming=True)
+            os.makedirs(DATA_DIR, exist_ok=True)
+            with open(combined_path, 'w', encoding='utf-8') as f:
+                for i, example in enumerate(dataset):
+                    text = example['text'].strip()
+                    if len(text) > 100:
+                        f.write(text + '\n')
+                        if i >= max_lines:
+                            break
+                    if (i + 1) % 10000 == 0:
+                        log(f"  {i+1} docs...")
+            input_files = [combined_path]
+            log(f"Downloaded {max_lines} docs for tokenizer training")
+        except ImportError:
+            log("ERROR: pip install datasets"); sys.exit(1)
+        except Exception as e:
+            log(f"ERROR downloading data: {e}")
+            sys.exit(1)
+
+    # Create combined file if needed
+    if not os.path.exists(combined_path) or os.path.getsize(combined_path) < 100_000:
         log("Creating combined file for SPM training...")
         with open(combined_path, 'w', encoding='utf-8') as out:
             total = 0
@@ -172,7 +198,7 @@ def train_bpe_tokenizer(vocab_size=32768):
                     for line in f:
                         out.write(line)
                         total += 1
-                        if total >= 5_000_000:
+                        if total >= max_lines * 2:
                             break
         log(f"Combined: {os.path.getsize(combined_path)//1024**2}MB, {total} lines")
 
