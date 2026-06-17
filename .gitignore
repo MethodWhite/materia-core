@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.so
+.venv/
+venv/
+
+# Model weights (large binaries)
+models/*.materia
+models/*.pth
+models/*.pkl
+models/*.pt
+!materia_unified.py
+!materia_v3_full.py
+!materia_v3_torch.py
+
+# Data (too large for git)
+data/
+
+# Logs
+logs/*.csv
+
+# Outputs (generated)
+outputs/
+
+# Plots
+docs/plots/*.png
+docs/plots/*.svg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Env
+.env
+.env.local
+
+# Web (has its own repo - materia-engine)
+onrender/
+engine/

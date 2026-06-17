@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a3a5c;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0090ff;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ff0040;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+
+  <!-- Toroidal hexagon center symbol -->
+  <g transform="translate(200,175)" filter="url(#glow)">
+    <!-- Hexagonal torus rings -->
+    <polygon points="0 0, 7 2.5, 0 5" fill="none" stroke="url(#accent)" stroke-width="2.5" opacity="0.9"/>
+    <polygon points="0 0, 7 2.5, 0 5" fill="none" stroke="url(#accent2)" stroke-width="2" opacity="0.7"/>
+    
+    <!-- Inner circle (torus hole) -->
+    <circle cx="0" cy="0" r="15" fill="none" stroke="url(#accent)" stroke-width="2"/>
+    
+    <!-- Connecting lines (toroidal bridges) -->
+    <line x1="-52" y1="-30" x2="0" y2="-60" stroke="url(#accent)" stroke-width="1" opacity="0.4"/>
+    <line x1="52" y1="-30" x2="0" y2="-60" stroke="url(#accent)" stroke-width="1" opacity="0.4"/>
+    <line x1="-52" y1="30" x2="0" y2="60" stroke="url(#accent)" stroke-width="1" opacity="0.4"/>
+    <line x1="52" y1="30" x2="0" y2="60" stroke="url(#accent)" stroke-width="1" opacity="0.4"/>
+    
+    <!-- Center nodes -->
+    <circle cx="0" cy="0" r="4" fill="url(#accent)"/>
+    
+    <!-- Orbit dots -->
+    <circle cx="0" cy="-60" r="3" fill="url(#accent2)"/>
+    <circle cx="52" cy="-30" r="3" fill="url(#accent2)"/>
+    <circle cx="52" cy="30" r="3" fill="url(#accent2)"/>
+    <circle cx="0" cy="60" r="3" fill="url(#accent2)"/>
+    <circle cx="-52" cy="30" r="3" fill="url(#accent2)"/>
+    <circle cx="-52" cy="-30" r="3" fill="url(#accent2)"/>
+  </g>
+
+  <!-- M.A.T.E.R.I.A. text -->
+  <text x="200" y="275" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="bold" fill="url(#accent)" text-anchor="middle" letter-spacing="4">M.A.T.E.R.I.A.</text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="295" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="8" fill="#8899aa" text-anchor="middle" letter-spacing="2">MULTI-ANALYTICAL TOROIDAL ENGINE</text>
+  <text x="200" y="308" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="8" fill="#8899aa" text-anchor="middle" letter-spacing="2">FOR RECURSIVE INTELLIGENT ANALYSIS</text>
+
+  <!-- Version -->
+  <text x="200" y="330" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="7" fill="#556677" text-anchor="middle">v3.0.0</text>
+</svg>

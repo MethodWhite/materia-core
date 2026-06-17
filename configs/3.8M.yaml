@@ -1,0 +1,41 @@
+# MATERIA V3 - Model Config: 3.8M params (base)
+name: materia-v3-base
+params_m: 3.8
+description: Modelo base, entrena en CPU/4GB VRAM con datos reales
+
+model:
+  dim: 256
+  n_layers: 3
+  n_heads: 8
+  n_kv: 4
+  synapsis_slots: 128
+  hsaq_sparsity: 0.3
+
+tokenizer:
+  type: char                  # char | bpe
+  vocab_size: 1024
+
+training:
+  lr: 5.0e-4
+  weight_decay: 0.01
+  epochs: 8
+  batch_size: 8
+  grad_accum: 4
+  seq_len: 64
+  warmup_steps: 100
+  max_lines: 80000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+
+dataset:
+  source: local               # local | huggingface
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - wiki_en.txt
+    - wiki_es.txt
+
+logging:
+  log_interval: 25
+  save_interval: 1
+  plot_metrics: true

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0e1a2e;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gcore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a017;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#a67c00;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="garch" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a2a5e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2a1a4e;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gbas" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a6a3e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a4a2e;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gmod" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6a3a1e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#4a2a10;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/></filter>
+    <marker id="arrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#00d4ff"/>
+    </marker>
+    <marker id="arrow2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#ff6b35"/>
+    </marker>
+  </defs>
+
+  <text x="400" y="30" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="bold" fill="#00d4ff" text-anchor="middle">Flujo de Datos - M.A.T.E.R.I.A.</text>
+
+  <!-- Step 1: INPUT -->
+  <rect x="275" y="50" width="250" height="45" rx="22" fill="#2a1a5e" stroke="#a67cff" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="68" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Entrada</text>
+  <text x="400" y="84" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#aac" text-anchor="middle">Texto / Audio / Datos</text>
+  <line x1="400" y1="95" x2="400" y2="120" stroke="#a67cff" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: CORE -->
+  <rect x="100" y="125" width="600" height="55" rx="8" fill="#d4a017" stroke="#ffd700" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="145" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#0a1628" text-anchor="middle">Core: Autoentrenamiento Incremental (Google-Style)</text>
+  <text x="400" y="163" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#1a2a3e" text-anchor="middle">Evalua -> Selecciona la mejor arquitectura -> Procesa -> Aprende -> Mejora</text>
+  <line x1="400" y1="180" x2="400" y2="210" stroke="#ffd700" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Architecture Selector -->
+  <rect x="50" y="215" width="700" height="70" rx="8" fill="#2a1a5e" stroke="#a67cff" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="237" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#d4b8ff" text-anchor="middle">Selector de Arquitectura Optima</text>
+  <text x="400" y="253" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#aac" text-anchor="middle">Selecciona la mejor arquitectura segun el tipo de entrada y contexto</text>
+
+  <text x="142" y="274" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ddd" text-anchor="middle">LLM: Texto/Razonamiento</text>
+
+  <text x="297" y="274" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ddd" text-anchor="middle">SNN: Patrones temporales</text>
+
+  <text x="452" y="274" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ddd" text-anchor="middle">SSM: Secuencias largas</text>
+
+  <text x="632" y="274" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ddd" text-anchor="middle">JEPA: Espacio latente predictivo</text>
+
+  <line x1="400" y1="285" x2="400" y2="315" stroke="#a67cff" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Load .basemateria + Apply .materia -->
+  <rect x="100" y="320" width="600" height="65" rx="8" fill="url(#gbas)" stroke="#00d4ff" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="340" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Cargar .basemateria + Aplicar .materia</text>
+  <text x="400" y="356" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#aac" text-anchor="middle">El modelo base se carga con los modulos de conocimiento adicional</text>
+
+  <text x="207" y="375" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#ddd" text-anchor="middle">.basemateria: modelo base</text>
+
+  <text x="397" y="375" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#ddd" text-anchor="middle">.materia: conocimiento extra</text>
+
+  <text x="592" y="375" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#ddd" text-anchor="middle">Arquitectura seleccionada</text>
+
+  <line x1="400" y1="385" x2="400" y2="415" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 5: Inference -->
+  <rect x="200" y="420" width="400" height="45" rx="22" fill="#5a2a10" stroke="#ff6b35" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="438" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Inferencia (Ollama / llama.cpp / Cloud)</text>
+  <text x="400" y="454" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#aac" text-anchor="middle">Backend seleccionado automáticamente</text>
+
+  <line x1="400" y1="465" x2="400" y2="495" stroke="#ff6b35" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <!-- Step 6: Output + Feedback Loop -->
+  <rect x="100" y="500" width="600" height="50" rx="8" fill="#d4a017" stroke="#ffd700" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="518" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="bold" fill="#0a1628" text-anchor="middle">Salida + Feedback Loop (Autoentrenamiento)</text>
+  <text x="400" y="536" font-family="'Segoe UI',Arial,sans-serif" font-size="7" fill="#1a2a3e" text-anchor="middle">La respuesta retroalimenta al core para mejorar en la siguiente iteracion</text>
+
+  <!-- Loop back arrow -->
+  <path d="M 100 525 L 40 525 L 40 152 L 100 152" fill="none" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow2)"/>
+  <text x="20" y="340" font-family="'Segoe UI',Arial,sans-serif" font-size="6" fill="#ffd700" text-anchor="middle" transform="rotate(-90,20,340)">Loop de autoentrenamiento</text>
+</svg>

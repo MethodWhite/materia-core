@@ -1,0 +1,42 @@
+# MATERIA V3 - Model Config: 1.0B params
+name: materia-v3-1b
+params_m: 1000
+description: Modelo 1B con C4 completo + FineWeb + Wikipedia
+
+model:
+  dim: 1536
+  n_layers: 24
+  n_heads: 24
+  n_kv: 6
+  synapsis_slots: 1024
+  hsaq_sparsity: 0.15
+
+tokenizer:
+  type: bpe
+  model_path: data/multilingual/tokenizer/materia_multilingual_v3.model
+  vocab_size: 32768
+
+training:
+  lr: 1.5e-4
+  weight_decay: 0.1
+  epochs: 10
+  batch_size: 4
+  grad_accum: 32
+  seq_len: 1024
+  warmup_steps: 2000
+  max_lines: 5000000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  gradient_checkpoint: true
+
+dataset:
+  source: huggingface
+  path: HuggingFaceFW/fineweb
+  config: CC-MAIN-2024-10
+  max_lines: 5000000
+
+logging:
+  log_interval: 200
+  save_interval: 1
+  plot_metrics: true

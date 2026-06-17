@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <text x="400" y="25" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1a3a6e" text-anchor="middle">Pipeline de Entrenamiento - M.A.T.E.R.I.A.</text>
+  
+  <rect x="50" y="45" width="700" height="55" rx="5" fill="#f0f2f6" stroke="#1a3a6e" stroke-width="1"/>
+  <circle cx="80" cy="72" r="12" fill="#1a3a6e"/>
+  <text x="80" y="76" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+  <text x="105" y="68" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#333">Recoleccion de Datos</text>
+  <text x="105" y="85" font-family="Arial,sans-serif" font-size="8" fill="#666">arXiv API (~2.3M papers) | Descarga masiva | Construccion de dataset</text>
+  
+  <line x1="400" y1="100" x2="400" y2="115" stroke="#1a3a6e" stroke-width="1"/><polygon points="396,113 400,120 404,113" fill="#1a3a6e"/>
+  
+  <rect x="50" y="125" width="700" height="55" rx="5" fill="#f0f2f6" stroke="#1a3a6e" stroke-width="1"/>
+  <circle cx="80" cy="152" r="12" fill="#1a3a6e"/>
+  <text x="80" y="156" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+  <text x="105" y="148" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#333">Entrenamiento JEPA</text>
+  <text x="105" y="165" font-family="Arial,sans-serif" font-size="8" fill="#666">Arquitectura V3 (10.36M params) | Forward pass | Backward pass | Optimizacion SGD</text>
+  
+  <line x1="400" y1="180" x2="400" y2="195" stroke="#1a3a6e" stroke-width="1"/><polygon points="396,193 400,200 404,193" fill="#1a3a6e"/>
+  
+  <rect x="50" y="205" width="700" height="55" rx="5" fill="#f0f2f6" stroke="#8a5a10" stroke-width="1"/>
+  <circle cx="80" cy="232" r="12" fill="#8a5a10"/>
+  <text x="80" y="236" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  <text x="105" y="228" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#333">Compresion HSAQ</text>
+  <text x="105" y="245" font-family="Arial,sans-serif" font-size="8" fill="#666">Encoder: FP16 | Predictor: INT8 | Decoder: INT8 | Embeddings: BIN4</text>
+  
+  <line x1="400" y1="260" x2="400" y2="275" stroke="#1a3a6e" stroke-width="1"/><polygon points="396,273 400,280 404,273" fill="#1a3a6e"/>
+  
+  <rect x="50" y="285" width="700" height="55" rx="5" fill="#f0f2f6" stroke="#0e4a2e" stroke-width="1"/>
+  <circle cx="80" cy="312" r="12" fill="#0e4a2e"/>
+  <text x="80" y="316" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+  <text x="105" y="308" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#333">Exportacion a .materia</text>
+  <text x="105" y="325" font-family="Arial,sans-serif" font-size="8" fill="#666">JSON con pesos base64 | Metadatos de entrenamiento | HSAQ comprimido</text>
+  
+  <rect x="300" y="365" width="200" height="40" rx="20" fill="#1a3a6e"/>
+  <text x="400" y="385" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Modelo Listo para Inferencia</text>
+  <text x="400" y="400" font-family="Arial,sans-serif" font-size="7" fill="#ccc" text-anchor="middle">Cargado via Ollama / llama.cpp</text>
+  
+  <text x="400" y="445" font-family="Arial,sans-serif" font-size="8" fill="#aaa" text-anchor="middle">MethodWhite · M.A.T.E.R.I.A. Research · Santiago, Chile · 2026</text>
+</svg>

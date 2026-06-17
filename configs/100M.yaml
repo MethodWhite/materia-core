@@ -1,0 +1,41 @@
+# MATERIA V3 - Model Config: 100M params
+name: materia-v3-100m
+params_m: 100
+description: Modelo mediano con BPE tokenizer + HuggingFace datasets
+
+model:
+  dim: 768
+  n_layers: 12
+  n_heads: 12
+  n_kv: 4
+  synapsis_slots: 256
+  hsaq_sparsity: 0.3
+
+tokenizer:
+  type: bpe
+  model_path: data/multilingual/tokenizer/materia_multilingual_v2.model
+  vocab_size: 32768
+
+training:
+  lr: 3.0e-4
+  weight_decay: 0.1
+  epochs: 10
+  batch_size: 16
+  grad_accum: 8
+  seq_len: 256
+  warmup_steps: 500
+  max_lines: 500000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+
+dataset:
+  source: huggingface
+  path: allenai/c4
+  config: en
+  max_lines: 500000
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  plot_metrics: true
