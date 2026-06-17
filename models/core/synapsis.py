@@ -35,7 +35,7 @@ class SynapsisMemory(nn.Module):
             ctx = retrieved.mean(dim=0, keepdim=True)
             contexts.append(ctx)
         context = torch.stack(contexts, dim=0)
-        return x + self.out_proj(context).expand(-1, T, -1) * 0.05
+        return x + self.out_proj(context).expand(-1, T, -1) * 0.3
 
     def save_memory(self, path):
         data = {

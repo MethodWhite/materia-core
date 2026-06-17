@@ -322,9 +322,8 @@ def train_epoch(model, loader, opt, sch, device, epoch, epochs, cfg):
                     model.parameters(), cfg['training'].get('clip_grad_norm', 1.0)
                 )
                 opt.step()
+                sch.step()
                 opt.zero_grad(set_to_none=True)
-
-            sch.step()
             total_loss += loss.item() * grad_accum
             acc = (logits.argmax(-1) == y).float().mean().item()
             total_acc += acc * x.size(0)
@@ -597,6 +596,10 @@ def main():
         'spike_rate': [], 'lr': [],
     }
 
+    best_val_loss = float('inf')
+    patience = cfg['training'].get('early_stopping_patience', 3)
+    no_improve = 0
+
     for epoch in range(start_epoch, epochs):
         log(f"Epoch {epoch+1}/{epochs}")
         log_memory(f'epoch-{epoch+1}-start')
@@ -620,6 +623,15 @@ def main():
         log(f"  => train_loss={train_loss:.4f} train_acc={train_acc:.4f} | "
             f"val_loss={val_loss:.4f} val_acc={val_acc:.4f}")
         log_memory(f'epoch-{epoch+1}-end')
+
+        if val_loss < best_val_loss - 1e-4:
+            best_val_loss = val_loss
+            no_improve = 0
+        else:
+            no_improve += 1
+            if no_improve >= patience:
+                log(f"Early stopping: {patience} epochs without improvement")
+                break
 
         if (epoch + 1) % cfg['logging'].get('save_interval', 1) == 0:
             save_checkpoint(model, opt, epoch, stats, output_dir)

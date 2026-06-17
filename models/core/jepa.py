@@ -16,4 +16,4 @@ class JEPA(nn.Module):
         latent = self.enc(x)
         pred = self.pred(latent)
         reconstruction = self.dec(pred)
-        return latent, x + reconstruction * 0.05
+        return latent, x + reconstruction * 0.3

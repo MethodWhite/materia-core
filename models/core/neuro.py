@@ -37,7 +37,7 @@ class SNNLayer(nn.Module):
             spike, V = self.lif(currents[:, t, :], V)
             spikes_list.append(spike)
         spikes = torch.stack(spikes_list, dim=1)
-        fusion = self.w_out(spikes) * 0.05
+        fusion = self.w_out(spikes) * 0.3
         return x + fusion, spikes.mean()
 
 
@@ -55,4 +55,4 @@ class SSMBlock(nn.Module):
         for t in range(T):
             h = torch.tanh(h @ self.A + self.B(x[:, t]))
             out.append(self.C(h))
-        return x + torch.stack(out, dim=1) * 0.1
+        return x + torch.stack(out, dim=1) * 0.3

@@ -13,8 +13,8 @@ model:
 
 tokenizer:
   type: bpe
-  vocab_size: 4096
-  model_path: data/multilingual/tokenizer/materia_multilingual_v3.model
+  vocab_size: 32768
+  model_path: data/multilingual/tokenizer/materia_multilingual_v4.model
 
 training:
   lr: 2.0e-4
@@ -22,19 +22,20 @@ training:
   epochs: 10
   batch_size: 8
   grad_accum: 16
-  seq_len: 512
-  warmup_steps: 1000
-  max_lines: 1000000
+  seq_len: 1024
+  warmup_steps: 2000
+  max_lines: 2000000
   val_split: 0.1
   clip_grad_norm: 1.0
   mixed_precision: bf16
   gradient_checkpoint: true
+  early_stopping_patience: 3
 
 dataset:
   source: huggingface
   path: allenai/c4
   config: en
-  max_lines: 1000000
+  max_lines: 2000000
 
 logging:
   log_interval: 100
