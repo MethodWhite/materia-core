@@ -259,15 +259,17 @@ def load_hf_dataset(dataset_spec, max_lines=500_000, split='train'):
 
 
 def select_tokenizer(cfg):
-    """Retorna tokenizer segun config."""
+    """Retorna tokenizer segun config. Fallback a char-level si no hay BPE."""
     tok_type = cfg.get('tokenizer', {}).get('type', 'char')
     if tok_type == 'bpe':
         model_path = cfg.get('tokenizer', {}).get('model_path')
         if model_path and not os.path.isabs(model_path):
             model_path = os.path.join(MATERIA_HOME, model_path)
-        return BPETokenizer(model_path), None, None
-    else:
-        return None, None, None  # char-level: returns (None, stoi, itos)
+        if os.path.exists(model_path or ''):
+            return BPETokenizer(model_path), None, None
+        else:
+            log(f"BPE model not found at {model_path}, falling back to char-level")
+    return None, None, None  # char-level: returns (None, stoi, itos)
 
 
 # ─── Training ────────────────────────────────────────────────────────────
