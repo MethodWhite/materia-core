@@ -51,6 +51,33 @@ def run_api():
     def status():
         return jsonify(running=proc.poll() is None)
 
+    @app.route('/logs')
+    def logs():
+        import glob
+        log_files = sorted(glob.glob(f"{OUTPUT}/*.csv"))
+        if log_files:
+            with open(log_files[-1]) as f:
+                lines = f.read().strip().split('\n')
+                return jsonify(lines=lines[-50:])
+        return jsonify(lines=[])
+
+    @app.route('/csv')
+    def csv():
+        import glob
+        log_files = sorted(glob.glob(f"{OUTPUT}/*.csv"))
+        if log_files:
+            with open(log_files[-1]) as f:
+                return jsonify(csv=f.read())
+        return jsonify(csv='')
+
+    @app.route('/stop')
+    def stop():
+        global proc
+        if proc.poll() is None:
+            proc.kill()
+            return jsonify(status='stopped')
+        return jsonify(status='already stopped')
+
     @app.route('/resume')
     def resume():
         global proc
