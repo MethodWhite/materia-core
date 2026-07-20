@@ -29,7 +29,7 @@ import math
 from core import (
     RoPE, GQA, FlashGQA, SwiGLU, TransformerBlock,
     LIFNeuron, SNNLayer, SSMBlock,
-    HSAQ, SynapsisMemory,
+    HSAQ, SynapsisMemory, SparseMoEBlock,
 )
 
 K = 2.781042  # Constante de acoplamiento espectral
@@ -99,7 +99,9 @@ class MateriaV4(nn.Module):
                  jepa_weight=K, snn_threshold=0.001, snn_tau=0.8,
                  n_cycles=3,
                  use_synapsis=True, use_checkpointing=False, use_flash=False,
-                 weight_tying=False):
+                 weight_tying=False,
+                 use_moe=False, moe_experts=8, moe_topk=2, moe_hidden_factor=4,
+                 rope_theta=10000.0, rope_scaling_factor=1.0):
         super().__init__()
         self.dim = dim
         self.latent_dim = latent_dim
@@ -107,6 +109,7 @@ class MateriaV4(nn.Module):
         self.n_cycles = n_cycles
         self.use_synapsis = use_synapsis
         self.use_checkpointing = use_checkpointing
+        self.use_moe = use_moe
 
         # ─── Hexagonal Torus Components ───
         # Cada componente se conecta al hub JEPA mediante proyecciones hexagonales
@@ -132,9 +135,15 @@ class MateriaV4(nn.Module):
         self._hsaq_log = []
 
         # Transformer × N → JEPA
-        self.layers = nn.ModuleList([
-            TransformerBlock(dim, n_heads, n_kv, use_flash=use_flash) for _ in range(n_layers)
-        ])
+        self.layers = nn.ModuleList()
+        for _ in range(n_layers):
+            layer = TransformerBlock(dim, n_heads, n_kv, use_flash=use_flash,
+                                     rope_theta=rope_theta, rope_scaling_factor=rope_scaling_factor)
+            if use_moe:
+                # Reemplazar FFN (SwiGLU) con SparseMoEBlock
+                layer.ffn = SparseMoEBlock(dim, n_experts=moe_experts, top_k=moe_topk,
+                                           hidden_factor=moe_hidden_factor)
+            self.layers.append(layer)
         self.t_to_jepa = HexagonalTorus(latent_dim, dim)
 
         # SNN → JEPA
@@ -186,6 +195,7 @@ class MateriaV4(nn.Module):
         prev_t_mask = None   # estado toroidal entre ciclos
         prev_snn_mask = None
         prev_ssm_mask = None
+        moe_aux_loss = torch.tensor(0.0, device=x.device)
 
         for cycle in range(self.n_cycles):
             # —————— Arista 1: Transformer ←→ JEPA ——————
@@ -197,6 +207,9 @@ class MateriaV4(nn.Module):
                     )
                 else:
                     t_out = layer(t_in)
+                # Acumular aux_loss de MoE si esta capa usa SparseMoEBlock
+                if self.use_moe and hasattr(layer.ffn, 'last_aux_loss'):
+                    moe_aux_loss = moe_aux_loss + layer.ffn.last_aux_loss
                 t_in = t_out
                 # HSAQ con herencia toroidal entre ciclos
                 if i == 2:
@@ -262,12 +275,12 @@ class MateriaV4(nn.Module):
 
         self._last_logits = logits.detach()
 
-        return logits, jepa_mse, spike_rate
+        return logits, jepa_mse, spike_rate, moe_aux_loss
 
     def generate(self, idx, max_new=50, temp=0.8, top_p=0.9):
         self.eval()
         for _ in range(max_new):
-            logits, _, _ = self.forward(idx[:, -128:])
+            logits, _, _, _ = self.forward(idx[:, -128:])
             l = logits[:, -1, :] / temp
             if top_p < 1.0:
                 sorted_logits, sorted_idx = l.sort(descending=True)

@@ -1,0 +1,55 @@
+# MATERIA V4 - Config 3B MoE (8 expertos, top-2 routing)
+name: materia-v4-3b-moe
+params_m: 3000
+description: V4 3B MoE - dim=1792, 24 layers, 8 expertos top-2, HSAQ sparsity 15%
+
+model:
+  dim: 1792
+  n_layers: 24
+  n_heads: 16
+  n_kv: 8
+  latent_dim: 1792
+  snn_dim: 896
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 64
+  synapsis_slots: 256
+  hsaq_sparsity: 0.15
+  jepa_weight: 2.781042
+  n_cycles: 3
+  use_flash: true
+  use_checkpointing: true
+  use_moe: true
+  moe_experts: 8
+  moe_topk: 2
+  moe_hidden_factor: 4
+  rope_theta: 10000.0
+  rope_scaling_factor: 1.0
+
+tokenizer:
+  type: bpe
+  vocab_size: 32768
+
+training:
+  lr: 1.0e-4
+  weight_decay: 0.1
+  epochs: 10
+  batch_size: 16
+  grad_accum: 32
+  seq_len: 256
+  warmup_steps: 2000
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  label_smoothing: 0.1
+  num_workers: 4
+  early_stopping_patience: 5
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  gen_interval: 500
+  plot_metrics: true

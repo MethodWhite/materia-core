@@ -8,3 +8,4 @@ from .jepa import JEPA
 from .hsaq import HSAQ
 from .synapsis import SynapsisMemory
 from .audio import AudioEncoder, AudioDecoder
+from .moe import MOEExpert, MOERouter, SparseMoEBlock

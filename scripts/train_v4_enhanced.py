@@ -478,7 +478,7 @@ def save_weights(model, stoi, vocab_size, total, final_stats, output_dir,
                  sp_model_path=None):
     model.cpu()
     free_memory(model.tok_emb.weight.device, force=True)
-    materia_path = os.path.join(output_dir, 'materia-v4.materia')
+    materia_path = os.path.join(output_dir, 'materia-v4.basemateria')
     weight_data = {
         'config': {'vocab_size': vocab_size, 'dim': model.dim, 'version': 'V4-enhanced',
                     'latent_dim': model.latent_dim, 'K': 2.781042},

@@ -1,0 +1,745 @@
+[13:40:40] GPU: NVIDIA RTX 6000 Ada Generation (47.4GB total, 40.3GB usable)
+[13:40:40] === MATERIA V4 Enhanced - Train: materia-v4-1b-bpe ===
+[13:40:40] GPUs: 1 | Output: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340
+[13:40:40] [MEM] init RAM: 0.49GB (0.7%)
+[13:40:40] Loading data...
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/c4_en.txt: 200000 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/combined_for_spm.txt: 400000 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_ar.txt: 400010 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_de.txt: 400020 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_en.txt: 400030 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_es.txt: 400040 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_fr.txt: 400050 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_hi.txt: 400060 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_it.txt: 400070 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_ja.txt: 400080 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_ko.txt: 400090 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_pt.txt: 400100 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_ru.txt: 400110 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_api_zh.txt: 400120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_ar.txt: 401120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_de.txt: 402120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_en.txt: 403120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_es.txt: 404120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_fr.txt: 405120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_hi.txt: 406120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_it.txt: 407120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_ja.txt: 408120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_ko.txt: 409120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_pt.txt: 410120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_ru.txt: 411120 lines
+[13:40:41]   /home/shadeform/MATERIA/data/multilingual/tokenizer/wiki_zh.txt: 412120 lines
+[13:40:41] Loading SentencePiece model: data/multilingual/tokenizer/materia_multilingual_v2.model
+[13:40:41] Texts: 412,120 | Vocab: 32000 BPE tokens (type=bpe)
+[13:41:51] Train: 625,892 | Val: 69,615 chunks
+[13:41:51] Creating MATERIA V4 Enhanced model...
+[13:41:51] Synapsis DISABLED
+[13:42:01] Params: 1,335,302,155 | Synapsis: False
+[13:42:01] [MEM] model-loaded RAM: 3.04GB (4.3%) | VRAM: 5.04GB
+[13:42:02] HSAQ optimizer: SGD Nesterov, lr=0.0005
+[13:42:02] Loading checkpoint for resume...
+[13:42:10] Resumed from epoch 1
+[13:42:10]   SNN path + alpha reinitialized (w_in scale=5×, alpha=0.3)
+[13:42:12] Epoch 2/2
+[13:42:12] [MEM] epoch-2-start RAM: 5.32GB (7.5%) | VRAM: 10.08GB
+[13:42:57]   E2/2 [25/9779] loss=8.8884 tok=8.6292 jepa=0.093184 acc=0.0458 ppl=7941.38 spike=0.4627 spk_reg=0.0265 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=1.25e-04
+[13:43:44]   E2/2 [50/9779] loss=8.7101 tok=8.5888 jepa=0.043625 acc=0.0507 ppl=7300.33 spike=0.4622 spk_reg=0.0263 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=2.50e-04
+[13:44:32]   E2/2 [75/9779] loss=8.6278 tok=8.5694 jepa=0.020997 acc=0.0381 ppl=6796.27 spike=0.4574 spk_reg=0.0248 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=3.75e-04
+[13:45:20]   E2/2 [100/9779] loss=8.6630 tok=8.6261 jepa=0.013253 acc=0.0422 ppl=6500.13 spike=0.4481 spk_reg=0.0219 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=5.00e-04
+[13:45:26]   [GEN] 'The meaning of life is' → 'of i bills is of,! and. jewelry the, the,,s unsett' (unique=24, repeat=0.70)
+[13:45:26]   [GEN] 'Artificial intelligence' → '. was. and will rugs. and to aheaded and albums th' (unique=22, repeat=0.81)
+[13:45:26]   [GEN] 'Hello, how are you' → ',. in? along is for섞 heath unicorn. entrancesrip m' (unique=26, repeat=0.75)
+[13:46:14]   E2/2 [125/9779] loss=8.5707 tok=8.5383 jepa=0.011650 acc=0.0394 ppl=6314.47 spike=0.4374 spk_reg=0.0189 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:47:02]   E2/2 [150/9779] loss=8.6677 tok=8.6376 jepa=0.010830 acc=0.0422 ppl=6185.90 spike=0.4284 spk_reg=0.0165 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:47:51]   E2/2 [175/9779] loss=8.6250 tok=8.5971 jepa=0.010030 acc=0.0381 ppl=6090.30 spike=0.4203 spk_reg=0.0145 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:48:39]   E2/2 [200/9779] loss=8.5990 tok=8.5729 jepa=0.009409 acc=0.0461 ppl=6008.83 spike=0.4139 spk_reg=0.0130 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=5.00e-04
+[13:48:45]   [GEN] 'The meaning of life is' → 'ofenton to do mail fascy the the, of in to, and th' (unique=20, repeat=0.79)
+[13:48:45]   [GEN] 'Artificial intelligence' → 'the the and inks. the. skill star, reporterľ a a t' (unique=23, repeat=0.78)
+[13:48:45]   [GEN] 'Hello, how are you' → 'in of. ands strives of 0.2 the needed., of- of of ' (unique=26, repeat=0.74)
+[13:49:33]   E2/2 [225/9779] loss=8.6179 tok=8.5918 jepa=0.009396 acc=0.0452 ppl=5944.48 spike=0.4083 spk_reg=0.0117 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:50:21]   E2/2 [250/9779] loss=8.6954 tok=8.6708 jepa=0.008826 acc=0.0388 ppl=5897.06 spike=0.4033 spk_reg=0.0107 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:51:10]   E2/2 [275/9779] loss=8.6102 tok=8.5857 jepa=0.008790 acc=0.0424 ppl=5847.63 spike=0.3983 spk_reg=0.0097 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:51:58]   E2/2 [300/9779] loss=8.5907 tok=8.5667 jepa=0.008632 acc=0.0416 ppl=5813.64 spike=0.3929 spk_reg=0.0086 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=5.00e-04
+[13:52:04]   [GEN] 'The meaning of life is' → 'newton of, caption to to is. on!, questions 1000 i' (unique=28, repeat=0.73)
+[13:52:04]   [GEN] 'Artificial intelligence' → 'to???? of of tubesizers the, series know in a. and' (unique=27, repeat=0.74)
+[13:52:04]   [GEN] 'Hello, how are you' → ',, a, flynn for,prus of of can- and stopping and a' (unique=25, repeat=0.74)
+[13:52:53]   E2/2 [325/9779] loss=8.6515 tok=8.6278 jepa=0.008531 acc=0.0435 ppl=5772.78 spike=0.3877 spk_reg=0.0077 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:53:41]   E2/2 [350/9779] loss=8.5768 tok=8.5529 jepa=0.008612 acc=0.0414 ppl=5745.40 spike=0.3830 spk_reg=0.0069 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:54:29]   E2/2 [375/9779] loss=8.5834 tok=8.5589 jepa=0.008801 acc=0.0352 ppl=5711.34 spike=0.3789 spk_reg=0.0062 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:55:18]   E2/2 [400/9779] loss=8.6462 tok=8.6218 jepa=0.008759 acc=0.0398 ppl=5686.54 spike=0.3746 spk_reg=0.0056 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.03 lr=5.00e-04
+[13:55:24]   [GEN] 'The meaning of life is' → '-er and with.empt behavi.. for to the the a volati' (unique=27, repeat=0.78)
+[13:55:24]   [GEN] 'Artificial intelligence' → '. humans of season, know, members of gib their to ' (unique=22, repeat=0.82)
+[13:55:24]   [GEN] 'Hello, how are you' → '. of evaluation eveningsghan can asked, searches o' (unique=25, repeat=0.78)
+[13:56:12]   E2/2 [425/9779] loss=8.6864 tok=8.6620 jepa=0.008786 acc=0.0455 ppl=5668.64 spike=0.3702 spk_reg=0.0049 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:57:01]   E2/2 [450/9779] loss=8.5725 tok=8.5478 jepa=0.008880 acc=0.0424 ppl=5645.06 spike=0.3666 spk_reg=0.0044 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:57:49]   E2/2 [475/9779] loss=8.4894 tok=8.4653 jepa=0.008669 acc=0.0453 ppl=5620.81 spike=0.3628 spk_reg=0.0039 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=5.00e-04
+[13:58:38]   E2/2 [500/9779] loss=8.6861 tok=8.6606 jepa=0.009159 acc=0.0449 ppl=5600.89 spike=0.3595 spk_reg=0.0035 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=4.99e-04
+[13:58:43]   [GEN] 'The meaning of life is' → '. excels by way the the of be to a, from, the wiz ' (unique=24, repeat=0.73)
+[13:58:43]   [GEN] 'Artificial intelligence' → 'or you ofruption wetedly a smaller of4 ifie’ the a' (unique=25, repeat=0.76)
+[13:58:43]   [GEN] 'Hello, how are you' → '. wheels, and different dispro reading fuk i appli' (unique=24, repeat=0.81)
+[13:59:32]   E2/2 [525/9779] loss=8.6032 tok=8.5786 jepa=0.008855 acc=0.0399 ppl=5584.81 spike=0.3563 spk_reg=0.0032 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:00:20]   E2/2 [550/9779] loss=8.5864 tok=8.5612 jepa=0.009050 acc=0.0348 ppl=5566.32 spike=0.3534 spk_reg=0.0029 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:01:08]   E2/2 [575/9779] loss=8.5430 tok=8.5174 jepa=0.009200 acc=0.0482 ppl=5550.66 spike=0.3510 spk_reg=0.0026 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:01:56]   E2/2 [600/9779] loss=8.4829 tok=8.4576 jepa=0.009089 acc=0.0443 ppl=5535.24 spike=0.3481 spk_reg=0.0023 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=4.99e-04
+[14:02:02]   [GEN] 'The meaning of life is' → 'out a. to that the that. smoke super a0.짧 the some' (unique=25, repeat=0.78)
+[14:02:02]   [GEN] 'Artificial intelligence' → 'challenge glaze. notss the from침, i to and100 word' (unique=26, repeat=0.77)
+[14:02:02]   [GEN] 'Hello, how are you' → '針</s> they that,,ats by. of the andifier in isprot' (unique=27, repeat=0.69)
+[14:02:50]   E2/2 [625/9779] loss=8.5152 tok=8.4899 jepa=0.009081 acc=0.0480 ppl=5517.16 spike=0.3461 spk_reg=0.0021 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:03:39]   E2/2 [650/9779] loss=8.5504 tok=8.5247 jepa=0.009254 acc=0.0442 ppl=5505.62 spike=0.3437 spk_reg=0.0019 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:04:27]   E2/2 [675/9779] loss=8.5328 tok=8.5068 jepa=0.009381 acc=0.0454 ppl=5492.51 spike=0.3416 spk_reg=0.0017 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:05:16]   E2/2 [700/9779] loss=8.4981 tok=8.4724 jepa=0.009262 acc=0.0487 ppl=5476.27 spike=0.3396 spk_reg=0.0016 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.03 lr=4.99e-04
+[14:05:22]   [GEN] 'The meaning of life is' → 'i to will to sector a. and man stab it, to is of,.' (unique=20, repeat=0.79)
+[14:05:22]   [GEN] 'Artificial intelligence' → ', hi osha,-, and prevailing many in the of a need.' (unique=22, repeat=0.83)
+[14:05:22]   [GEN] 'Hello, how are you' → 'to it of flap as andpod. our defens the to-. -gs a' (unique=21, repeat=0.78)
+[14:06:10]   E2/2 [725/9779] loss=8.5441 tok=8.5172 jepa=0.009673 acc=0.0446 ppl=5459.70 spike=0.3378 spk_reg=0.0014 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:06:59]   E2/2 [750/9779] loss=8.5599 tok=8.5336 jepa=0.009461 acc=0.0397 ppl=5445.39 spike=0.3357 spk_reg=0.0013 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:07:47]   E2/2 [775/9779] loss=8.5696 tok=8.5429 jepa=0.009627 acc=0.0348 ppl=5433.43 spike=0.3342 spk_reg=0.0012 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.99e-04
+[14:08:35]   E2/2 [800/9779] loss=8.4851 tok=8.4583 jepa=0.009648 acc=0.0442 ppl=5421.98 spike=0.3328 spk_reg=0.0011 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.03 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.03 lr=4.98e-04
+[14:08:41]   [GEN] 'The meaning of life is' → '’ and beige toifter with the.. in🧀 and unlikelyer ' (unique=26, repeat=0.76)
+[14:08:41]   [GEN] 'Artificial intelligence' → '. a illustr. the avoiding victory to on, judics, t' (unique=28, repeat=0.78)
+[14:08:41]   [GEN] 'Hello, how are you' → 'chemistry of of the an can:,臥. --49 are it cairns ' (unique=28, repeat=0.73)
+[14:09:29]   E2/2 [825/9779] loss=8.4759 tok=8.4485 jepa=0.009857 acc=0.0447 ppl=5408.85 spike=0.3310 spk_reg=0.0010 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:10:17]   E2/2 [850/9779] loss=8.5547 tok=8.5264 jepa=0.010186 acc=0.0508 ppl=5396.97 spike=0.3298 spk_reg=0.0009 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:11:05]   E2/2 [875/9779] loss=8.5219 tok=8.4944 jepa=0.009863 acc=0.0447 ppl=5387.08 spike=0.3285 spk_reg=0.0008 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:11:54]   E2/2 [900/9779] loss=8.4782 tok=8.4502 jepa=0.010081 acc=0.0535 ppl=5376.23 spike=0.3276 spk_reg=0.0008 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 lr=4.98e-04
+[14:11:59]   [GEN] 'The meaning of life is' → ',, a ma rises and ins a peaked. scores top,. canre' (unique=22, repeat=0.80)
+[14:11:59]   [GEN] 'Artificial intelligence' → '. therate of. in it ivory cori a the. be. myri in ' (unique=21, repeat=0.78)
+[14:11:59]   [GEN] 'Hello, how are you' → 'minute with is of a delivered.. first echo,, theac' (unique=23, repeat=0.77)
+[14:12:48]   E2/2 [925/9779] loss=8.4674 tok=8.4391 jepa=0.010186 acc=0.0497 ppl=5364.56 spike=0.3261 spk_reg=0.0007 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:13:36]   E2/2 [950/9779] loss=8.4942 tok=8.4654 jepa=0.010350 acc=0.0494 ppl=5355.37 spike=0.3248 spk_reg=0.0006 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:14:24]   E2/2 [975/9779] loss=8.4421 tok=8.4136 jepa=0.010246 acc=0.0493 ppl=5346.46 spike=0.3241 spk_reg=0.0006 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.98e-04
+[14:15:13]   E2/2 [1000/9779] loss=8.5314 tok=8.5018 jepa=0.010644 acc=0.0509 ppl=5336.23 spike=0.3231 spk_reg=0.0005 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 lr=4.97e-04
+[14:15:18]   [GEN] 'The meaning of life is' → 'great passenger, and of, when the scams,t a’ are o' (unique=24, repeat=0.78)
+[14:15:18]   [GEN] 'Artificial intelligence' → 'in- and which srio in compatibility skim jasmine, ' (unique=27, repeat=0.73)
+[14:15:18]   [GEN] 'Hello, how are you' → 'in. can / with, their assistance a instrumental th' (unique=22, repeat=0.81)
+[14:16:07]   E2/2 [1025/9779] loss=8.5265 tok=8.4972 jepa=0.010533 acc=0.0400 ppl=5326.22 spike=0.3218 spk_reg=0.0005 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.97e-04
+[14:16:55]   E2/2 [1050/9779] loss=8.6051 tok=8.5745 jepa=0.010984 acc=0.0428 ppl=5316.16 spike=0.3208 spk_reg=0.0004 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.97e-04
+[14:17:43]   E2/2 [1075/9779] loss=8.5019 tok=8.4702 jepa=0.011386 acc=0.0515 ppl=5306.83 spike=0.3202 spk_reg=0.0004 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.97e-04
+[14:18:32]   E2/2 [1100/9779] loss=8.4690 tok=8.4382 jepa=0.011104 acc=0.0500 ppl=5295.07 spike=0.3193 spk_reg=0.0004 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 lr=4.97e-04
+[14:18:37]   [GEN] 'The meaning of life is' → 'a| shady’ at and, the the oft, but consoles of the' (unique=27, repeat=0.71)
+[14:18:37]   [GEN] 'Artificial intelligence' → '. the in. the derive, to,, and,? robbie contained ' (unique=22, repeat=0.81)
+[14:18:37]   [GEN] 'Hello, how are you' → 'you총健 act i. to for to: to can is, the recommend. ' (unique=26, repeat=0.72)
+[14:19:26]   E2/2 [1125/9779] loss=8.4404 tok=8.4086 jepa=0.011408 acc=0.0514 ppl=5283.89 spike=0.3182 spk_reg=0.0003 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.97e-04
+[14:20:14]   E2/2 [1150/9779] loss=8.4892 tok=8.4580 jepa=0.011217 acc=0.0437 ppl=5273.41 spike=0.3173 spk_reg=0.0003 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.96e-04
+[14:21:03]   E2/2 [1175/9779] loss=8.4236 tok=8.3916 jepa=0.011504 acc=0.0485 ppl=5263.93 spike=0.3168 spk_reg=0.0003 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.96e-04
+[14:21:51]   E2/2 [1200/9779] loss=8.5725 tok=8.5395 jepa=0.011884 acc=0.0487 ppl=5255.19 spike=0.3160 spk_reg=0.0003 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.02 lr=4.96e-04
+[14:21:57]   [GEN] 'The meaning of life is' → 'the ( unusually how different the thecre about, no' (unique=28, repeat=0.71)
+[14:21:57]   [GEN] 'Artificial intelligence' → 's ( to unquestion. thet.: and師odynam are also a is' (unique=24, repeat=0.72)
+[14:21:57]   [GEN] 'Hello, how are you' → 'pains to byocur competitiveness to the used in whe' (unique=26, repeat=0.79)
+[14:22:46]   E2/2 [1225/9779] loss=8.3999 tok=8.3674 jepa=0.011694 acc=0.0504 ppl=5246.49 spike=0.3151 spk_reg=0.0002 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.96e-04
+[14:23:34]   E2/2 [1250/9779] loss=8.5597 tok=8.5267 jepa=0.011880 acc=0.0442 ppl=5238.28 spike=0.3148 spk_reg=0.0002 hsaq_sp=0.026(tgt=0.047) th=0.0006 lr=4.96e-04
+[14:24:22]   E2/2 [1275/9779] loss=8.5444 tok=8.5115 jepa=0.011812 acc=0.0476 ppl=5228.64 spike=0.3137 spk_reg=0.0002 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.96e-04
+[14:25:11]   E2/2 [1300/9779] loss=8.4688 tok=8.4349 jepa=0.012198 acc=0.0488 ppl=5218.56 spike=0.3135 spk_reg=0.0002 hsaq_sp=0.026(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.02 lr=4.95e-04
+[14:25:16]   [GEN] 'The meaning of life is' → 'the, border can, triple thes,? cair the some a is ' (unique=23, repeat=0.77)
+[14:25:16]   [GEN] 'Artificial intelligence' → 's the the you in because in a. ech wouldn of hasa ' (unique=20, repeat=0.82)
+[14:25:16]   [GEN] 'Hello, how are you' → ', images have the was the andity the stem bard dir' (unique=21, repeat=0.84)
+[14:26:05]   E2/2 [1325/9779] loss=8.4991 tok=8.4646 jepa=0.012404 acc=0.0532 ppl=5209.94 spike=0.3130 spk_reg=0.0002 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.95e-04
+[14:26:53]   E2/2 [1350/9779] loss=8.5493 tok=8.5147 jepa=0.012427 acc=0.0494 ppl=5200.47 spike=0.3128 spk_reg=0.0002 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.95e-04
+[14:27:41]   E2/2 [1375/9779] loss=8.4487 tok=8.4137 jepa=0.012575 acc=0.0491 ppl=5192.13 spike=0.3123 spk_reg=0.0002 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.95e-04
+[14:28:29]   E2/2 [1400/9779] loss=8.4971 tok=8.4630 jepa=0.012270 acc=0.0540 ppl=5184.41 spike=0.3120 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.03 ssm_latent:0.02 lr=4.95e-04
+[14:28:35]   [GEN] 'The meaning of life is' → 'the several in are that,. the cousin to work have ' (unique=26, repeat=0.76)
+[14:28:35]   [GEN] 'Artificial intelligence' → 'a as the and. the on the of anesthetic. a explo i ' (unique=23, repeat=0.81)
+[14:28:35]   [GEN] 'Hello, how are you' → '', if’ and private.points of a carrier. the our. j' (unique=24, repeat=0.77)
+[14:29:24]   E2/2 [1425/9779] loss=8.4232 tok=8.3876 jepa=0.012799 acc=0.0535 ppl=5177.55 spike=0.3115 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.94e-04
+[14:30:12]   E2/2 [1450/9779] loss=8.4344 tok=8.3986 jepa=0.012901 acc=0.0507 ppl=5169.14 spike=0.3111 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.94e-04
+[14:31:00]   E2/2 [1475/9779] loss=8.4962 tok=8.4591 jepa=0.013359 acc=0.0493 ppl=5161.69 spike=0.3107 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.94e-04
+[14:31:48]   E2/2 [1500/9779] loss=8.4672 tok=8.4300 jepa=0.013362 acc=0.0507 ppl=5153.69 spike=0.3104 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.94e-04
+[14:31:54]   [GEN] 'The meaning of life is' → 'to the girl to series clearer.essential to andこ, b' (unique=22, repeat=0.82)
+[14:31:54]   [GEN] 'Artificial intelligence' → 'a sn myre a he the is when, the cannab or' to the ' (unique=25, repeat=0.79)
+[14:31:54]   [GEN] 'Hello, how are you' → '’ 1940. the to remind thereby rooted for of outocr' (unique=26, repeat=0.75)
+[14:32:42]   E2/2 [1525/9779] loss=8.5004 tok=8.4622 jepa=0.013766 acc=0.0477 ppl=5146.25 spike=0.3102 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.93e-04
+[14:33:31]   E2/2 [1550/9779] loss=8.4205 tok=8.3820 jepa=0.013816 acc=0.0547 ppl=5139.38 spike=0.3100 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.93e-04
+[14:34:19]   E2/2 [1575/9779] loss=8.4126 tok=8.3739 jepa=0.013923 acc=0.0549 ppl=5132.15 spike=0.3099 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.93e-04
+[14:35:08]   E2/2 [1600/9779] loss=8.4485 tok=8.4086 jepa=0.014331 acc=0.0500 ppl=5124.86 spike=0.3098 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.03 ssm:0.02 ssm_latent:0.02 lr=4.93e-04
+[14:35:14]   [GEN] 'The meaning of life is' → ', and a kirby. in the " in the iss to in the be.; ' (unique=26, repeat=0.74)
+[14:35:14]   [GEN] 'Artificial intelligence' → 'to cons. the. his, the' the stepped boeing as the ' (unique=26, repeat=0.80)
+[14:35:14]   [GEN] 'Hello, how are you' → 'craw with corros and shoulder, new a. to and an i ' (unique=22, repeat=0.81)
+[14:36:02]   E2/2 [1625/9779] loss=8.4460 tok=8.4066 jepa=0.014140 acc=0.0522 ppl=5118.00 spike=0.3091 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.92e-04
+[14:36:50]   E2/2 [1650/9779] loss=8.4915 tok=8.4512 jepa=0.014521 acc=0.0541 ppl=5111.04 spike=0.3090 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.92e-04
+[14:37:39]   E2/2 [1675/9779] loss=8.4357 tok=8.3946 jepa=0.014809 acc=0.0570 ppl=5104.29 spike=0.3092 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.92e-04
+[14:38:27]   E2/2 [1700/9779] loss=8.4183 tok=8.3771 jepa=0.014789 acc=0.0564 ppl=5098.63 spike=0.3090 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.92e-04
+[14:38:33]   [GEN] 'The meaning of life is' → 'the a the perform has: is to all a uphol, martial ' (unique=22, repeat=0.78)
+[14:38:33]   [GEN] 'Artificial intelligence' → ', suspect. when.’ is portrait me be dunes of and l' (unique=27, repeat=0.72)
+[14:38:33]   [GEN] 'Hello, how are you' → 'ads - you. distresss from with-, the longing handi' (unique=26, repeat=0.78)
+[14:39:22]   E2/2 [1725/9779] loss=8.4167 tok=8.3761 jepa=0.014572 acc=0.0603 ppl=5091.84 spike=0.3088 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.91e-04
+[14:40:10]   E2/2 [1750/9779] loss=8.4195 tok=8.3777 jepa=0.015018 acc=0.0515 ppl=5084.68 spike=0.3083 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.91e-04
+[14:40:59]   E2/2 [1775/9779] loss=8.4955 tok=8.4512 jepa=0.015919 acc=0.0542 ppl=5078.48 spike=0.3080 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.91e-04
+[14:41:48]   E2/2 [1800/9779] loss=8.3748 tok=8.3314 jepa=0.015618 acc=0.0615 ppl=5072.92 spike=0.3080 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.03 lr=4.91e-04
+[14:41:53]   [GEN] 'The meaning of life is' → 's the,理 fans of the. of the but with-. love charac' (unique=26, repeat=0.73)
+[14:41:53]   [GEN] 'Artificial intelligence' → 'get) but to is to- of that for dent. to and and!sκ' (unique=23, repeat=0.73)
+[14:41:53]   [GEN] 'Hello, how are you' → ', the a,- –, in far consoles, the so of the shall,' (unique=22, repeat=0.77)
+[14:42:42]   E2/2 [1825/9779] loss=8.3852 tok=8.3398 jepa=0.016316 acc=0.0587 ppl=5066.51 spike=0.3073 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.90e-04
+[14:43:30]   E2/2 [1850/9779] loss=8.4372 tok=8.3927 jepa=0.015996 acc=0.0594 ppl=5059.89 spike=0.3072 spk_reg=0.0001 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.90e-04
+[14:44:19]   E2/2 [1875/9779] loss=8.4292 tok=8.3836 jepa=0.016402 acc=0.0604 ppl=5053.61 spike=0.3071 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.90e-04
+[14:45:07]   E2/2 [1900/9779] loss=8.4219 tok=8.3767 jepa=0.016264 acc=0.0643 ppl=5047.48 spike=0.3070 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.90e-04
+[14:45:13]   [GEN] 'The meaning of life is' → '- the profound i two with#, the the numberedts of ' (unique=24, repeat=0.77)
+[14:45:13]   [GEN] 'Artificial intelligence' → 'fork argued the. there and to the,, bl to bottles ' (unique=21, repeat=0.79)
+[14:45:13]   [GEN] 'Hello, how are you' → '! by h that a ", as fork you it publicorrow city t' (unique=27, repeat=0.75)
+[14:46:02]   E2/2 [1925/9779] loss=8.4273 tok=8.3816 jepa=0.016421 acc=0.0601 ppl=5041.48 spike=0.3069 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.89e-04
+[14:46:50]   E2/2 [1950/9779] loss=8.3505 tok=8.3034 jepa=0.016945 acc=0.0627 ppl=5035.04 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.89e-04
+[14:47:39]   E2/2 [1975/9779] loss=8.5210 tok=8.4745 jepa=0.016706 acc=0.0583 ppl=5029.65 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.89e-04
+[14:48:28]   E2/2 [2000/9779] loss=8.3330 tok=8.2857 jepa=0.017008 acc=0.0602 ppl=5022.38 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.03 lr=4.88e-04
+[14:48:34]   [GEN] 'The meaning of life is' → 'of thes the of the chim out years perfection' i an' (unique=23, repeat=0.81)
+[14:48:34]   [GEN] 'Artificial intelligence' → 'da you of in the. day or catalytic, it is monitori' (unique=23, repeat=0.77)
+[14:48:34]   [GEN] 'Hello, how are you' → 'is chims to's and of the news a. to the but cent/ ' (unique=23, repeat=0.77)
+[14:48:51]   Batch checkpoint: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_2000.pt (10177MB)
+[14:49:38]   E2/2 [2025/9779] loss=8.5121 tok=8.4641 jepa=0.017250 acc=0.0618 ppl=5016.50 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.88e-04
+[14:50:27]   E2/2 [2050/9779] loss=8.3869 tok=8.3386 jepa=0.017347 acc=0.0601 ppl=5011.48 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.88e-04
+[14:51:15]   E2/2 [2075/9779] loss=8.3958 tok=8.3472 jepa=0.017486 acc=0.0592 ppl=5005.10 spike=0.3062 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.87e-04
+[14:52:05]   E2/2 [2100/9779] loss=8.4074 tok=8.3571 jepa=0.018078 acc=0.0623 ppl=4998.95 spike=0.3062 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.87e-04
+[14:52:10]   [GEN] 'The meaning of life is' → '. and, you and i of that: to the i this to he bord' (unique=23, repeat=0.80)
+[14:52:10]   [GEN] 'Artificial intelligence' → 'and leadership to the sports last a replay,oose of' (unique=23, repeat=0.81)
+[14:52:10]   [GEN] 'Hello, how are you' → '’ sudan for wash in the unanim encounter york and ' (unique=28, repeat=0.79)
+[14:52:59]   E2/2 [2125/9779] loss=8.3390 tok=8.2883 jepa=0.018237 acc=0.0585 ppl=4993.87 spike=0.3062 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.87e-04
+[14:53:48]   E2/2 [2150/9779] loss=8.4035 tok=8.3538 jepa=0.017868 acc=0.0612 ppl=4987.76 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.86e-04
+[14:54:36]   E2/2 [2175/9779] loss=8.4579 tok=8.4071 jepa=0.018256 acc=0.0562 ppl=4981.10 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.86e-04
+[14:55:25]   E2/2 [2200/9779] loss=8.4425 tok=8.3912 jepa=0.018463 acc=0.0573 ppl=4975.20 spike=0.3065 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.86e-04
+[14:55:31]   [GEN] 'The meaning of life is' → 'a has a was thepected in to a is to local. to the ' (unique=22, repeat=0.81)
+[14:55:31]   [GEN] 'Artificial intelligence' → 'that is the arrow. the the as have to. have as in ' (unique=20, repeat=0.84)
+[14:55:31]   [GEN] 'Hello, how are you' → '-. and keeping텍, have is thatbirds destroying hous' (unique=28, repeat=0.76)
+[14:56:20]   E2/2 [2225/9779] loss=8.3381 tok=8.2844 jepa=0.019312 acc=0.0574 ppl=4970.65 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.85e-04
+[14:57:08]   E2/2 [2250/9779] loss=8.4983 tok=8.4457 jepa=0.018922 acc=0.0593 ppl=4965.34 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.85e-04
+[14:57:57]   E2/2 [2275/9779] loss=8.3809 tok=8.3281 jepa=0.019016 acc=0.0596 ppl=4958.52 spike=0.3066 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.85e-04
+[14:58:45]   E2/2 [2300/9779] loss=8.3987 tok=8.3449 jepa=0.019330 acc=0.0612 ppl=4952.90 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.84e-04
+[14:58:51]   [GEN] 'The meaning of life is' → 'the i to the’s this. you your - hyper좌. make- some' (unique=22, repeat=0.75)
+[14:58:51]   [GEN] 'Artificial intelligence' → 'and's-, to is ands隔’s steroids the petrol be.mes r' (unique=25, repeat=0.73)
+[14:58:51]   [GEN] 'Hello, how are you' → '. the a i theleague these of thecare characteristi' (unique=25, repeat=0.78)
+[14:59:39]   E2/2 [2325/9779] loss=8.3214 tok=8.2673 jepa=0.019439 acc=0.0603 ppl=4946.73 spike=0.3067 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.84e-04
+[15:00:28]   E2/2 [2350/9779] loss=8.4630 tok=8.4081 jepa=0.019758 acc=0.0559 ppl=4940.77 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.84e-04
+[15:01:17]   E2/2 [2375/9779] loss=8.3948 tok=8.3387 jepa=0.020151 acc=0.0618 ppl=4935.45 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.83e-04
+[15:02:06]   E2/2 [2400/9779] loss=8.4464 tok=8.3908 jepa=0.020006 acc=0.0549 ppl=4930.45 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.83e-04
+[15:02:12]   [GEN] 'The meaning of life is' → 'the. in the by a mohammad school. theacre. feature' (unique=23, repeat=0.80)
+[15:02:12]   [GEN] 'Artificial intelligence' → '. her,, even last., the- turf and 9:30音 to longing' (unique=30, repeat=0.73)
+[15:02:12]   [GEN] 'Hello, how are you' → 'and and that egypt then other your unfor mouth loa' (unique=24, repeat=0.82)
+[15:03:00]   E2/2 [2425/9779] loss=8.4092 tok=8.3531 jepa=0.020191 acc=0.0566 ppl=4925.54 spike=0.3064 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.83e-04
+[15:03:49]   E2/2 [2450/9779] loss=8.3858 tok=8.3299 jepa=0.020095 acc=0.0636 ppl=4919.80 spike=0.3062 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.82e-04
+[15:04:38]   E2/2 [2475/9779] loss=8.4402 tok=8.3824 jepa=0.020769 acc=0.0638 ppl=4914.34 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.82e-04
+[15:05:27]   E2/2 [2500/9779] loss=8.3097 tok=8.2519 jepa=0.020801 acc=0.0619 ppl=4909.22 spike=0.3061 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.81e-04
+[15:05:32]   [GEN] 'The meaning of life is' → 'the aboutincare unnecesss the i' by a is it:. to y' (unique=25, repeat=0.77)
+[15:05:32]   [GEN] 'Artificial intelligence' → 'defendant a condition ont me back of theeraldcemic' (unique=24, repeat=0.79)
+[15:05:32]   [GEN] 'Hello, how are you' → ', and our. icom on instructors to in thes pf the t' (unique=24, repeat=0.79)
+[15:06:21]   E2/2 [2525/9779] loss=8.3173 tok=8.2585 jepa=0.021122 acc=0.0559 ppl=4903.53 spike=0.3065 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.81e-04
+[15:07:10]   E2/2 [2550/9779] loss=8.3176 tok=8.2587 jepa=0.021180 acc=0.0599 ppl=4897.86 spike=0.3060 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.81e-04
+[15:07:59]   E2/2 [2575/9779] loss=8.3486 tok=8.2887 jepa=0.021532 acc=0.0645 ppl=4892.29 spike=0.3063 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.80e-04
+[15:08:48]   E2/2 [2600/9779] loss=8.4188 tok=8.3588 jepa=0.021591 acc=0.0629 ppl=4887.34 spike=0.3060 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.80e-04
+[15:08:54]   [GEN] 'The meaning of life is' → '. the were of the we to. the is is in the its he t' (unique=16, repeat=0.84)
+[15:08:54]   [GEN] 'Artificial intelligence' → '. pillars thebest in, you thelevel, the will in th' (unique=24, repeat=0.77)
+[15:08:54]   [GEN] 'Hello, how are you' → ': this chilling a reass. the the a chipped as. i a' (unique=23, repeat=0.79)
+[15:09:43]   E2/2 [2625/9779] loss=8.4333 tok=8.3725 jepa=0.021865 acc=0.0591 ppl=4882.50 spike=0.3061 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.80e-04
+[15:10:31]   E2/2 [2650/9779] loss=8.2829 tok=8.2221 jepa=0.021888 acc=0.0660 ppl=4877.43 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.79e-04
+[15:11:20]   E2/2 [2675/9779] loss=8.3938 tok=8.3319 jepa=0.022241 acc=0.0619 ppl=4872.79 spike=0.3058 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.79e-04
+[15:12:09]   E2/2 [2700/9779] loss=8.4179 tok=8.3573 jepa=0.021783 acc=0.0608 ppl=4867.51 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.78e-04
+[15:12:14]   [GEN] 'The meaning of life is' → 'for”, sex to the thet fibers school for more with ' (unique=24, repeat=0.77)
+[15:12:14]   [GEN] 'Artificial intelligence' → 'makers with a ( have ontos firefox a. its bys? the' (unique=30, repeat=0.71)
+[15:12:14]   [GEN] 'Hello, how are you' → 'at,ci used s --忍 on in the and the in the- i each.' (unique=22, repeat=0.76)
+[15:13:03]   E2/2 [2725/9779] loss=8.3246 tok=8.2622 jepa=0.022431 acc=0.0586 ppl=4862.93 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.78e-04
+[15:13:52]   E2/2 [2750/9779] loss=8.3539 tok=8.2909 jepa=0.022635 acc=0.0569 ppl=4857.82 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.77e-04
+[15:14:40]   E2/2 [2775/9779] loss=8.3845 tok=8.3208 jepa=0.022872 acc=0.0627 ppl=4853.81 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.77e-04
+[15:15:29]   E2/2 [2800/9779] loss=8.4185 tok=8.3547 jepa=0.022932 acc=0.0629 ppl=4848.17 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.77e-04
+[15:15:35]   [GEN] 'The meaning of life is' → 'was and a agar around to set, the as and secretary' (unique=23, repeat=0.79)
+[15:15:35]   [GEN] 'Artificial intelligence' → '. it. to will’s iitting are you, i had to as non, ' (unique=22, repeat=0.79)
+[15:15:35]   [GEN] 'Hello, how are you' → ', protecting on 200, and 6) or’s: in the most, and' (unique=26, repeat=0.73)
+[15:16:24]   E2/2 [2825/9779] loss=8.3947 tok=8.3310 jepa=0.022913 acc=0.0641 ppl=4843.11 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.76e-04
+[15:17:12]   E2/2 [2850/9779] loss=8.3766 tok=8.3133 jepa=0.022744 acc=0.0598 ppl=4839.21 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.76e-04
+[15:18:01]   E2/2 [2875/9779] loss=8.4143 tok=8.3497 jepa=0.023237 acc=0.0631 ppl=4834.64 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.75e-04
+[15:18:50]   E2/2 [2900/9779] loss=8.4471 tok=8.3829 jepa=0.023108 acc=0.0596 ppl=4830.17 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.75e-04
+[15:18:56]   [GEN] 'The meaning of life is' → 'with an one breach no how the can the first's of' ' (unique=22, repeat=0.79)
+[15:18:56]   [GEN] 'Artificial intelligence' → 'you and, and an, outfit, a i the. be. in the my as' (unique=21, repeat=0.79)
+[15:18:56]   [GEN] 'Hello, how are you' → '弁 in the as a with the and on this an is’s sketche' (unique=23, repeat=0.78)
+[15:19:45]   E2/2 [2925/9779] loss=8.4222 tok=8.3573 jepa=0.023341 acc=0.0583 ppl=4825.46 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.74e-04
+[15:20:33]   E2/2 [2950/9779] loss=8.4594 tok=8.3953 jepa=0.023043 acc=0.0590 ppl=4821.11 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.74e-04
+[15:21:22]   E2/2 [2975/9779] loss=8.3102 tok=8.2443 jepa=0.023678 acc=0.0665 ppl=4816.53 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.74e-04
+[15:22:11]   E2/2 [3000/9779] loss=8.4318 tok=8.3664 jepa=0.023532 acc=0.0630 ppl=4812.53 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.73e-04
+[15:22:16]   [GEN] 'The meaning of life is' → '- the was, the 38.: was theic on the, work there. ' (unique=29, repeat=0.75)
+[15:22:16]   [GEN] 'Artificial intelligence' → 'in is the washed these of the running i of the cor' (unique=25, repeat=0.79)
+[15:22:16]   [GEN] 'Hello, how are you' → '. motto>. and llclas of the, and try be' and its e' (unique=24, repeat=0.79)
+[15:23:05]   E2/2 [3025/9779] loss=8.4306 tok=8.3649 jepa=0.023623 acc=0.0631 ppl=4807.90 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.73e-04
+[15:23:54]   E2/2 [3050/9779] loss=8.3670 tok=8.3009 jepa=0.023793 acc=0.0624 ppl=4803.18 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.72e-04
+[15:24:43]   E2/2 [3075/9779] loss=8.3090 tok=8.2424 jepa=0.023937 acc=0.0636 ppl=4798.47 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.72e-04
+[15:25:31]   E2/2 [3100/9779] loss=8.3588 tok=8.2922 jepa=0.023956 acc=0.0626 ppl=4793.92 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.71e-04
+[15:25:37]   [GEN] 'The meaning of life is' → 'the on the. cheer its. the, “ high to and the, and' (unique=22, repeat=0.76)
+[15:25:37]   [GEN] 'Artificial intelligence' → 'to/2017 to auction on not the ( not itˈ and of the' (unique=28, repeat=0.72)
+[15:25:37]   [GEN] 'Hello, how are you' → '' an is, it. along ' carpet. the your, it. childre' (unique=23, repeat=0.76)
+[15:26:26]   E2/2 [3125/9779] loss=8.3717 tok=8.3038 jepa=0.024413 acc=0.0641 ppl=4789.37 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.71e-04
+[15:27:14]   E2/2 [3150/9779] loss=8.3492 tok=8.2801 jepa=0.024831 acc=0.0599 ppl=4784.88 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.70e-04
+[15:28:03]   E2/2 [3175/9779] loss=8.3719 tok=8.3050 jepa=0.024055 acc=0.0609 ppl=4780.42 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.70e-04
+[15:28:52]   E2/2 [3200/9779] loss=8.3532 tok=8.2846 jepa=0.024677 acc=0.0684 ppl=4776.21 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.69e-04
+[15:28:58]   [GEN] 'The meaning of life is' → 'to of the manual on/200should and and that the tha' (unique=26, repeat=0.76)
+[15:28:58]   [GEN] 'Artificial intelligence' → 'di help the refuses unquestion the about in teams ' (unique=25, repeat=0.80)
+[15:28:58]   [GEN] 'Hello, how are you' → 'to was a the:'s know of.mot, get armen and the my' (unique=25, repeat=0.73)
+[15:29:46]   E2/2 [3225/9779] loss=8.3821 tok=8.3142 jepa=0.024395 acc=0.0612 ppl=4771.74 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.027(tgt=0.047) th=0.0006 lr=4.69e-04
+[15:30:35]   E2/2 [3250/9779] loss=8.3652 tok=8.2959 jepa=0.024943 acc=0.0646 ppl=4767.83 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.68e-04
+[15:31:24]   E2/2 [3275/9779] loss=8.3200 tok=8.2518 jepa=0.024506 acc=0.0591 ppl=4763.78 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.68e-04
+[15:32:12]   E2/2 [3300/9779] loss=8.3166 tok=8.2470 jepa=0.025029 acc=0.0583 ppl=4759.10 spike=0.3060 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.67e-04
+[15:32:18]   [GEN] 'The meaning of life is' → 'on to the their.刺:, i or its his prioritize we thi' (unique=24, repeat=0.79)
+[15:32:18]   [GEN] 'Artificial intelligence' → 'y number orvest un popular in the音 a's and ( had o' (unique=28, repeat=0.73)
+[15:32:18]   [GEN] 'Hello, how are you' → 'was to the prioritize, and weigh,➡rill, andoc 2 fi' (unique=27, repeat=0.74)
+[15:33:07]   E2/2 [3325/9779] loss=8.3315 tok=8.2619 jepa=0.024997 acc=0.0636 ppl=4754.65 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.67e-04
+[15:33:55]   E2/2 [3350/9779] loss=8.3645 tok=8.2949 jepa=0.025049 acc=0.0612 ppl=4749.98 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.66e-04
+[15:34:44]   E2/2 [3375/9779] loss=8.3685 tok=8.2989 jepa=0.025031 acc=0.0656 ppl=4745.24 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.66e-04
+[15:35:33]   E2/2 [3400/9779] loss=8.3410 tok=8.2696 jepa=0.025647 acc=0.0652 ppl=4741.29 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.65e-04
+[15:35:39]   [GEN] 'The meaning of life is' → 'of the benchmarks is. the utensils, for the for an' (unique=23, repeat=0.83)
+[15:35:39]   [GEN] 'Artificial intelligence' → 'a are of second the architect. i’sitch. the 20 of ' (unique=21, repeat=0.81)
+[15:35:39]   [GEN] 'Hello, how are you' → 'is as of the the 09 me from a it. the’s the "id fi' (unique=23, repeat=0.79)
+[15:36:28]   E2/2 [3425/9779] loss=8.2936 tok=8.2222 jepa=0.025693 acc=0.0665 ppl=4737.65 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.65e-04
+[15:37:17]   E2/2 [3450/9779] loss=8.2869 tok=8.2160 jepa=0.025514 acc=0.0671 ppl=4733.71 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.64e-04
+[15:38:06]   E2/2 [3475/9779] loss=8.4106 tok=8.3406 jepa=0.025197 acc=0.0607 ppl=4729.86 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.64e-04
+[15:38:55]   E2/2 [3500/9779] loss=8.2307 tok=8.1587 jepa=0.025891 acc=0.0647 ppl=4725.38 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.63e-04
+[15:39:00]   [GEN] 'The meaning of life is' → 'peaked the the school and the bombs it, (. for. an' (unique=22, repeat=0.80)
+[15:39:00]   [GEN] 'Artificial intelligence' → '. there the is a or of the약 about and timeline. th' (unique=23, repeat=0.77)
+[15:39:00]   [GEN] 'Hello, how are you' → '., and - for toyear-扶 the need. be his we the your' (unique=25, repeat=0.75)
+[15:39:49]   E2/2 [3525/9779] loss=8.3306 tok=8.2601 jepa=0.025365 acc=0.0573 ppl=4721.73 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.63e-04
+[15:40:38]   E2/2 [3550/9779] loss=8.3846 tok=8.3123 jepa=0.025986 acc=0.0642 ppl=4717.44 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.62e-04
+[15:41:27]   E2/2 [3575/9779] loss=8.3361 tok=8.2629 jepa=0.026328 acc=0.0641 ppl=4713.24 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.62e-04
+[15:42:15]   E2/2 [3600/9779] loss=8.2932 tok=8.2191 jepa=0.026657 acc=0.0685 ppl=4708.91 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.61e-04
+[15:42:21]   [GEN] 'The meaning of life is' → 'bpm,process and also to the articles in the or but' (unique=21, repeat=0.85)
+[15:42:21]   [GEN] 'Artificial intelligence' → 'and available been tom and new the lo, that along.' (unique=23, repeat=0.83)
+[15:42:21]   [GEN] 'Hello, how are you' → 'in the be or contact and.). the: our factor needed' (unique=22, repeat=0.79)
+[15:43:09]   E2/2 [3625/9779] loss=8.3316 tok=8.2590 jepa=0.026086 acc=0.0599 ppl=4705.52 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.61e-04
+[15:43:58]   E2/2 [3650/9779] loss=8.3541 tok=8.2801 jepa=0.026597 acc=0.0586 ppl=4702.25 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.60e-04
+[15:44:46]   E2/2 [3675/9779] loss=8.3337 tok=8.2599 jepa=0.026545 acc=0.0593 ppl=4698.95 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.59e-04
+[15:45:35]   E2/2 [3700/9779] loss=8.3277 tok=8.2539 jepa=0.026535 acc=0.0634 ppl=4695.43 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.59e-04
+[15:45:40]   [GEN] 'The meaning of life is' → 'a’s's a ins green brun in a chim to a. the the.. d' (unique=24, repeat=0.73)
+[15:45:40]   [GEN] 'Artificial intelligence' → 'we’s,, a it it - all if is educated from. like,:' ' (unique=25, repeat=0.69)
+[15:45:40]   [GEN] 'Hello, how are you' → 'from. your, the equityam runner last. i, and- are ' (unique=24, repeat=0.76)
+[15:46:29]   E2/2 [3725/9779] loss=8.3413 tok=8.2668 jepa=0.026770 acc=0.0638 ppl=4691.14 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.58e-04
+[15:47:17]   E2/2 [3750/9779] loss=8.3670 tok=8.2922 jepa=0.026895 acc=0.0652 ppl=4688.10 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.58e-04
+[15:48:06]   E2/2 [3775/9779] loss=8.3169 tok=8.2417 jepa=0.027037 acc=0.0680 ppl=4684.88 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.57e-04
+[15:48:54]   E2/2 [3800/9779] loss=8.3765 tok=8.3025 jepa=0.026619 acc=0.0654 ppl=4681.34 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.57e-04
+[15:49:00]   [GEN] 'The meaning of life is' → 'the from to to the we to the safest- youing means,' (unique=22, repeat=0.81)
+[15:49:00]   [GEN] 'Artificial intelligence' → '.... the it. help the url this. the there is cott,' (unique=23, repeat=0.77)
+[15:49:00]   [GEN] 'Hello, how are you' → '( of the alz helps. the were to the our a showed b' (unique=26, repeat=0.79)
+[15:49:48]   E2/2 [3825/9779] loss=8.3460 tok=8.2700 jepa=0.027322 acc=0.0665 ppl=4677.83 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.56e-04
+[15:50:37]   E2/2 [3850/9779] loss=8.3895 tok=8.3151 jepa=0.026755 acc=0.0638 ppl=4674.48 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.56e-04
+[15:51:25]   E2/2 [3875/9779] loss=8.2769 tok=8.2002 jepa=0.027597 acc=0.0638 ppl=4670.63 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.55e-04
+[15:52:14]   E2/2 [3900/9779] loss=8.2328 tok=8.1562 jepa=0.027560 acc=0.0620 ppl=4666.99 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.54e-04
+[15:52:20]   [GEN] 'The meaning of life is' → '- tos theb the - — the as ( to money with a the th' (unique=23, repeat=0.74)
+[15:52:20]   [GEN] 'Artificial intelligence' → 'and/ in theinth of the world, by which to the ( in' (unique=23, repeat=0.80)
+[15:52:20]   [GEN] 'Hello, how are you' → 'iswow is to a for the! after of the irish ac. the.' (unique=20, repeat=0.78)
+[15:53:08]   E2/2 [3925/9779] loss=8.3152 tok=8.2373 jepa=0.028031 acc=0.0638 ppl=4663.61 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.54e-04
+[15:53:57]   E2/2 [3950/9779] loss=8.2501 tok=8.1733 jepa=0.027620 acc=0.0679 ppl=4659.85 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.53e-04
+[15:54:46]   E2/2 [3975/9779] loss=8.4346 tok=8.3574 jepa=0.027745 acc=0.0604 ppl=4656.09 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.53e-04
+[15:55:34]   E2/2 [4000/9779] loss=8.2487 tok=8.1713 jepa=0.027808 acc=0.0652 ppl=4652.58 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.52e-04
+[15:55:39]   [GEN] 'The meaning of life is' → 'a” an global of, and the will for continuity after' (unique=26, repeat=0.77)
+[15:55:39]   [GEN] 'Artificial intelligence' → 'aē login of week stuck let,’s still of in the well' (unique=23, repeat=0.74)
+[15:55:39]   [GEN] 'Hello, how are you' → '“ protagon with is the more of looking, plugged - ' (unique=27, repeat=0.75)
+[15:55:57]   Batch checkpoint: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_4000.pt (10177MB)
+[15:56:44]   E2/2 [4025/9779] loss=8.4333 tok=8.3557 jepa=0.027916 acc=0.0569 ppl=4649.10 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.51e-04
+[15:57:32]   E2/2 [4050/9779] loss=8.2344 tok=8.1559 jepa=0.028211 acc=0.0638 ppl=4646.15 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.51e-04
+[15:58:21]   E2/2 [4075/9779] loss=8.3908 tok=8.3113 jepa=0.028600 acc=0.0664 ppl=4642.66 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.50e-04
+[15:59:09]   E2/2 [4100/9779] loss=8.2392 tok=8.1591 jepa=0.028784 acc=0.0688 ppl=4639.19 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.50e-04
+[15:59:15]   [GEN] 'The meaning of life is' → '. asbrush. his of the paperback: toivable of the u' (unique=22, repeat=0.78)
+[15:59:15]   [GEN] 'Artificial intelligence' → 'these - your school, andgia was blessed a to turki' (unique=26, repeat=0.78)
+[15:59:15]   [GEN] 'Hello, how are you' → 'and the, the solo in theympt the’s. the waterfalls' (unique=23, repeat=0.78)
+[16:00:04]   E2/2 [4125/9779] loss=8.3851 tok=8.3054 jepa=0.028659 acc=0.0637 ppl=4636.17 spike=0.3047 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.49e-04
+[16:00:53]   E2/2 [4150/9779] loss=8.3866 tok=8.3076 jepa=0.028413 acc=0.0602 ppl=4632.95 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.48e-04
+[16:01:41]   E2/2 [4175/9779] loss=8.2750 tok=8.1949 jepa=0.028812 acc=0.0638 ppl=4629.63 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.48e-04
+[16:02:29]   E2/2 [4200/9779] loss=8.2278 tok=8.1459 jepa=0.029457 acc=0.0675 ppl=4626.27 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.47e-04
+[16:02:35]   [GEN] 'The meaning of life is' → 'a obama angle peculiar with weert not, but to an g' (unique=23, repeat=0.76)
+[16:02:35]   [GEN] 'Artificial intelligence' → '. and threeers and my consortium of theソ some逆.one' (unique=24, repeat=0.79)
+[16:02:35]   [GEN] 'Hello, how are you' → 'revolve to rise, i is on of the with was messi – o' (unique=24, repeat=0.79)
+[16:03:24]   E2/2 [4225/9779] loss=8.2703 tok=8.1893 jepa=0.029157 acc=0.0686 ppl=4622.41 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.47e-04
+[16:04:12]   E2/2 [4250/9779] loss=8.2949 tok=8.2135 jepa=0.029240 acc=0.0627 ppl=4619.20 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.46e-04
+[16:05:01]   E2/2 [4275/9779] loss=8.2884 tok=8.2056 jepa=0.029766 acc=0.0673 ppl=4616.21 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.45e-04
+[16:05:50]   E2/2 [4300/9779] loss=8.2854 tok=8.2037 jepa=0.029398 acc=0.0632 ppl=4612.86 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.45e-04
+[16:05:55]   [GEN] 'The meaning of life is' → 'theariat wequez is the had with the getting the wh' (unique=20, repeat=0.86)
+[16:05:55]   [GEN] 'Artificial intelligence' → 'and to the world - the preceding. can and your lab' (unique=22, repeat=0.84)
+[16:05:55]   [GEN] 'Hello, how are you' → 'to, it. this not. and can how. theutes. this have.' (unique=18, repeat=0.81)
+[16:06:44]   E2/2 [4325/9779] loss=8.2823 tok=8.1988 jepa=0.030011 acc=0.0688 ppl=4609.53 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.44e-04
+[16:07:32]   E2/2 [4350/9779] loss=8.2953 tok=8.2122 jepa=0.029910 acc=0.0663 ppl=4606.05 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.43e-04
+[16:08:20]   E2/2 [4375/9779] loss=8.3107 tok=8.2267 jepa=0.030234 acc=0.0642 ppl=4603.03 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.43e-04
+[16:09:09]   E2/2 [4400/9779] loss=8.3085 tok=8.2235 jepa=0.030558 acc=0.0643 ppl=4599.84 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.42e-04
+[16:09:15]   [GEN] 'The meaning of life is' → 'a with a's the have, a ( or: t bowl andk andworker' (unique=26, repeat=0.75)
+[16:09:15]   [GEN] 'Artificial intelligence' → 'wash 30 as bottles- along/ dominated as the [ the ' (unique=27, repeat=0.78)
+[16:09:15]   [GEN] 'Hello, how are you' → 'to! and billionaire. the aways. ikit in the will t' (unique=25, repeat=0.70)
+[16:10:04]   E2/2 [4425/9779] loss=8.3187 tok=8.2346 jepa=0.030247 acc=0.0635 ppl=4596.79 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.41e-04
+[16:10:52]   E2/2 [4450/9779] loss=8.3572 tok=8.2715 jepa=0.030809 acc=0.0642 ppl=4593.53 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.41e-04
+[16:11:41]   E2/2 [4475/9779] loss=8.2790 tok=8.1947 jepa=0.030330 acc=0.0637 ppl=4590.39 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.40e-04
+[16:12:29]   E2/2 [4500/9779] loss=8.3137 tok=8.2270 jepa=0.031152 acc=0.0658 ppl=4587.23 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.40e-04
+[16:12:35]   [GEN] 'The meaning of life is' → 'for the lined to making a and field and the绝 and m' (unique=24, repeat=0.82)
+[16:12:35]   [GEN] 'Artificial intelligence' → 'to the book in the there the들 prisoners not the th' (unique=22, repeat=0.82)
+[16:12:35]   [GEN] 'Hello, how are you' → 'was say at to in. are is and, and month had in the' (unique=20, repeat=0.83)
+[16:13:24]   E2/2 [4525/9779] loss=8.3362 tok=8.2518 jepa=0.030364 acc=0.0662 ppl=4584.43 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.39e-04
+[16:14:13]   E2/2 [4550/9779] loss=8.3197 tok=8.2327 jepa=0.031270 acc=0.0674 ppl=4581.14 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.38e-04
+[16:15:01]   E2/2 [4575/9779] loss=8.3163 tok=8.2295 jepa=0.031205 acc=0.0669 ppl=4578.43 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.38e-04
+[16:15:50]   E2/2 [4600/9779] loss=8.3021 tok=8.2155 jepa=0.031149 acc=0.0581 ppl=4575.24 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.37e-04
+[16:15:56]   [GEN] 'The meaning of life is' → 'with the call angel, the) theroup, and the or ferr' (unique=30, repeat=0.71)
+[16:15:56]   [GEN] 'Artificial intelligence' → '. a searched foral- support just or itstic. i's th' (unique=22, repeat=0.80)
+[16:15:56]   [GEN] 'Hello, how are you' → 'are integrated and for to, canvas friend and and &' (unique=25, repeat=0.81)
+[16:16:44]   E2/2 [4625/9779] loss=8.3685 tok=8.2821 jepa=0.031087 acc=0.0681 ppl=4572.22 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.36e-04
+[16:17:33]   E2/2 [4650/9779] loss=8.3927 tok=8.3052 jepa=0.031463 acc=0.0669 ppl=4569.44 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.36e-04
+[16:18:22]   E2/2 [4675/9779] loss=8.3814 tok=8.2937 jepa=0.031537 acc=0.0638 ppl=4566.48 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.35e-04
+[16:19:11]   E2/2 [4700/9779] loss=8.2861 tok=8.1978 jepa=0.031757 acc=0.0631 ppl=4563.26 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.34e-04
+[16:19:17]   [GEN] 'The meaning of life is' → 'our events his the's phone队. that thegames | incli' (unique=25, repeat=0.79)
+[16:19:17]   [GEN] 'Artificial intelligence' → 'for the jos as the when will has your the room not' (unique=22, repeat=0.82)
+[16:19:17]   [GEN] 'Hello, how are you' → 'and dology but, for, miscon- v, but i you, a like ' (unique=27, repeat=0.74)
+[16:20:06]   E2/2 [4725/9779] loss=8.2109 tok=8.1191 jepa=0.033018 acc=0.0687 ppl=4560.00 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.33e-04
+[16:20:55]   E2/2 [4750/9779] loss=8.3157 tok=8.2261 jepa=0.032214 acc=0.0654 ppl=4556.84 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.33e-04
+[16:21:44]   E2/2 [4775/9779] loss=8.2727 tok=8.1819 jepa=0.032640 acc=0.0688 ppl=4553.87 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.32e-04
+[16:22:32]   E2/2 [4800/9779] loss=8.2910 tok=8.2003 jepa=0.032629 acc=0.0667 ppl=4550.50 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.31e-04
+[16:22:39]   [GEN] 'The meaning of life is' → 'a mood of the outside of the works by and the aaxi' (unique=26, repeat=0.75)
+[16:22:39]   [GEN] 'Artificial intelligence' → ', the tenn price aआ read is the can, ahard dice of' (unique=24, repeat=0.76)
+[16:22:39]   [GEN] 'Hello, how are you' → ', and ",ex is skype of the up of a kl – never urba' (unique=25, repeat=0.76)
+[16:23:27]   E2/2 [4825/9779] loss=8.2557 tok=8.1631 jepa=0.033290 acc=0.0680 ppl=4547.39 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.31e-04
+[16:24:16]   E2/2 [4850/9779] loss=8.2266 tok=8.1346 jepa=0.033074 acc=0.0646 ppl=4544.12 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.30e-04
+[16:25:04]   E2/2 [4875/9779] loss=8.2715 tok=8.1795 jepa=0.033066 acc=0.0658 ppl=4541.15 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.29e-04
+[16:25:53]   E2/2 [4900/9779] loss=8.2759 tok=8.1834 jepa=0.033282 acc=0.0641 ppl=4537.91 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.29e-04
+[16:25:59]   [GEN] 'The meaning of life is' → 'of the to from the lighthouse danger have the cook' (unique=26, repeat=0.82)
+[16:25:59]   [GEN] 'Artificial intelligence' → 'the own to you with the the min. for a new two bac' (unique=26, repeat=0.77)
+[16:25:59]   [GEN] 'Hello, how are you' → ', and the unfor of it ofn and up,cus in the chapte' (unique=24, repeat=0.76)
+[16:26:48]   E2/2 [4925/9779] loss=8.3925 tok=8.2997 jepa=0.033356 acc=0.0643 ppl=4535.25 spike=0.3058 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.28e-04
+[16:27:36]   E2/2 [4950/9779] loss=8.2698 tok=8.1765 jepa=0.033556 acc=0.0676 ppl=4532.57 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.27e-04
+[16:28:24]   E2/2 [4975/9779] loss=8.4167 tok=8.3254 jepa=0.032813 acc=0.0643 ppl=4529.96 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.26e-04
+[16:29:13]   E2/2 [5000/9779] loss=8.2620 tok=8.1670 jepa=0.034143 acc=0.0669 ppl=4527.32 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.26e-04
+[16:29:19]   [GEN] 'The meaning of life is' → 'the out in the is a. their, the new a white suppor' (unique=21, repeat=0.80)
+[16:29:19]   [GEN] 'Artificial intelligence' → 'helps room. not at rock can. i, and a| ailee and s' (unique=22, repeat=0.77)
+[16:29:19]   [GEN] 'Hello, how are you' → '. as of with as of theatches as cooking, and help.' (unique=27, repeat=0.74)
+[16:30:08]   E2/2 [5025/9779] loss=8.3100 tok=8.2153 jepa=0.034052 acc=0.0629 ppl=4524.73 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.25e-04
+[16:30:56]   E2/2 [5050/9779] loss=8.3070 tok=8.2134 jepa=0.033680 acc=0.0619 ppl=4522.06 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.24e-04
+[16:31:45]   E2/2 [5075/9779] loss=8.3109 tok=8.2170 jepa=0.033763 acc=0.0663 ppl=4519.21 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.24e-04
+[16:32:33]   E2/2 [5100/9779] loss=8.2956 tok=8.2003 jepa=0.034284 acc=0.0602 ppl=4516.39 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.23e-04
+[16:32:39]   [GEN] 'The meaning of life is' → 'a churchill can, this a on the about theople to a ' (unique=22, repeat=0.79)
+[16:32:39]   [GEN] 'Artificial intelligence' → ', we and (! to the ", i the you. program yourrupti' (unique=24, repeat=0.77)
+[16:32:39]   [GEN] 'Hello, how are you' → ',els translated on an - judic the ( week. but s, a' (unique=24, repeat=0.79)
+[16:33:28]   E2/2 [5125/9779] loss=8.2291 tok=8.1343 jepa=0.034075 acc=0.0653 ppl=4513.76 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.22e-04
+[16:34:17]   E2/2 [5150/9779] loss=8.2900 tok=8.1937 jepa=0.034653 acc=0.0640 ppl=4511.02 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.21e-04
+[16:35:06]   E2/2 [5175/9779] loss=8.2792 tok=8.1828 jepa=0.034679 acc=0.0685 ppl=4508.46 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.21e-04
+[16:35:55]   E2/2 [5200/9779] loss=8.1506 tok=8.0532 jepa=0.035014 acc=0.0695 ppl=4506.04 spike=0.3058 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.20e-04
+[16:36:01]   [GEN] 'The meaning of life is' → 'a this- of up two unlaw by the day. the courth, th' (unique=24, repeat=0.76)
+[16:36:01]   [GEN] 'Artificial intelligence' → ', philip and in theangles. it and has the her of o' (unique=22, repeat=0.80)
+[16:36:01]   [GEN] 'Hello, how are you' → 'on theifter. enrol- the different a company and th' (unique=23, repeat=0.77)
+[16:36:50]   E2/2 [5225/9779] loss=8.2822 tok=8.1851 jepa=0.034912 acc=0.0680 ppl=4503.25 spike=0.3058 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.19e-04
+[16:37:39]   E2/2 [5250/9779] loss=8.3507 tok=8.2540 jepa=0.034773 acc=0.0616 ppl=4501.14 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.18e-04
+[16:38:28]   E2/2 [5275/9779] loss=8.2645 tok=8.1661 jepa=0.035377 acc=0.0702 ppl=4498.29 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.18e-04
+[16:39:16]   E2/2 [5300/9779] loss=8.2750 tok=8.1745 jepa=0.036123 acc=0.0697 ppl=4495.59 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.06 t8:0.09 t_cycle1:0.04 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.17e-04
+[16:39:22]   [GEN] 'The meaning of life is' → 'to the the by of the hust that, be only沈- on the m' (unique=23, repeat=0.72)
+[16:39:22]   [GEN] 'Artificial intelligence' → 'this to windows of the two in for the one of the s' (unique=23, repeat=0.82)
+[16:39:22]   [GEN] 'Hello, how are you' → '- popcorn funk. from please with a want-49,90,. ca' (unique=27, repeat=0.73)
+[16:40:10]   E2/2 [5325/9779] loss=8.2915 tok=8.1934 jepa=0.035290 acc=0.0668 ppl=4493.12 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.16e-04
+[16:40:59]   E2/2 [5350/9779] loss=8.3405 tok=8.2422 jepa=0.035343 acc=0.0673 ppl=4490.59 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.15e-04
+[16:41:48]   E2/2 [5375/9779] loss=8.3325 tok=8.2335 jepa=0.035578 acc=0.0658 ppl=4487.79 spike=0.3057 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.15e-04
+[16:42:37]   E2/2 [5400/9779] loss=8.2297 tok=8.1311 jepa=0.035435 acc=0.0621 ppl=4485.28 spike=0.3058 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.14e-04
+[16:42:42]   [GEN] 'The meaning of life is' → 'under one. the have also was 112 andsurgicalimmune' (unique=25, repeat=0.81)
+[16:42:42]   [GEN] 'Artificial intelligence' → 'of a at the new software. the “ my we and and when' (unique=26, repeat=0.76)
+[16:42:42]   [GEN] 'Hello, how are you' → 'of make. the theincare. i works’s your for the in ' (unique=20, repeat=0.80)
+[16:43:31]   E2/2 [5425/9779] loss=8.3576 tok=8.2586 jepa=0.035596 acc=0.0646 ppl=4483.45 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.13e-04
+[16:44:19]   E2/2 [5450/9779] loss=8.1603 tok=8.0587 jepa=0.036524 acc=0.0701 ppl=4480.51 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.12e-04
+[16:45:08]   E2/2 [5475/9779] loss=8.2636 tok=8.1621 jepa=0.036497 acc=0.0667 ppl=4478.26 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.12e-04
+[16:45:57]   E2/2 [5500/9779] loss=8.4176 tok=8.3170 jepa=0.036174 acc=0.0627 ppl=4475.90 spike=0.3059 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.11e-04
+[16:46:03]   [GEN] 'The meaning of life is' → 'withc and reigning plywood. it for but and the gro' (unique=25, repeat=0.80)
+[16:46:03]   [GEN] 'Artificial intelligence' → '. said in the compose this but the in the | better' (unique=26, repeat=0.79)
+[16:46:03]   [GEN] 'Hello, how are you' → ', these of the omitted of a big's my is the for th' (unique=24, repeat=0.76)
+[16:46:51]   E2/2 [5525/9779] loss=8.2343 tok=8.1333 jepa=0.036321 acc=0.0676 ppl=4473.32 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.10e-04
+[16:47:40]   E2/2 [5550/9779] loss=8.2621 tok=8.1609 jepa=0.036410 acc=0.0609 ppl=4470.94 spike=0.3055 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.09e-04
+[16:48:29]   E2/2 [5575/9779] loss=8.2888 tok=8.1879 jepa=0.036291 acc=0.0697 ppl=4468.51 spike=0.3056 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.09e-04
+[16:49:18]   E2/2 [5600/9779] loss=8.2788 tok=8.1774 jepa=0.036445 acc=0.0658 ppl=4466.06 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.08e-04
+[16:49:24]   [GEN] 'The meaning of life is' → 'the first citations, no your one on the myre healt' (unique=25, repeat=0.76)
+[16:49:24]   [GEN] 'Artificial intelligence' → 'roller of the irish “, through a| endure p. (10 of' (unique=28, repeat=0.77)
+[16:49:24]   [GEN] 'Hello, how are you' → 'are to my if over, the👤- and allaters this studioa' (unique=24, repeat=0.77)
+[16:50:13]   E2/2 [5625/9779] loss=8.3157 tok=8.2140 jepa=0.036565 acc=0.0664 ppl=4463.67 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.07e-04
+[16:51:01]   E2/2 [5650/9779] loss=8.2452 tok=8.1413 jepa=0.037365 acc=0.0699 ppl=4461.33 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.06e-04
+[16:51:50]   E2/2 [5675/9779] loss=8.3346 tok=8.2321 jepa=0.036873 acc=0.0690 ppl=4459.08 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.05e-04
+[16:52:39]   E2/2 [5700/9779] loss=8.2243 tok=8.1183 jepa=0.038132 acc=0.0665 ppl=4456.91 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.05e-04
+[16:52:45]   [GEN] 'The meaning of life is' → 'a vom will at the: don. we was the an, i’s of sure' (unique=24, repeat=0.73)
+[16:52:45]   [GEN] 'Artificial intelligence' → 'screenshot and or, when her her your telecom: for ' (unique=24, repeat=0.81)
+[16:52:45]   [GEN] 'Hello, how are you' → 'all. the space. as a whaling to with with a includ' (unique=22, repeat=0.81)
+[16:53:34]   E2/2 [5725/9779] loss=8.2733 tok=8.1686 jepa=0.037644 acc=0.0664 ppl=4454.26 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.04e-04
+[16:54:22]   E2/2 [5750/9779] loss=8.2424 tok=8.1366 jepa=0.038055 acc=0.0679 ppl=4452.13 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.03e-04
+[16:55:11]   E2/2 [5775/9779] loss=8.3784 tok=8.2746 jepa=0.037335 acc=0.0651 ppl=4449.98 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=4.02e-04
+[16:56:00]   E2/2 [5800/9779] loss=8.1334 tok=8.0274 jepa=0.038119 acc=0.0743 ppl=4447.56 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=4.01e-04
+[16:56:05]   [GEN] 'The meaning of life is' → 'the big, and of the back 4. large理 ( apu you bikin' (unique=26, repeat=0.73)
+[16:56:05]   [GEN] 'Artificial intelligence' → 'chim. for the leave. the cyn after too 8 for the 7' (unique=28, repeat=0.73)
+[16:56:05]   [GEN] 'Hello, how are you' → ', •, your are fict. you, and the i range thatצ of ' (unique=26, repeat=0.80)
+[16:56:53]   E2/2 [5825/9779] loss=8.3145 tok=8.2095 jepa=0.037765 acc=0.0631 ppl=4445.35 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.01e-04
+[16:57:42]   E2/2 [5850/9779] loss=8.2874 tok=8.1825 jepa=0.037694 acc=0.0594 ppl=4443.55 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=4.00e-04
+[16:58:31]   E2/2 [5875/9779] loss=8.3564 tok=8.2526 jepa=0.037346 acc=0.0651 ppl=4441.20 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.99e-04
+[16:59:20]   E2/2 [5900/9779] loss=8.2997 tok=8.1929 jepa=0.038398 acc=0.0686 ppl=4439.22 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.98e-04
+[16:59:25]   [GEN] 'The meaning of life is' → 'in the series ( - to tipping. and to you to x친 [ r' (unique=28, repeat=0.74)
+[16:59:25]   [GEN] 'Artificial intelligence' → 'and share doctr to thect, it| services. not the yo' (unique=24, repeat=0.76)
+[16:59:25]   [GEN] 'Hello, how are you' → '. it in the some to death at the removing may. we ' (unique=24, repeat=0.74)
+[17:00:14]   E2/2 [5925/9779] loss=8.3987 tok=8.2956 jepa=0.037049 acc=0.0596 ppl=4436.97 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=3.97e-04
+[17:01:02]   E2/2 [5950/9779] loss=8.3784 tok=8.2733 jepa=0.037786 acc=0.0675 ppl=4434.95 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.028(tgt=0.047) th=0.0006 lr=3.97e-04
+[17:01:51]   E2/2 [5975/9779] loss=8.1870 tok=8.0802 jepa=0.038386 acc=0.0695 ppl=4432.84 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.96e-04
+[17:02:40]   E2/2 [6000/9779] loss=8.2064 tok=8.0968 jepa=0.039396 acc=0.0696 ppl=4430.82 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.05 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.95e-04
+[17:02:46]   [GEN] 'The meaning of life is' → '. the dynamics- are first is the found with in the' (unique=23, repeat=0.79)
+[17:02:46]   [GEN] 'Artificial intelligence' → 'for the contained ceremon, andd with-⁄2p of theyea' (unique=24, repeat=0.78)
+[17:02:46]   [GEN] 'Hello, how are you' → 'united of the motor touela it ofio is the future. ' (unique=20, repeat=0.83)
+[17:03:04]   Batch checkpoint: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_6000.pt (10177MB)
+[17:03:06]   Cleaned: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_2000.pt
+[17:03:53]   E2/2 [6025/9779] loss=8.1984 tok=8.0899 jepa=0.039030 acc=0.0665 ppl=4428.11 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.94e-04
+[17:04:41]   E2/2 [6050/9779] loss=8.2509 tok=8.1428 jepa=0.038860 acc=0.0665 ppl=4425.73 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.93e-04
+[17:05:30]   E2/2 [6075/9779] loss=8.3051 tok=8.1970 jepa=0.038878 acc=0.0665 ppl=4423.04 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.92e-04
+[17:06:18]   E2/2 [6100/9779] loss=8.2135 tok=8.1035 jepa=0.039545 acc=0.0707 ppl=4420.70 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.92e-04
+[17:06:24]   [GEN] 'The meaning of life is' → 'a-0 of the time. the90, two nm to the? with and's ' (unique=21, repeat=0.76)
+[17:06:24]   [GEN] 'Artificial intelligence' → 'in the world, is a trusted in the bottom, it, and ' (unique=25, repeat=0.78)
+[17:06:24]   [GEN] 'Hello, how are you' → 'with the run in a's was of the uses of two up, the' (unique=22, repeat=0.79)
+[17:07:13]   E2/2 [6125/9779] loss=8.3170 tok=8.2075 jepa=0.039356 acc=0.0691 ppl=4418.68 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.91e-04
+[17:08:02]   E2/2 [6150/9779] loss=8.2757 tok=8.1661 jepa=0.039404 acc=0.0712 ppl=4416.51 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.90e-04
+[17:08:50]   E2/2 [6175/9779] loss=8.2982 tok=8.1898 jepa=0.038952 acc=0.0662 ppl=4414.31 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.89e-04
+[17:09:39]   E2/2 [6200/9779] loss=8.2851 tok=8.1756 jepa=0.039373 acc=0.0677 ppl=4412.11 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.88e-04
+[17:09:45]   [GEN] 'The meaning of life is' → 'this is or '. just for the( - eating- you willive'' (unique=26, repeat=0.76)
+[17:09:45]   [GEN] 'Artificial intelligence' → '. as myic strength of “ the while on a prints call' (unique=27, repeat=0.75)
+[17:09:45]   [GEN] 'Hello, how are you' → '(- an toishing willpresso a breaches. over the has' (unique=23, repeat=0.80)
+[17:10:34]   E2/2 [6225/9779] loss=8.2466 tok=8.1359 jepa=0.039771 acc=0.0714 ppl=4410.22 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.87e-04
+[17:11:23]   E2/2 [6250/9779] loss=8.2598 tok=8.1500 jepa=0.039481 acc=0.0641 ppl=4407.89 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.87e-04
+[17:12:12]   E2/2 [6275/9779] loss=8.2623 tok=8.1507 jepa=0.040125 acc=0.0673 ppl=4405.80 spike=0.3046 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.86e-04
+[17:13:00]   E2/2 [6300/9779] loss=8.2413 tok=8.1291 jepa=0.040345 acc=0.0697 ppl=4403.58 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.03 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.85e-04
+[17:13:06]   [GEN] 'The meaning of life is' → 'the stores in a k. really- overall ared, and seaso' (unique=25, repeat=0.77)
+[17:13:06]   [GEN] 'Artificial intelligence' → 'potter ( abold not disappear for the week,res you'' (unique=23, repeat=0.80)
+[17:13:06]   [GEN] 'Hello, how are you' → '澶 in theway. - and and free is a easily to my em,|' (unique=25, repeat=0.74)
+[17:13:55]   E2/2 [6325/9779] loss=8.2967 tok=8.1842 jepa=0.040454 acc=0.0651 ppl=4401.62 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.84e-04
+[17:14:43]   E2/2 [6350/9779] loss=8.2921 tok=8.1814 jepa=0.039794 acc=0.0680 ppl=4399.50 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.83e-04
+[17:15:32]   E2/2 [6375/9779] loss=8.2443 tok=8.1320 jepa=0.040407 acc=0.0684 ppl=4397.29 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.82e-04
+[17:16:20]   E2/2 [6400/9779] loss=8.2330 tok=8.1189 jepa=0.041041 acc=0.0709 ppl=4395.16 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.81e-04
+[17:16:26]   [GEN] 'The meaning of life is' → 'a up. the be slot aastics it by the tripod for not' (unique=23, repeat=0.79)
+[17:16:26]   [GEN] 'Artificial intelligence' → 'to theur series’s then, “こ and all may at the tour' (unique=25, repeat=0.80)
+[17:16:26]   [GEN] 'Hello, how are you' → ''s auez is a create of the will g. the know a futu' (unique=24, repeat=0.76)
+[17:17:15]   E2/2 [6425/9779] loss=8.2236 tok=8.1095 jepa=0.041034 acc=0.0734 ppl=4393.31 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.81e-04
+[17:18:03]   E2/2 [6450/9779] loss=8.2246 tok=8.1094 jepa=0.041411 acc=0.0706 ppl=4391.78 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.80e-04
+[17:18:52]   E2/2 [6475/9779] loss=8.2364 tok=8.1233 jepa=0.040663 acc=0.0642 ppl=4389.75 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.79e-04
+[17:19:41]   E2/2 [6500/9779] loss=8.2131 tok=8.0988 jepa=0.041095 acc=0.0688 ppl=4387.73 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.78e-04
+[17:19:47]   [GEN] 'The meaning of life is' → 'a of, and it one of the ball to the 5. theia by th' (unique=22, repeat=0.75)
+[17:19:47]   [GEN] 'Artificial intelligence' → 'for below you| credit greater. as which the: a con' (unique=25, repeat=0.80)
+[17:19:47]   [GEN] 'Hello, how are you' → 'on a at thefree 100 & and youona make, can – into.' (unique=26, repeat=0.73)
+[17:20:36]   E2/2 [6525/9779] loss=8.2773 tok=8.1626 jepa=0.041236 acc=0.0698 ppl=4385.81 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.77e-04
+[17:21:24]   E2/2 [6550/9779] loss=8.3172 tok=8.2036 jepa=0.040845 acc=0.0682 ppl=4383.73 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.76e-04
+[17:22:13]   E2/2 [6575/9779] loss=8.2183 tok=8.1025 jepa=0.041638 acc=0.0690 ppl=4381.81 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.75e-04
+[17:23:02]   E2/2 [6600/9779] loss=8.2928 tok=8.1777 jepa=0.041367 acc=0.0723 ppl=4379.88 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.75e-04
+[17:23:07]   [GEN] 'The meaning of life is' → 'the new community’s the we. the up “. internationa' (unique=26, repeat=0.79)
+[17:23:07]   [GEN] 'Artificial intelligence' → 'a know thatcreate the newso in here" latch, first ' (unique=19, repeat=0.83)
+[17:23:07]   [GEN] 'Hello, how are you' → '’s in the why., and "ox its, a intern. cent andb t' (unique=24, repeat=0.76)
+[17:23:56]   E2/2 [6625/9779] loss=8.2104 tok=8.0954 jepa=0.041339 acc=0.0677 ppl=4377.94 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.74e-04
+[17:24:44]   E2/2 [6650/9779] loss=8.3041 tok=8.1901 jepa=0.041024 acc=0.0656 ppl=4375.98 spike=0.3054 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.73e-04
+[17:25:33]   E2/2 [6675/9779] loss=8.2307 tok=8.1148 jepa=0.041698 acc=0.0713 ppl=4373.90 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.047) th=0.0006 lr=3.72e-04
+[17:26:22]   E2/2 [6700/9779] loss=8.2722 tok=8.1555 jepa=0.041976 acc=0.0739 ppl=4372.10 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.07 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.71e-04
+[17:26:28]   [GEN] 'The meaning of life is' → 'the step to myo seasonb, the medicine was transpor' (unique=25, repeat=0.78)
+[17:26:28]   [GEN] 'Artificial intelligence' → '. i heartotrop the nothing the will my. the myfoun' (unique=26, repeat=0.74)
+[17:26:28]   [GEN] 'Hello, how are you' → 'yorkshire, and a marketing. project to the change ' (unique=27, repeat=0.78)
+[17:27:17]   E2/2 [6725/9779] loss=8.1733 tok=8.0558 jepa=0.042282 acc=0.0719 ppl=4370.17 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.70e-04
+[17:28:06]   E2/2 [6750/9779] loss=8.3083 tok=8.1925 jepa=0.041637 acc=0.0680 ppl=4368.22 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.69e-04
+[17:28:55]   E2/2 [6775/9779] loss=8.2537 tok=8.1365 jepa=0.042139 acc=0.0684 ppl=4366.45 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.68e-04
+[17:29:44]   E2/2 [6800/9779] loss=8.2824 tok=8.1654 jepa=0.042078 acc=0.0697 ppl=4364.54 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.02 ssm:0.02 ssm_latent:0.02 lr=3.67e-04
+[17:29:50]   [GEN] 'The meaning of life is' → 'theirbn. the edition a mo near’s the tell per's is' (unique=21, repeat=0.80)
+[17:29:50]   [GEN] 'Artificial intelligence' → '. much. the寂 my at a labor have a may only. -, aga' (unique=27, repeat=0.73)
+[17:29:50]   [GEN] 'Hello, how are you' → 'of the agile. it new outs a to: myanto is the mana' (unique=23, repeat=0.79)
+[17:30:39]   E2/2 [6825/9779] loss=8.2245 tok=8.1068 jepa=0.042323 acc=0.0701 ppl=4362.60 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.67e-04
+[17:31:28]   E2/2 [6850/9779] loss=8.2288 tok=8.1094 jepa=0.042915 acc=0.0728 ppl=4360.73 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.66e-04
+[17:32:17]   E2/2 [6875/9779] loss=8.1956 tok=8.0780 jepa=0.042294 acc=0.0708 ppl=4358.83 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.65e-04
+[17:33:06]   E2/2 [6900/9779] loss=8.2707 tok=8.1520 jepa=0.042711 acc=0.0726 ppl=4356.96 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.02 lr=3.64e-04
+[17:33:11]   [GEN] 'The meaning of life is' → '6:, and occupation the galaxies to january that ab' (unique=24, repeat=0.79)
+[17:33:11]   [GEN] 'Artificial intelligence' → 'on the m. console. experience. we, a world. we des' (unique=24, repeat=0.80)
+[17:33:11]   [GEN] 'Hello, how are you' → 'of thefl. theaton’s's may, but i. the interview, i' (unique=25, repeat=0.73)
+[17:34:01]   E2/2 [6925/9779] loss=8.1753 tok=8.0550 jepa=0.043280 acc=0.0736 ppl=4354.81 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.63e-04
+[17:34:50]   E2/2 [6950/9779] loss=8.2778 tok=8.1606 jepa=0.042121 acc=0.0651 ppl=4352.88 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.62e-04
+[17:35:39]   E2/2 [6975/9779] loss=8.2831 tok=8.1646 jepa=0.042584 acc=0.0685 ppl=4351.13 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.61e-04
+[17:36:27]   E2/2 [7000/9779] loss=8.2898 tok=8.1704 jepa=0.042935 acc=0.0721 ppl=4349.47 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.60e-04
+[17:36:33]   [GEN] 'The meaning of life is' → 'a cerebral in a give great and county싶 – of then c' (unique=26, repeat=0.75)
+[17:36:33]   [GEN] 'Artificial intelligence' → '. more to) -o to his are- for way andblem shield d' (unique=25, repeat=0.76)
+[17:36:33]   [GEN] 'Hello, how are you' → 'campus,- us,ry’s the/ at the up, andv end small if' (unique=25, repeat=0.71)
+[17:37:22]   E2/2 [7025/9779] loss=8.2373 tok=8.1173 jepa=0.043150 acc=0.0747 ppl=4347.80 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.59e-04
+[17:38:11]   E2/2 [7050/9779] loss=8.2433 tok=8.1227 jepa=0.043383 acc=0.0718 ppl=4345.98 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.58e-04
+[17:39:00]   E2/2 [7075/9779] loss=8.2608 tok=8.1407 jepa=0.043202 acc=0.0723 ppl=4344.34 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.58e-04
+[17:39:49]   E2/2 [7100/9779] loss=8.3031 tok=8.1837 jepa=0.042944 acc=0.0728 ppl=4342.43 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.57e-04
+[17:39:54]   [GEN] 'The meaning of life is' → 'a light and market to star these advises cruises f' (unique=26, repeat=0.76)
+[17:39:54]   [GEN] 'Artificial intelligence' → 'in the hoc-uter have the rall been carpets wear to' (unique=26, repeat=0.76)
+[17:39:54]   [GEN] 'Hello, how are you' → 'what,2, and on the steal many of the magnesium car' (unique=25, repeat=0.77)
+[17:40:43]   E2/2 [7125/9779] loss=8.2433 tok=8.1237 jepa=0.043016 acc=0.0773 ppl=4340.49 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.56e-04
+[17:41:32]   E2/2 [7150/9779] loss=8.2666 tok=8.1454 jepa=0.043557 acc=0.0715 ppl=4338.81 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.55e-04
+[17:42:21]   E2/2 [7175/9779] loss=8.2894 tok=8.1674 jepa=0.043885 acc=0.0685 ppl=4337.01 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.54e-04
+[17:43:10]   E2/2 [7200/9779] loss=8.3568 tok=8.2386 jepa=0.042519 acc=0.0651 ppl=4335.35 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.53e-04
+[17:43:16]   [GEN] 'The meaning of life is' → '- a stockp. the purp ainspired complex we and ela ' (unique=25, repeat=0.80)
+[17:43:16]   [GEN] 'Artificial intelligence' → 'reflux. chlorideers. a 2001, is and melbourne and ' (unique=29, repeat=0.77)
+[17:43:16]   [GEN] 'Hello, how are you' → 'ma go will be seism, why tostrod to with a and his' (unique=20, repeat=0.80)
+[17:44:05]   E2/2 [7225/9779] loss=8.2715 tok=8.1505 jepa=0.043518 acc=0.0724 ppl=4333.65 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.52e-04
+[17:44:53]   E2/2 [7250/9779] loss=8.3249 tok=8.2028 jepa=0.043907 acc=0.0699 ppl=4332.08 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.51e-04
+[17:45:42]   E2/2 [7275/9779] loss=8.3091 tok=8.1864 jepa=0.044112 acc=0.0675 ppl=4330.24 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.50e-04
+[17:46:31]   E2/2 [7300/9779] loss=8.3133 tok=8.1902 jepa=0.044255 acc=0.0692 ppl=4328.54 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.49e-04
+[17:46:37]   [GEN] 'The meaning of life is' → 'a). the about, a file read- but my prayer of the t' (unique=25, repeat=0.75)
+[17:46:37]   [GEN] 'Artificial intelligence' → 'yourensakers thistxburg,'s it an the red, the crit' (unique=26, repeat=0.75)
+[17:46:37]   [GEN] 'Hello, how are you' → 'an's home: on the 3 and time at's. to the ho and’s' (unique=25, repeat=0.73)
+[17:47:26]   E2/2 [7325/9779] loss=8.2485 tok=8.1253 jepa=0.044315 acc=0.0698 ppl=4326.93 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.48e-04
+[17:48:15]   E2/2 [7350/9779] loss=8.3079 tok=8.1853 jepa=0.044100 acc=0.0656 ppl=4325.53 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.47e-04
+[17:49:04]   E2/2 [7375/9779] loss=8.2184 tok=8.0941 jepa=0.044671 acc=0.0720 ppl=4323.81 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.46e-04
+[17:49:53]   E2/2 [7400/9779] loss=8.2782 tok=8.1552 jepa=0.044216 acc=0.0707 ppl=4322.04 spike=0.3052 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.46e-04
+[17:49:59]   [GEN] 'The meaning of life is' → 'a preparations is a to the is it. triggered sneak ' (unique=26, repeat=0.78)
+[17:49:59]   [GEN] 'Artificial intelligence' → '. the paperback the open, a seen aboutâ and here. ' (unique=25, repeat=0.77)
+[17:49:59]   [GEN] 'Hello, how are you' → ') in the " and up. the pirates fantasticre is the ' (unique=24, repeat=0.80)
+[17:50:48]   E2/2 [7425/9779] loss=8.2676 tok=8.1438 jepa=0.044499 acc=0.0724 ppl=4320.50 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.45e-04
+[17:51:37]   E2/2 [7450/9779] loss=8.1637 tok=8.0386 jepa=0.045001 acc=0.0708 ppl=4318.48 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.44e-04
+[17:52:26]   E2/2 [7475/9779] loss=8.2864 tok=8.1631 jepa=0.044309 acc=0.0699 ppl=4316.84 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.43e-04
+[17:53:15]   E2/2 [7500/9779] loss=8.3254 tok=8.2028 jepa=0.044090 acc=0.0660 ppl=4315.22 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.42e-04
+[17:53:21]   [GEN] 'The meaning of life is' → 'recently. ranked we da her is theaker thegus about' (unique=24, repeat=0.81)
+[17:53:21]   [GEN] 'Artificial intelligence' → 'damage you and the fridays all it old only this⁄2 ' (unique=23, repeat=0.82)
+[17:53:21]   [GEN] 'Hello, how are you' → '. and the year. premie it june click large, and's:' (unique=27, repeat=0.75)
+[17:54:10]   E2/2 [7525/9779] loss=8.2517 tok=8.1244 jepa=0.045803 acc=0.0676 ppl=4313.48 spike=0.3047 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.41e-04
+[17:54:59]   E2/2 [7550/9779] loss=8.2648 tok=8.1380 jepa=0.045599 acc=0.0715 ppl=4311.65 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.40e-04
+[17:55:48]   E2/2 [7575/9779] loss=8.2308 tok=8.1044 jepa=0.045450 acc=0.0699 ppl=4310.11 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.39e-04
+[17:56:37]   E2/2 [7600/9779] loss=8.2246 tok=8.0993 jepa=0.045082 acc=0.0692 ppl=4308.29 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.38e-04
+[17:56:43]   [GEN] 'The meaning of life is' → 'a top in the designate will isitors of the that iw' (unique=23, repeat=0.80)
+[17:56:43]   [GEN] 'Artificial intelligence' → 's distributing an indianapolis before university i' (unique=27, repeat=0.80)
+[17:56:43]   [GEN] 'Hello, how are you' → 'at:.... for my this worker to deposit. i's of the ' (unique=26, repeat=0.74)
+[17:57:31]   E2/2 [7625/9779] loss=8.2637 tok=8.1366 jepa=0.045680 acc=0.0697 ppl=4306.94 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.37e-04
+[17:58:20]   E2/2 [7650/9779] loss=8.2641 tok=8.1379 jepa=0.045375 acc=0.0703 ppl=4305.24 spike=0.3049 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.36e-04
+[17:59:09]   E2/2 [7675/9779] loss=8.2694 tok=8.1430 jepa=0.045450 acc=0.0699 ppl=4303.43 spike=0.3047 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.35e-04
+[17:59:58]   E2/2 [7700/9779] loss=8.1903 tok=8.0619 jepa=0.046161 acc=0.0724 ppl=4301.93 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.09 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.34e-04
+[18:00:04]   [GEN] 'The meaning of life is' → 'a us is you for the] distinguish to this h year,. ' (unique=22, repeat=0.78)
+[18:00:04]   [GEN] 'Artificial intelligence' → 'the글 pe us of dennis. to year. the more to the spe' (unique=26, repeat=0.76)
+[18:00:04]   [GEN] 'Hello, how are you' → 'family which ginseng who this is awarded the jobs/' (unique=26, repeat=0.80)
+[18:00:53]   E2/2 [7725/9779] loss=8.3085 tok=8.1810 jepa=0.045840 acc=0.0709 ppl=4300.26 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.33e-04
+[18:01:41]   E2/2 [7750/9779] loss=8.2629 tok=8.1365 jepa=0.045455 acc=0.0717 ppl=4298.66 spike=0.3053 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.32e-04
+[18:02:30]   E2/2 [7775/9779] loss=8.2499 tok=8.1237 jepa=0.045378 acc=0.0706 ppl=4296.92 spike=0.3050 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.31e-04
+[18:03:19]   E2/2 [7800/9779] loss=8.2711 tok=8.1420 jepa=0.046414 acc=0.0719 ppl=4295.40 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.30e-04
+[18:03:25]   [GEN] 'The meaning of life is' → 'the same to the pierre to let the now, we to the o' (unique=21, repeat=0.81)
+[18:03:25]   [GEN] 'Artificial intelligence' → '- year, the gathering, has now wester some of a th' (unique=25, repeat=0.80)
+[18:03:25]   [GEN] 'Hello, how are you' → 'of the know it and themre to " their.s is that if ' (unique=23, repeat=0.77)
+[18:04:14]   E2/2 [7825/9779] loss=8.2727 tok=8.1469 jepa=0.045262 acc=0.0676 ppl=4293.70 spike=0.3051 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.29e-04
+[18:05:03]   E2/2 [7850/9779] loss=8.2480 tok=8.1190 jepa=0.046393 acc=0.0702 ppl=4291.86 spike=0.3048 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.29e-04
+[18:05:52]   E2/2 [7875/9779] loss=8.1700 tok=8.0386 jepa=0.047260 acc=0.0725 ppl=4290.42 spike=0.3047 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.28e-04
+[18:06:41]   E2/2 [7900/9779] loss=8.2989 tok=8.1696 jepa=0.046496 acc=0.0712 ppl=4288.77 spike=0.3046 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.27e-04
+[18:06:47]   [GEN] 'The meaning of life is' → 'a walkersre an the firms, and aspen thatmenative o' (unique=26, repeat=0.81)
+[18:06:47]   [GEN] 'Artificial intelligence' → '. the sports this, first first catalytic to than w' (unique=24, repeat=0.82)
+[18:06:47]   [GEN] 'Hello, how are you' → 'home, and he current, the some with a14. we, with ' (unique=24, repeat=0.75)
+[18:07:36]   E2/2 [7925/9779] loss=8.2794 tok=8.1497 jepa=0.046620 acc=0.0681 ppl=4287.25 spike=0.3046 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.26e-04
+[18:08:25]   E2/2 [7950/9779] loss=8.2933 tok=8.1653 jepa=0.046036 acc=0.0756 ppl=4285.56 spike=0.3046 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.25e-04
+[18:09:14]   E2/2 [7975/9779] loss=8.2238 tok=8.0944 jepa=0.046550 acc=0.0664 ppl=4283.97 spike=0.3043 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.24e-04
+[18:10:03]   E2/2 [8000/9779] loss=8.2431 tok=8.1132 jepa=0.046726 acc=0.0778 ppl=4282.29 spike=0.3042 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.23e-04
+[18:10:08]   [GEN] 'The meaning of life is' → 'the press new services. the descriptions and culpr' (unique=24, repeat=0.81)
+[18:10:08]   [GEN] 'Artificial intelligence' → ', andillac. - it’saters when boom the back. i of t' (unique=24, repeat=0.79)
+[18:10:08]   [GEN] 'Hello, how are you' → 'place,扶, up co, and| some's last of the refrigerat' (unique=24, repeat=0.77)
+[18:10:27]   Batch checkpoint: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_8000.pt (10177MB)
+[18:10:28]   Cleaned: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/batch_ckpt_4000.pt
+[18:11:15]   E2/2 [8025/9779] loss=8.2560 tok=8.1251 jepa=0.047066 acc=0.0680 ppl=4280.71 spike=0.3042 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.22e-04
+[18:12:04]   E2/2 [8050/9779] loss=8.1786 tok=8.0460 jepa=0.047693 acc=0.0767 ppl=4279.00 spike=0.3043 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.21e-04
+[18:12:52]   E2/2 [8075/9779] loss=8.2383 tok=8.1081 jepa=0.046807 acc=0.0756 ppl=4277.30 spike=0.3042 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.20e-04
+[18:13:41]   E2/2 [8100/9779] loss=8.2284 tok=8.0961 jepa=0.047575 acc=0.0713 ppl=4275.72 spike=0.3041 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.02 ssm_latent:0.01 lr=3.19e-04
+[18:13:47]   [GEN] 'The meaning of life is' → 'the years: aibles is a united on the iris it was l' (unique=22, repeat=0.82)
+[18:13:47]   [GEN] 'Artificial intelligence' → 'incare there pendant, you in this our hansen theca' (unique=21, repeat=0.82)
+[18:13:47]   [GEN] 'Hello, how are you' → ', other a |, newa to...! be - marketing ( have a67' (unique=31, repeat=0.71)
+[18:14:36]   E2/2 [8125/9779] loss=8.1756 tok=8.0423 jepa=0.047907 acc=0.0723 ppl=4274.31 spike=0.3041 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.18e-04
+[18:15:25]   E2/2 [8150/9779] loss=8.1895 tok=8.0564 jepa=0.047879 acc=0.0829 ppl=4272.66 spike=0.3043 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.17e-04
+[18:16:14]   E2/2 [8175/9779] loss=8.2851 tok=8.1522 jepa=0.047773 acc=0.0728 ppl=4271.02 spike=0.3044 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.16e-04
+[18:17:02]   E2/2 [8200/9779] loss=8.2372 tok=8.1062 jepa=0.047115 acc=0.0732 ppl=4269.49 spike=0.3041 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=3.15e-04
+[18:17:08]   [GEN] 'The meaning of life is' → 'the state in the paul also6: next not the p andcli' (unique=26, repeat=0.77)
+[18:17:08]   [GEN] 'Artificial intelligence' → 'special good. - imperfect, the amrisk your glaze's' (unique=27, repeat=0.76)
+[18:17:08]   [GEN] 'Hello, how are you' → 'lifetime, or love and-, and cryptocurrency in the ' (unique=25, repeat=0.81)
+[18:17:57]   E2/2 [8225/9779] loss=8.2507 tok=8.1174 jepa=0.047927 acc=0.0696 ppl=4268.32 spike=0.3043 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.14e-04
+[18:18:46]   E2/2 [8250/9779] loss=8.2177 tok=8.0850 jepa=0.047722 acc=0.0732 ppl=4266.67 spike=0.3042 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.13e-04
+[18:19:34]   E2/2 [8275/9779] loss=8.2298 tok=8.0942 jepa=0.048750 acc=0.0734 ppl=4265.03 spike=0.3041 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.12e-04
+[18:20:23]   E2/2 [8300/9779] loss=8.2960 tok=8.1628 jepa=0.047906 acc=0.0669 ppl=4263.58 spike=0.3041 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=3.11e-04
+[18:20:29]   [GEN] 'The meaning of life is' → 'a training, url of the options, but the searches. ' (unique=21, repeat=0.83)
+[18:20:29]   [GEN] 'Artificial intelligence' → 'the be but and the irr, us with the need of men...' (unique=23, repeat=0.77)
+[18:20:29]   [GEN] 'Hello, how are you' → '. not with a workflowand of lenovo of – the will b' (unique=25, repeat=0.80)
+[18:21:18]   E2/2 [8325/9779] loss=8.3595 tok=8.2278 jepa=0.047366 acc=0.0667 ppl=4262.29 spike=0.3044 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.10e-04
+[18:22:07]   E2/2 [8350/9779] loss=8.2285 tok=8.0939 jepa=0.048394 acc=0.0776 ppl=4260.98 spike=0.3039 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.09e-04
+[18:22:56]   E2/2 [8375/9779] loss=8.2967 tok=8.1648 jepa=0.047422 acc=0.0698 ppl=4259.53 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.08e-04
+[18:23:45]   E2/2 [8400/9779] loss=8.2374 tok=8.1042 jepa=0.047909 acc=0.0714 ppl=4257.90 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=3.07e-04
+[18:23:51]   [GEN] 'The meaning of life is' → 'the atmosp alongdeaux and production for it that y' (unique=24, repeat=0.82)
+[18:23:51]   [GEN] 'Artificial intelligence' → 'or next to nap different do have in the big can as' (unique=26, repeat=0.77)
+[18:23:51]   [GEN] 'Hello, how are you' → 'just at and a vendors, at in the sizes, you and wa' (unique=25, repeat=0.81)
+[18:24:40]   E2/2 [8425/9779] loss=8.2468 tok=8.1119 jepa=0.048500 acc=0.0717 ppl=4256.33 spike=0.3037 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.06e-04
+[18:25:29]   E2/2 [8450/9779] loss=8.3299 tok=8.1974 jepa=0.047636 acc=0.0646 ppl=4254.94 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.05e-04
+[18:26:18]   E2/2 [8475/9779] loss=8.2019 tok=8.0658 jepa=0.048919 acc=0.0767 ppl=4253.48 spike=0.3042 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.04e-04
+[18:27:06]   E2/2 [8500/9779] loss=8.1834 tok=8.0476 jepa=0.048833 acc=0.0725 ppl=4252.17 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=3.03e-04
+[18:27:12]   [GEN] 'The meaning of life is' → ',a terrorismi and nether. is cannabis of the resid' (unique=24, repeat=0.81)
+[18:27:12]   [GEN] 'Artificial intelligence' → 'newqu that puppy. he will to be today to the to se' (unique=27, repeat=0.77)
+[18:27:12]   [GEN] 'Hello, how are you' → ''s. in abul for the to a biom on the john’s guide ' (unique=26, repeat=0.72)
+[18:28:01]   E2/2 [8525/9779] loss=8.3427 tok=8.2087 jepa=0.048171 acc=0.0686 ppl=4250.95 spike=0.3039 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.02e-04
+[18:28:50]   E2/2 [8550/9779] loss=8.2944 tok=8.1590 jepa=0.048699 acc=0.0729 ppl=4249.65 spike=0.3039 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.01e-04
+[18:29:38]   E2/2 [8575/9779] loss=8.2601 tok=8.1272 jepa=0.047774 acc=0.0706 ppl=4248.32 spike=0.3039 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=3.00e-04
+[18:30:27]   E2/2 [8600/9779] loss=8.2297 tok=8.0939 jepa=0.048820 acc=0.0778 ppl=4246.97 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.99e-04
+[18:30:32]   [GEN] 'The meaning of life is' → 'that the variance, and a can can not. the when tim' (unique=24, repeat=0.78)
+[18:30:32]   [GEN] 'Artificial intelligence' → 'for i hut for innocent in theheres ukrainian, ros ' (unique=23, repeat=0.80)
+[18:30:32]   [GEN] 'Hello, how are you' → 'and a but thatp, and l and kettle customers report' (unique=26, repeat=0.78)
+[18:31:21]   E2/2 [8625/9779] loss=8.2427 tok=8.1061 jepa=0.049119 acc=0.0764 ppl=4245.76 spike=0.3040 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.98e-04
+[18:32:10]   E2/2 [8650/9779] loss=8.1845 tok=8.0471 jepa=0.049424 acc=0.0740 ppl=4244.26 spike=0.3037 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.97e-04
+[18:32:58]   E2/2 [8675/9779] loss=8.1979 tok=8.0589 jepa=0.049988 acc=0.0720 ppl=4242.82 spike=0.3037 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.96e-04
+[18:33:47]   E2/2 [8700/9779] loss=8.3388 tok=8.2040 jepa=0.048456 acc=0.0685 ppl=4241.52 spike=0.3038 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.95e-04
+[18:33:53]   [GEN] 'The meaning of life is' → 'acer? you is that who the speechesm are the will g' (unique=24, repeat=0.82)
+[18:33:53]   [GEN] 'Artificial intelligence' → 'was dinner i용 of the14, and fra conference transce' (unique=22, repeat=0.82)
+[18:33:53]   [GEN] 'Hello, how are you' → 'in the by first me, wem to it! have the maximize, ' (unique=27, repeat=0.74)
+[18:34:42]   E2/2 [8725/9779] loss=8.2909 tok=8.1535 jepa=0.049401 acc=0.0719 ppl=4240.16 spike=0.3035 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.94e-04
+[18:35:30]   E2/2 [8750/9779] loss=8.2698 tok=8.1333 jepa=0.049089 acc=0.0721 ppl=4238.92 spike=0.3034 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.93e-04
+[18:36:19]   E2/2 [8775/9779] loss=8.1979 tok=8.0601 jepa=0.049545 acc=0.0713 ppl=4237.58 spike=0.3034 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.92e-04
+[18:37:07]   E2/2 [8800/9779] loss=8.1724 tok=8.0326 jepa=0.050278 acc=0.0728 ppl=4236.25 spike=0.3037 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.91e-04
+[18:37:13]   [GEN] 'The meaning of life is' → 'aifting,re the's years. the sque boom it. theκ, by' (unique=24, repeat=0.75)
+[18:37:13]   [GEN] 'Artificial intelligence' → 'in the new embro which from themean. it are well a' (unique=22, repeat=0.81)
+[18:37:13]   [GEN] 'Hello, how are you' → 'to know of the salvation a or, and most, for the s' (unique=22, repeat=0.83)
+[18:38:02]   E2/2 [8825/9779] loss=8.2638 tok=8.1261 jepa=0.049505 acc=0.0718 ppl=4234.98 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.90e-04
+[18:38:50]   E2/2 [8850/9779] loss=8.2598 tok=8.1236 jepa=0.048965 acc=0.0687 ppl=4233.74 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.89e-04
+[18:39:39]   E2/2 [8875/9779] loss=8.2516 tok=8.1117 jepa=0.050336 acc=0.0701 ppl=4232.41 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.88e-04
+[18:40:28]   E2/2 [8900/9779] loss=8.1825 tok=8.0438 jepa=0.049853 acc=0.0717 ppl=4231.00 spike=0.3037 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.87e-04
+[18:40:33]   [GEN] 'The meaning of life is' → 'a history is the american to the and her in thesal' (unique=20, repeat=0.82)
+[18:40:33]   [GEN] 'Artificial intelligence' → 'his leslie | it has i social to the place that " o' (unique=24, repeat=0.77)
+[18:40:33]   [GEN] 'Hello, how are you' → ''s, and i, and peru, and. they with rises and mill' (unique=24, repeat=0.75)
+[18:41:22]   E2/2 [8925/9779] loss=8.2100 tok=8.0708 jepa=0.050061 acc=0.0767 ppl=4229.57 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.86e-04
+[18:42:11]   E2/2 [8950/9779] loss=8.1734 tok=8.0348 jepa=0.049830 acc=0.0740 ppl=4228.04 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.85e-04
+[18:42:59]   E2/2 [8975/9779] loss=8.2297 tok=8.0912 jepa=0.049815 acc=0.0706 ppl=4226.61 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.84e-04
+[18:43:48]   E2/2 [9000/9779] loss=8.2883 tok=8.1489 jepa=0.050121 acc=0.0740 ppl=4225.16 spike=0.3035 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.83e-04
+[18:43:54]   [GEN] 'The meaning of life is' → 'apent, where to a like one.候 have. 2013 by spread ' (unique=27, repeat=0.73)
+[18:43:54]   [GEN] 'Artificial intelligence' → ': the best in the a would and in thefleut post. en' (unique=23, repeat=0.81)
+[18:43:54]   [GEN] 'Hello, how are you' → ', and monoch, our, a “ a production. the condomini' (unique=26, repeat=0.78)
+[18:44:42]   E2/2 [9025/9779] loss=8.1888 tok=8.0456 jepa=0.051500 acc=0.0779 ppl=4223.88 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.82e-04
+[18:45:31]   E2/2 [9050/9779] loss=8.2694 tok=8.1297 jepa=0.050211 acc=0.0753 ppl=4222.46 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.81e-04
+[18:46:20]   E2/2 [9075/9779] loss=8.2385 tok=8.0977 jepa=0.050646 acc=0.0795 ppl=4221.28 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.80e-04
+[18:47:09]   E2/2 [9100/9779] loss=8.2188 tok=8.0782 jepa=0.050544 acc=0.0759 ppl=4219.80 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.79e-04
+[18:47:14]   [GEN] 'The meaning of life is' → 'it in the raymond from the,000's of thecript the a' (unique=22, repeat=0.80)
+[18:47:14]   [GEN] 'Artificial intelligence' → 'day and it. if our one of the bed and a 2002, be t' (unique=26, repeat=0.79)
+[18:47:14]   [GEN] 'Hello, how are you' → 'cuisines, been only a heritage in theink:? that. u' (unique=26, repeat=0.75)
+[18:48:03]   E2/2 [9125/9779] loss=8.2135 tok=8.0717 jepa=0.051005 acc=0.0765 ppl=4218.46 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.78e-04
+[18:48:52]   E2/2 [9150/9779] loss=8.2626 tok=8.1196 jepa=0.051427 acc=0.0693 ppl=4217.25 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.77e-04
+[18:49:41]   E2/2 [9175/9779] loss=8.1976 tok=8.0570 jepa=0.050558 acc=0.0708 ppl=4215.85 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.76e-04
+[18:50:31]   E2/2 [9200/9779] loss=8.2757 tok=8.1314 jepa=0.051879 acc=0.0792 ppl=4214.48 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.75e-04
+[18:50:37]   [GEN] 'The meaning of life is' → 'to a good but belfast. the experience video star. ' (unique=25, repeat=0.79)
+[18:50:37]   [GEN] 'Artificial intelligence' → 'for a find and’s a in the switch as youdevelop int' (unique=24, repeat=0.80)
+[18:50:37]   [GEN] 'Hello, how are you' → 'ag is,🐰 or it’s). in ifhs very of the知 of the 2010' (unique=26, repeat=0.69)
+[18:51:26]   E2/2 [9225/9779] loss=8.2405 tok=8.0976 jepa=0.051395 acc=0.0729 ppl=4213.08 spike=0.3028 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.74e-04
+[18:52:15]   E2/2 [9250/9779] loss=8.2099 tok=8.0689 jepa=0.050715 acc=0.0702 ppl=4211.73 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.73e-04
+[18:53:03]   E2/2 [9275/9779] loss=8.2656 tok=8.1231 jepa=0.051234 acc=0.0757 ppl=4210.45 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.72e-04
+[18:53:52]   E2/2 [9300/9779] loss=8.2439 tok=8.1014 jepa=0.051233 acc=0.0676 ppl=4209.14 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.71e-04
+[18:53:58]   [GEN] 'The meaning of life is' → '| is a. this. it and bedding as the san will local' (unique=23, repeat=0.81)
+[18:53:58]   [GEN] 'Artificial intelligence' → 'honor an the url an women to theじ. another to the ' (unique=24, repeat=0.79)
+[18:53:58]   [GEN] 'Hello, how are you' → 'insurance. cut,s). from 195 are about the he share' (unique=26, repeat=0.72)
+[18:54:47]   E2/2 [9325/9779] loss=8.2021 tok=8.0588 jepa=0.051518 acc=0.0740 ppl=4207.87 spike=0.3029 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.70e-04
+[18:55:35]   E2/2 [9350/9779] loss=8.2375 tok=8.0942 jepa=0.051511 acc=0.0725 ppl=4206.48 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.69e-04
+[18:56:24]   E2/2 [9375/9779] loss=8.3028 tok=8.1589 jepa=0.051735 acc=0.0709 ppl=4205.15 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.68e-04
+[18:57:13]   E2/2 [9400/9779] loss=8.2765 tok=8.1326 jepa=0.051732 acc=0.0787 ppl=4203.91 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.67e-04
+[18:57:19]   [GEN] 'The meaning of life is' → 'the mazda at the mang, redesign and its a marshmal' (unique=26, repeat=0.77)
+[18:57:19]   [GEN] 'Artificial intelligence' → 'write incident efficiency and - created-) like han' (unique=26, repeat=0.81)
+[18:57:19]   [GEN] 'Hello, how are you' → 'aas" how. selling, ifn, team: ( to theologist, on ' (unique=23, repeat=0.76)
+[18:58:07]   E2/2 [9425/9779] loss=8.1926 tok=8.0479 jepa=0.052039 acc=0.0767 ppl=4202.70 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.66e-04
+[18:58:56]   E2/2 [9450/9779] loss=8.2683 tok=8.1244 jepa=0.051744 acc=0.0792 ppl=4201.55 spike=0.3029 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.65e-04
+[18:59:44]   E2/2 [9475/9779] loss=8.2678 tok=8.1241 jepa=0.051668 acc=0.0713 ppl=4200.18 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.64e-04
+[19:00:33]   E2/2 [9500/9779] loss=8.1191 tok=7.9719 jepa=0.052913 acc=0.0804 ppl=4198.80 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.030(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.06 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.63e-04
+[19:00:39]   [GEN] 'The meaning of life is' → 'a who can. a氏 of thisof’s time-. thislem and will ' (unique=24, repeat=0.78)
+[19:00:39]   [GEN] 'Artificial intelligence' → 'for the dedicated, are the▲ of closed- and a.... t' (unique=21, repeat=0.82)
+[19:00:39]   [GEN] 'Hello, how are you' → 'are centre, and: local hard a allow to your for a ' (unique=24, repeat=0.77)
+[19:01:27]   E2/2 [9525/9779] loss=8.3269 tok=8.1841 jepa=0.051376 acc=0.0742 ppl=4197.78 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.62e-04
+[19:02:15]   E2/2 [9550/9779] loss=8.2614 tok=8.1181 jepa=0.051500 acc=0.0753 ppl=4196.61 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.61e-04
+[19:03:04]   E2/2 [9575/9779] loss=8.3150 tok=8.1717 jepa=0.051502 acc=0.0679 ppl=4195.47 spike=0.3032 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.60e-04
+[19:03:52]   E2/2 [9600/9779] loss=8.1261 tok=7.9786 jepa=0.053018 acc=0.0745 ppl=4194.16 spike=0.3029 spk_reg=0.0000 hsaq_sp=0.030(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.59e-04
+[19:03:58]   [GEN] 'The meaning of life is' → 'uses we appro she is to the his v ( taxis, judic i' (unique=25, repeat=0.79)
+[19:03:58]   [GEN] 'Artificial intelligence' → 'and young to a hart n and things. a but frank it t' (unique=25, repeat=0.81)
+[19:03:58]   [GEN] 'Hello, how are you' → 'about a service have the first an them | theapril|' (unique=27, repeat=0.74)
+[19:04:47]   E2/2 [9625/9779] loss=8.2394 tok=8.0931 jepa=0.052572 acc=0.0740 ppl=4193.04 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.58e-04
+[19:05:35]   E2/2 [9650/9779] loss=8.1722 tok=8.0251 jepa=0.052881 acc=0.0779 ppl=4191.90 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.57e-04
+[19:06:24]   E2/2 [9675/9779] loss=8.1986 tok=8.0535 jepa=0.052176 acc=0.0735 ppl=4190.68 spike=0.3030 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.56e-04
+[19:07:13]   E2/2 [9700/9779] loss=8.2417 tok=8.0951 jepa=0.052724 acc=0.0734 ppl=4189.51 spike=0.3028 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 | emb:0.03 jepa_in:0.02 t2:0.04 t5:0.06 t8:0.08 t_cycle0:0.02 snn:0.00 snn_latent:0.03 ssm:0.03 ssm_latent:0.03 t2:0.04 t5:0.07 t8:0.08 t_cycle1:0.05 snn:0.00 snn_latent:0.01 ssm:0.01 ssm_latent:0.01 lr=2.55e-04
+[19:07:19]   [GEN] 'The meaning of life is' → ', constitutional a p juan alum. i spect a recently' (unique=22, repeat=0.80)
+[19:07:19]   [GEN] 'Artificial intelligence' → '. a mc. anstuff is the includingporter is youg sch' (unique=23, repeat=0.81)
+[19:07:19]   [GEN] 'Hello, how are you' → 'group and i for and at the new say and averaged an' (unique=23, repeat=0.80)
+[19:08:07]   E2/2 [9725/9779] loss=8.0921 tok=7.9427 jepa=0.053713 acc=0.0819 ppl=4188.21 spike=0.3029 spk_reg=0.0000 hsaq_sp=0.030(tgt=0.048) th=0.0006 lr=2.54e-04
+[19:08:56]   E2/2 [9750/9779] loss=8.2140 tok=8.0685 jepa=0.052319 acc=0.0724 ppl=4187.14 spike=0.3031 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.53e-04
+[19:09:44]   E2/2 [9775/9779] loss=8.1893 tok=8.0417 jepa=0.053074 acc=0.0798 ppl=4185.98 spike=0.3033 spk_reg=0.0000 hsaq_sp=0.029(tgt=0.048) th=0.0006 lr=2.52e-04
+[19:09:52]   Epoch time: 327.7 min
+[19:09:53]   => epoch=2/2 loss=0.1303 acc=0.0636 spike=0.3031 lr=2.52e-04
+[19:09:53] [MEM] epoch-2-end RAM: 5.52GB (7.8%) | VRAM: 11.07GB
+[19:09:53]   Saving checkpoint...
+[19:10:11]   Checkpoint: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/checkpoint_epoch2.pt (10679MB)
+[19:10:13]   matplotlib no instalado, skipping plots
+[19:10:27] Weights: /home/shadeform/MATERIA/outputs/materia-v4-1b-bpe-20260720_1340/materia-v4.materia (5733331KB)
+Traceback (most recent call last):
+  File "/home/shadeform/MATERIA/scripts/train_v4_enhanced.py", line 841, in <module>
+    main()
+  File "/home/shadeform/MATERIA/scripts/train_v4_enhanced.py", line 823, in main
+    f"{stats['val_loss'][i]:.6f},{stats['val_acc'][i]:.6f},"
+IndexError: list index out of range
