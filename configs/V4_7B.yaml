@@ -1,0 +1,65 @@
+# MATERIA V4 - Config 7B (2× RTX 6000 Ada 48GB)
+name: materia-v4-7b
+params_m: 7200
+description: V4 7B - dim=4096, 32 layers, MoE+HSAQ, BPE 32K, FSDP FULL_SHARD
+
+model:
+  dim: 4096
+  n_layers: 32
+  n_heads: 32
+  n_kv: 8
+  latent_dim: 4096
+  snn_dim: 2048
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 128
+  synapsis_slots: 256
+  hsaq_sparsity: 0.15
+  jepa_weight: 2.781042
+  n_cycles: 3
+  use_synapsis: true
+  use_checkpointing: true
+  use_flash: true
+  weight_tying: true
+  rope_theta: 10000.0
+  rope_scaling_factor: 2.0
+
+tokenizer:
+  type: bpe
+  vocab_size: 32768
+  sp_model: data/multilingual/tokenizer/materia_multilingual_v2.model
+
+training:
+  lr: 8.0e-5
+  weight_decay: 0.1
+  epochs: 10
+  batch_size: 4
+  grad_accum: 64
+  seq_len: 256
+  warmup_steps: 2000
+  max_lines: 200000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 2
+  early_stopping_patience: 5
+  label_smoothing: 0.1
+  batch_save_interval: 25000
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 25
+  save_interval: 1
+  batch_save_interval: 25000
+  gen_interval: 500
+  plot_metrics: true

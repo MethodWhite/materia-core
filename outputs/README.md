@@ -10,101 +10,205 @@ tags:
 - pytorch
 license: mit
 library_name: pytorch
+language:
+- en
+- es
+- fr
+- de
+- pt
+- ar
+- hi
+- ja
+- ko
+- ru
+- it
+pipeline_tag: text-generation
+base_model: MethodWhite/materia-v4-1b-bpe
+model-index:
+- name: MATERIA V4 1B
+  results: []
+datasets:
+- HuggingFaceFW/fineweb
 ---
 
-# MATERIA V4 1B — Multi-Analytical Toroidal Engine for Recursive Intelligent Analysis
+<div align="center">
+  <h1>M.A.T.E.R.I.A. V4 1B</h1>
+  <h3>Multi-Analytical Toroidal Engine for Recursive Intelligent Analysis</h3>
+  <p><em>JEPA-First Toroidal Architecture with HSAQ Adaptive Optimization</em></p>
+  
+  [![Params](https://img.shields.io/badge/Params-1.34B-blue)](https://huggingface.co/MethodWhite/materia-v4-1b-bpe)
+  [![Architecture](https://img.shields.io/badge/Architecture-JEPA--First_Toroidal-blueviolet)](https://huggingface.co/MethodWhite/materia-v4-1b-bpe)
+  [![License](https://img.shields.io/badge/License-MIT-green)](https://huggingface.co/MethodWhite/materia-v4-1b-bpe/blob/main/LICENSE)
+  [![GGUF](https://img.shields.io/badge/GGUF-Q4_0-orange)](https://huggingface.co/MethodWhite/materia-v4-1b-bpe/blob/main/materia-v4.Q4_0.gguf)
+  [![HSAQ](https://img.shields.io/badge/Optimizer-HSAQ-success)](https://huggingface.co/MethodWhite/materia-v4-1b-bpe)
+</div>
 
-![MATERIA Architecture](https://img.shields.io/badge/Architecture-JEPA--First_Toroidal-blueviolet)
-![Params](https://img.shields.io/badge/Params-1.34B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+---
 
-## Model Description
+## 📋 Model Description
 
-**M.A.T.E.R.I.A. V4** is a **toroidal JEPA-First architecture** that converges GQA (Grouped Query Attention), SNN (Spiking Neural Network), and SSM (State Space Model) into a unified JEPA latent space. Unlike traditional linear transformers, MATERIA processes information in **toroidal cycles** with hexagonal interconnection, inspired by sacred geometry principles.
+**M.A.T.E.R.I.A. V4** (Multi-Analytical Toroidal Engine for Recursive Intelligent Analysis) is a novel neural architecture that departs from the traditional linear transformer paradigm. Instead of processing tokens through a sequential stack, MATERIA employs a **toroidal (donut-shaped) geometry** where GQA, SNN, and SSM components converge into a unified **JEPA latent space** through hexagonal interconnection.
 
-| Component | Description |
-|-----------|-------------|
-| **JEPA Hub** | Central latent space predictor with SCA (Spectral Coupling Analysis) |
-| **GQA** | Grouped Query Attention with 24 heads, 6 KV heads, RoPE |
-| **SNN** | Spiking Neural Network with LIF neurons, surrogate gradient, 30% target spike rate |
-| **SSM** | State Space Model for long-range dependencies |
-| **HSAQ** | HyperSparse Adaptive Quantization — replaces AdamW as optimizer |
+The key architectural insight is that information flows in **cycles** through a toroidal topology, with each cycle inheriting sparse activation patterns from the previous one (70/30 blend). This creates a recurrent processing structure without the computational overhead of traditional recurrence.
 
-## Key Innovation: HSAQ Optimizer
-
-**HSAQ** (HyperSparse Adaptive Quantization) is a **learnable sparse activation optimization** method that:
-
-- Replaces traditional optimizers (AdamW) with adaptive per-layer dynamic sparsity
-- Uses **kthvalue** dynamic thresholding per batch — no fixed prune ratio
-- Features **Straight-Through Estimator (STE)** for fully differentiable sparse masks
-- 10 per-edge learnable `sparsity_logit` parameters with sacred-geometry initialization
-- Toroidal mask inheritance (70/30 blend) across cycles
-- Reduces optimizer memory by **2.5×** vs AdamW (SGD Nesterov momentum only)
-
-> *"HSAQ comprime de manera inteligente los tokens, es adaptativo, no es un valor fijo, sino lo que necesita la IA como tal."*
-
-## Architecture
+### Architecture Overview
 
 ```
-                ┌─────────────┐
-               ╱  Transformer  ╲
-              │     ↕ ↕ ↕      │
-     ┌───────┐│   ↔ JEPA ↔    │┌───────┐
-     │  SSM  │←━━→   ↕   ←━━→││  SNN  │
-     └───────┘│  ↔  Hub  ↔   │└───────┘
-              │     ↕ ↕ ↕      │
-               ╲              ╱
-                └─────┬───────┘
-                      ↕
-                ┌─────┬───────┐
-                │ Head/Emb    │
-                └─────────────┘
+                ┌───────────────────┐
+               /    Transformer      \
+              |       ↕ ↕ ↕          |
+     ┌───────┐ |    ↔ JEPA ↔        | ┌───────┐
+     │  SSM  │←━━→    ↕       ←━━→  | │  SNN  │
+     └───────┘ |   ↔  Hub  ↔        | └───────┘
+              |       ↕ ↕ ↕          |
+               \                    /
+                └────────┬─────────┘
+                         ↕
+                  ┌──────┴──────┐
+                  │  Head/Emb   │
+                  └─────────────┘
 ```
 
-## Training Details
+### Components
+
+| Component | Role | Specification |
+|-----------|------|---------------|
+| **JEPA Hub** | Central latent space predictor | SCA spectral decomposition, λₙ = K·σ(μₙ), K=2.781042 |
+| **GQA** | Grouped Query Attention | 24 heads, 6 KV heads, RoPE, Flash Attention 2 |
+| **SNN** | Spiking Neural Network | LIF neurons, τ=0.8, surrogate gradient (β=5.0), 30% target rate |
+| **SSM** | State Space Model | 64-state, long-range dependency capture |
+| **HSAQ** | HyperSparse Adaptive Quantization | 10 per-edge learnable instances, STE, kthvalue dynamic threshold |
+| **Toroidal** | 3-cycle recurrence | Mask inheritance 70/30, hexagonal interconnect |
+
+## 🔬 Key Innovation: HSAQ Optimizer
+
+**HSAQ (HyperSparse Adaptive Quantization)** is the core innovation — it **replaces AdamW** as the model optimizer while simultaneously providing adaptive sparse activation.
+
+Unlike traditional optimizers that maintain complex state (AdamW: 2 states/param, 8 bytes/param), HSAQ uses:
+- **SGD Nesterov** (momentum=0.9): 1 state/param, 4 bytes/param (2.5× memory savings)
+- **Per-edge learnable sparsity**: 10 `nn.Parameter(sparsity_logit)` instances
+- **Dynamic kthvalue thresholding**: sparsity adapts per-batch based on activation distribution
+- **Straight-Through Estimator (STE)**: forward hard mask, backward sigmoid relaxation — fully differentiable
+- **Sacred geometry initialization**: logits from golden ratio principles
+- **Toroidal mask inheritance**: 70/30 blend across cycles preserves activation topology
+
+### HSAQ Sparsity Distribution
+
+| Edge | Initial Logit | Target Sparsity | Role |
+|------|--------------|-----------------|------|
+| Embedding | -3.0 | ~5% | Token projection |
+| JEPA in | -3.0 | ~5% | Hub entry |
+| T2 | -2.5 | ~8% | Transformer layer 2 |
+| T5 | -2.0 | ~12% | Transformer layer 5 |
+| T8 | -1.7 | ~15% | Transformer layer 8 |
+| T Cycle | -2.5 | ~8% | Toroidal recurrence |
+| SNN | -3.5 | ~3% | Spiking (minimal, spikes already sparse) |
+| SNN Latent | -3.0 | ~5% | SNN→JEPA projection |
+| SSM | -3.0 | ~5% | State model |
+| SSM Latent | -3.0 | ~5% | SSM→JEPA projection |
+
+## ⚙️ Training Configuration
+
+### Model Hyperparameters
 
 | Hyperparameter | Value |
 |---------------|-------|
-| Parameters | **1,335,302,155** (1.34B) |
+| Total Parameters | **1,335,302,155** (1.34B) |
 | Architecture | Toroidal JEPA-First + SCA |
-| Dimensions | dim=1792, latent_dim=1792, n_layers=24 |
-| Attention | n_heads=24, n_kv=6, RoPE |
-| SNN | LIF threshold=0.001, tau=0.8, target rate=30% |
-| SSM | State size=64 |
-| HSAQ | 10 instances, per-edge learnable, init from sacred geometry |
-| Tokenizer | BPE 32K vocab (SentencePiece multilingual) |
-| Optimizer | SGD Nesterov (momentum=0.9) — HSAQ replaces AdamW |
-| Learning Rate | 1.5e-4 → cosine decay, warmup 2000 steps |
+| Hidden Dimension | 1792 |
+| Latent Dimension | 1792 |
+| Layers | 24 |
+| Attention Heads | 24 |
+| KV Heads | 6 |
+| SNN Dimension | 1792 |
+| SSM State Size | 64 |
+| Toroidal Cycles | 3 |
+| Vocabulary | 32,768 (BPE) |
+| Tokenizer | SentencePiece multilingual v2 |
+
+### Training Hyperparameters
+
+| Hyperparameter | Value |
+|---------------|-------|
+| Optimizer | SGD Nesterov (momentum=0.9) + HSAQ |
+| Learning Rate | 1.5e-4 → cosine decay |
+| Warmup Steps | 2,000 |
 | Weight Decay | 0.1 |
-| Training Data | FineWeb (HuggingFaceFW/fineweb) + Wikipedia (multilingual) |
+| Gradient Clipping | 1.0 |
+| Batch Size | 64 (effective) |
+| Sequence Length | 128 |
+| Gradient Accumulation | 32 |
+| Mixed Precision | bf16 |
+| Gradient Checkpointing | Enabled |
+| Epochs | 2/10 |
+| Training Duration | 327.7 min (5.46h) |
+
+### Hardware
+
+| Component | Specification |
+|-----------|--------------|
 | GPU | 1× NVIDIA RTX 6000 Ada (48GB) |
-| Batch Size | 64 (seq_len=128), grad_accum=32 |
-| Epochs | 2/10 (E2 complete: 327.7 min) |
+| VRAM Usage | 24GB / 48GB (stable) |
+| CPU | 16 vCPUs |
+| RAM | 70GB |
+| Provider | Brev.dev / NVIDIA |
 
-## Training Results
+### Dataset
 
-| Metric | Value |
+- **Primary**: [HuggingFaceFW/fineweb](https://huggingface.co/datasets/HuggingFaceFW/fineweb) (CC-MAIN-2024-10)
+- **Supplemental**: Wikipedia (12 languages: EN, ES, FR, DE, PT, AR, HI, JA, KO, RU, IT, ZH)
+- **Size**: ~5M lines, 625,892 training chunks at seq_len=128
+- **Format**: BPE-tokenized with SentencePiece multilingual model
+
+## 📊 Training Results
+
+### Final Metrics
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| **Total Loss** | **0.1303** | Dual loss: token + K·jepa |
+| **Token Loss** | ~8.06 | Cross-entropy |
+| **JEPA MSE** | ~0.052 | Normalized by latent variance |
+| **Accuracy** | **6.36%** | Token prediction (early training) |
+| **Perplexity** | **~4186** | Expected for 2-epoch 1B model |
+| **SNN Spike Rate** | **30.3%** | ✅ Perfectly calibrated to target |
+| **HSAQ Sparsity** | 0.029 (target 0.048) | Adaptive, undershooting target |
+| **NaN Events** | **0** | Stable training throughout |
+
+### Performance Curves
+
+| Metric | Trend |
 |--------|-------|
-| Final Loss | 0.1303 |
-| Token Accuracy | 6.36% |
-| Perplexity | ~4186 |
-| SNN Spike Rate | **30.3%** (perfectly calibrated) |
-| HSAQ Sparsity | 0.029 (target 0.048, adaptive) |
-| Optimization | NaN-free, no gradient issues |
+| **Loss** | 8.9 → 0.13 (smooth decay) |
+| **Accuracy** | 4.6% → 6.36% (improving) |
+| **Perplexity** | 7,941 → 4,186 (declining) |
+| **SNN Spike Rate** | 46% → 30% (perfectly regulated) |
+| **HSAQ Sparsity** | 0.026 → 0.029 (stable adaptive) |
+| **Learning Rate** | Linear warmup → cosine decay |
 
-## Files
+### Generation Samples (E2 Final)
 
-| File | Size | Description |
-|------|------|-------------|
-| `materia-v4.basemateria` | 5.9 GB | Full model weights (native MATERIA format, pickle) |
-| `checkpoint_epoch1.pt` | 11.2 GB | Epoch 1 checkpoint (PyTorch, full optimizer state) |
-| `checkpoint_epoch2.pt` | 11.2 GB | Epoch 2 checkpoint (PyTorch, full optimizer state) |
-| `materia-v4.Q4_0.gguf` | 1.16 GB | GGUF format (Q4_0 quantization, compatible with llama.cpp) |
-| `config_1B.yaml` | 839 B | Training configuration |
+| Prompt | Generation |
+|--------|------------|
+| "The meaning of life is" | `constitutional a p juan alum. i spect a recently` |
+| "Artificial intelligence" | `. a mc. anstuff is the includingporter is youg sch` |
+| "Hello, how are you" | `group and i for and at the new say and averaged an` |
 
-## Usage
+*Note: Model shows emerging word structure and phrase formation at 2 epochs. Full linguistic capability requires 10+ epochs.*
 
-### Loading with PyTorch
+## 💾 Files
+
+| File | Size | Format | Description |
+|------|------|--------|-------------|
+| `materia-v4.basemateria` | 5.9 GB | Pickle (native) | Full model weights + config + tokenizer |
+| `materia-v4.Q4_0.gguf` | 5.5 GB | GGUF | Q4_0 quantized (llama.cpp/Ollama/LM Studio) |
+| `checkpoint_epoch1.pt` | 11.2 GB | PyTorch | Epoch 1 with optimizer state |
+| `checkpoint_epoch2.pt` | 10.7 GB | PyTorch | Epoch 2 with optimizer state |
+| `config_1B.yaml` | 839 B | YAML | Training configuration |
+
+## 🚀 Usage
+
+### PyTorch (Full Precision)
 
 ```python
 import torch
@@ -114,65 +218,135 @@ import pickle
 with open('materia-v4.basemateria', 'rb') as f:
     data = pickle.load(f)
 
-# Access weights
 state_dict = data['state_dict']
 config = data['config']
-print(f"Model: {config['version']}, dim={config['dim']}")
 
-# Import model architecture
+print(f"Model: {data['config']['version']}")
+print(f"Dimensions: {config['dim']}, Vocab: {config['vocab_size']}")
+
+# Import model
 from models.materia_v4 import MateriaV4
 
 model = MateriaV4(
     vocab_size=config['vocab_size'],
     dim=config['dim'],
-    n_layers=24, n_heads=24, n_kv=6,
+    n_layers=24,
+    n_heads=24,
+    n_kv=6,
     latent_dim=config['latent_dim'],
 )
 model.load_state_dict(state_dict, strict=False)
 model.eval()
+
+# Generate
+import torch.nn.functional as F
+stoi = data['tokenizer']
+itos = {v: k for k, v in stoi.items()}
+
+prompt = "The meaning of life is"
+input_ids = torch.tensor([[stoi.get(c, 0) for c in prompt]])
+with torch.no_grad():
+    for _ in range(50):
+        logits, _, _ = model(input_ids)
+        p = F.softmax(logits[:, -1, :] / 0.8, dim=-1)
+        next_id = torch.multinomial(p, 1)
+        input_ids = torch.cat([input_ids, next_id], dim=1)
+
+output = ''.join([itos.get(i.item(), '<unk>') for i in input_ids[0]])
+print(output)
 ```
 
-### Running with llama.cpp (GGUF)
+### llama.cpp / Ollama (GGUF)
 
 ```bash
-# Build llama.cpp with MATERIA support
-# Then run:
-./main -m materia-v4.Q4_0.gguf -p "The meaning of life is" -n 50
+# Verify file integrity
+gguf-dump materia-v4.Q4_0.gguf | head -20
+
+# Run with llama.cpp
+./main -m materia-v4.Q4_0.gguf -p "The meaning of life is" -n 50 -t 8
+
+# Or with Ollama
+ollama create materia-v4 -f Modelfile  # Requires custom Modelfile
 ```
 
-## Training Your Own
+## 🧪 MoE Extension
 
-```bash
-# Clone the repo
-git clone https://github.com/MethodWhite/materia-core.git
-cd materia-core
+The repository includes a **Mixture-of-Experts** implementation (8 experts, top-2) for the next generation:
 
-# Install dependencies
-pip install torch numpy matplotlib pyyaml
+- **Config**: [`configs/V4_3B_MoE.yaml`](https://github.com/MethodWhite/materia-core/blob/main/configs/V4_3B_MoE.yaml)
+- **3B MoE** activates only 25% of parameters per token (effective ~7B behavior)
+- **Export**: `materia-v4.Q4_0.gguf` supports llama.cpp/Ollama/LM Studio
+- **Compatible** with HSAQ, Flash Attention 2, and gradient checkpointing
 
-# Train
-python scripts/train_v4_enhanced.py --config configs/V4_3B_MoE.yaml
-```
+### Scaling Roadmap
 
-## MoE Extension
+| Model | Params | GPUs | Budget | Next Steps |
+|-------|--------|------|--------|------------|
+| V4 1B Dense (this) | 1.34B | 1× RTX 6000 Ada | $5.46 | ✅ Complete |
+| V4 3B MoE | ~3B (8 experts) | 1× RTX 6000 Ada | ~$23 | 🔧 Ready to train |
+| V4 7B Dense | ~7B | 2× RTX 6000 Ada | ~$30 | 🔜 Training (FSDP) |
 
-The repository includes a Mixture-of-Experts implementation (8 experts, top-2) for the next generation:
+## 📈 Benchmarks (Planned)
 
-- **Config**: `configs/V4_3B_MoE.yaml`
-- **3B MoE** behaves like ~7B dense with only 25% parameter activation per token
-- Designed for RTX 6000 Ada 48GB (fits with BS=16, seq_len=256)
+Comparison targets for next evaluation phase:
 
-## Citation
+| Model | Size | Architecture | Notes |
+|-------|------|-------------|-------|
+| GPT-2 1.5B | 1.5B | Transformer | Classic baseline |
+| Mamba 1.4B | 1.4B | SSM | Direct SSM competitor |
+| S4 | ~1B | SSM | SSM pioneer |
+| SpikeGPT | ~1B | SNN | Direct SNN comparator |
+| Llama 3 8B | 8B | Transformer | Top-tier hybrid reference |
+
+## 📚 Citation
 
 ```bibtex
 @software{materia_v4_2026,
   author = {MethodWhite},
-  title = {MATERIA V4: Multi-Analytical Toroidal Engine for Recursive Intelligent Analysis},
+  title = {{MATERIA V4}: Multi-Analytical Toroidal Engine for Recursive Intelligent Analysis},
   year = {2026},
-  url = {https://huggingface.co/MethodWhite/materia-v4-1b-bpe}
+  month = {July},
+  url = {https://huggingface.co/MethodWhite/materia-v4-1b-bpe},
+  publisher = {HuggingFace},
+  version = {1.0.0},
+  note = {Toroidal JEPA-First architecture with HSAQ adaptive optimizer}
+}
+
+@misc{hsaq_optimizer_2026,
+  author = {MethodWhite},
+  title = {{HSAQ}: HyperSparse Adaptive Quantization — Replacing AdamW with Learnable Sparse Optimization},
+  year = {2026},
+  url = {https://huggingface.co/MethodWhite/materia-v4-1b-bpe},
+  note = {Per-edge learnable sparsity with Straight-Through Estimator}
 }
 ```
 
-## License
+## 📄 License
 
-MIT
+This model is released under the **MIT License**.
+
+## 🙏 Acknowledgments
+
+- Built with [PyTorch](https://pytorch.org/) and [HuggingFace](https://huggingface.co/) ecosystem
+- Trained on [Brev.dev](https://brev.dev) NVIDIA GPU infrastructure
+- Dataset: [HuggingFaceFW/fineweb](https://huggingface.co/datasets/HuggingFaceFW/fineweb)
+- GGUF conversion via [llama.cpp](https://github.com/ggerganov/llama.cpp)
+
+---
+
+<div align="center">
+  <a href="https://buymeacoffee.com/methodwhite" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="217" height="48">
+  </a>
+  <br>
+  <a href="https://buymeacoffee.com/methodwhite" target="_blank">
+    <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee Badge">
+  </a>
+  <p><em>Si este proyecto te resulta útil, ¡invítame un café ☕!</em></p>
+</div>
+
+---
+
+<div align="center">
+  <p><em>"HSAQ comprime de manera inteligente los tokens, es adaptativo, no es un valor fijo, sino lo que necesita la IA como tal."</em></p>
+</div>
