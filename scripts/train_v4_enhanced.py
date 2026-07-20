@@ -14,13 +14,22 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import torch.distributed as dist
-from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
+from torch.distributed.fsdp import (
+    FullyShardedDataParallel as FSDP,
+    ShardingStrategy,
+    BackwardPrefetch,
+    CPUOffload,
+    MixedPrecision,
+)
+from torch.distributed.fsdp.wrap import transformer_auto_wrap_policy
+from functools import partial
 
 import sentencepiece as spm
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'models'))
 from materia_v4 import MateriaV4, count_params
+from core.blocks import TransformerBlock
 
 MATERIA_HOME = os.environ.get(
     'MATERIA_HOME',
@@ -253,6 +262,8 @@ class WarmupCosineScheduler:
 def train_epoch(model, loader, opt, sch, device, epoch, epochs, cfg,
                 output_dir=None, stats=None, skip_batches=0, stoi=None, itos=None, sp=None,
                 is_main=True):
+    # Para FSDP/DDP: módulo subyacente para acceso a atributos no paramétricos
+    raw_model_inner = model.module if hasattr(model, 'module') else model
     total_loss, total_jepa, total_acc = 0.0, 0.0, 0.0
     n_total = 0
     grad_accum = cfg['training'].get('grad_accum', 1)
@@ -280,7 +291,7 @@ def train_epoch(model, loader, opt, sch, device, epoch, epochs, cfg,
         try:
             x, y = x.to(device, non_blocking=True), y.to(device, non_blocking=True)
             with torch.amp.autocast('cuda', enabled=use_amp):
-                logits, jepa_mse, rate = model(x)
+                logits, jepa_mse, rate, _ = model(x)
                 # Label smoothing
                 if label_smoothing > 0:
                     vocab_size = logits.size(-1)
@@ -353,17 +364,17 @@ def train_epoch(model, loader, opt, sch, device, epoch, epochs, cfg,
                 perplexity = compute_perplexity(avg_loss)
                 lr = sch.get_last_lr()[0] if hasattr(sch, 'get_last_lr') else opt.param_groups[0]['lr']
                 # HSAQ metrics (usar primer HSAQ disponible como referencia global)
-                hsaq_ref = getattr(model, 'hsaq_emb', None) or getattr(model, 'hsaq_jepa_in', None)
+                hsaq_ref = getattr(raw_model_inner, 'hsaq_emb', None) or getattr(raw_model_inner, 'hsaq_jepa_in', None)
                 hsaq_stats = hsaq_ref.get_stats() if hsaq_ref is not None else {}
                 hsaq_sparse = hsaq_stats.get('actual_sparsity', 0)
                 hsaq_target = hsaq_stats.get('sparsity_scale', 0)
                 hsaq_thresh = hsaq_stats.get('threshold', 0)
                 # Per-layer HSAQ stats (cada N muestras)
                 hsaq_per_layer = ""
-                if hasattr(model, '_hsaq_log') and model._hsaq_log and (i + 1) % (log_interval * 4) == 0:
+                if hasattr(raw_model_inner, '_hsaq_log') and raw_model_inner._hsaq_log and (i + 1) % (log_interval * 4) == 0:
                     hsaq_per_layer = " | " + " ".join(
                         f"{name}:{s.get('actual_sparsity',0):.2f}"
-                        for name, s in model._hsaq_log
+                        for name, s in raw_model_inner._hsaq_log
                     )
                 log(f"  E{epoch+1}/{epochs} [{i+1}/{len(loader)}] "
                     f"loss={task_loss.item():.4f} tok={token_loss.item():.4f} "
@@ -421,7 +432,7 @@ def validate(model, loader, device, world_size=1):
     total_loss, total_jepa, total_acc, n = 0.0, 0.0, 0.0, 0
     for x, y in loader:
         x, y = x.to(device), y.to(device)
-        logits, jepa_mse, rate = model(x)
+        logits, jepa_mse, rate, _ = model(x)
         loss = F.cross_entropy(logits.view(-1, logits.size(-1)), y.view(-1), ignore_index=0)
         acc = (logits.argmax(-1) == y).float().mean()
         total_loss += loss.item() * x.size(0)
@@ -475,14 +486,15 @@ def cleanup_batch_checkpoints(output_dir, keep_last=2):
 
 
 def save_weights(model, stoi, vocab_size, total, final_stats, output_dir,
-                 sp_model_path=None):
-    model.cpu()
-    free_memory(model.tok_emb.weight.device, force=True)
+                 sp_model_path=None, state_dict=None):
+    sd = state_dict if state_dict is not None else model.state_dict()
+    dim = getattr(model, 'dim', 4096)
+    latent_dim = getattr(model, 'latent_dim', 4096)
     materia_path = os.path.join(output_dir, 'materia-v4.basemateria')
     weight_data = {
-        'config': {'vocab_size': vocab_size, 'dim': model.dim, 'version': 'V4-enhanced',
-                    'latent_dim': model.latent_dim, 'K': 2.781042},
-        'state_dict': {k: v.numpy() for k, v in model.state_dict().items()},
+        'config': {'vocab_size': vocab_size, 'dim': dim, 'version': 'V4-enhanced',
+                    'latent_dim': latent_dim, 'K': 2.781042},
+        'state_dict': {k: v.cpu().numpy() for k, v in sd.items()},
         'tokenizer': stoi,
         'tokenizer_type': 'bpe' if sp_model_path else 'char',
         'stats': final_stats,
@@ -666,38 +678,58 @@ def main():
     use_synapsis = not args.no_synapsis
     if not use_synapsis:
         log("Synapsis DISABLED")
-    with torch.device('cpu'):
-        model = MateriaV4(
-            vocab_size=vocab_size,
-            dim=mc.get('dim', 256),
-            n_layers=mc.get('n_layers', 3),
-            n_heads=mc.get('n_heads', 8),
-            n_kv=mc.get('n_kv', 4),
-            latent_dim=mc.get('latent_dim', 256),
-            snn_dim=mc.get('snn_dim', 128),
-            snn_threshold=mc.get('snn_threshold', 0.005),
-            snn_tau=mc.get('snn_tau', 0.8),
-            ssm_state=mc.get('ssm_state', 32),
-            synapsis_slots=mc.get('synapsis_slots', 128),
-            jepa_weight=K,
-            n_cycles=mc.get('n_cycles', 3),
-            use_synapsis=use_synapsis,
-            use_checkpointing=mc.get('use_checkpointing', False),
-            use_flash=mc.get('use_flash', False),
-        )
-    model.to(device)
-    # DDP wrap
+    model = MateriaV4(
+        vocab_size=vocab_size,
+        dim=mc.get('dim', 256),
+        n_layers=mc.get('n_layers', 3),
+        n_heads=mc.get('n_heads', 8),
+        n_kv=mc.get('n_kv', 4),
+        latent_dim=mc.get('latent_dim', 256),
+        snn_dim=mc.get('snn_dim', 128),
+        snn_threshold=mc.get('snn_threshold', 0.005),
+        snn_tau=mc.get('snn_tau', 0.8),
+        ssm_state=mc.get('ssm_state', 32),
+        synapsis_slots=mc.get('synapsis_slots', 128),
+        jepa_weight=K,
+        n_cycles=mc.get('n_cycles', 3),
+        use_synapsis=use_synapsis,
+        use_checkpointing=mc.get('use_checkpointing', False),
+        use_flash=mc.get('use_flash', False),
+    )
+    # Contar parámetros antes de FSDP wrap (después los parámetros están sharded)
+    total = count_params(model)
+    # FSDP wrap — NO hacer model.to(device) antes, FSDP maneja device placement
     if world_size > 1:
-        model = DDP(model, device_ids=[local_rank], output_device=local_rank, find_unused_parameters=True)
-    total = count_params(model.module if world_size > 1 else model)
+        bf16_support = torch.cuda.is_bf16_supported()
+        mp_policy = MixedPrecision(
+            param_dtype=torch.bfloat16 if bf16_support else torch.float16,
+            reduce_dtype=torch.bfloat16 if bf16_support else torch.float16,
+            buffer_dtype=torch.bfloat16 if bf16_support else torch.float16,
+        )
+        model = FSDP(
+            model,
+            sharding_strategy=ShardingStrategy.FULL_SHARD,
+            auto_wrap_policy=partial(
+                transformer_auto_wrap_policy,
+                transformer_layer_cls={TransformerBlock},
+            ),
+            backward_prefetch=BackwardPrefetch.BACKWARD_PRE,
+            mixed_precision=mp_policy,
+            device_id=local_rank,
+            limit_all_gathers=True,
+            sync_module_states=True,
+        )
+    else:
+        model.to(device)
     if is_main:
         log(f"Params: {total:,} | Synapsis: {use_synapsis}")
         log_memory('model-loaded')
 
     # ── Optimizer (SGD con momentum = HSAQ optimizer) ──
     raw_model = model.module if world_size > 1 else model
+    # Optimizer sobre model.parameters() para FSDP (sharding-aware)
     opt = optim.SGD(
-        raw_model.parameters(),
+        model.parameters() if world_size > 1 else raw_model.parameters(),
         lr=cfg['training'].get('lr', 5e-4),
         momentum=0.9,
         weight_decay=cfg['training'].get('weight_decay', 0.01),
@@ -719,7 +751,11 @@ def main():
         if is_main:
             log("Loading checkpoint for resume...")
         ckpt = torch.load(args.resume, map_location='cpu', weights_only=False)
-        raw_model.load_state_dict(ckpt['model_state_dict'], strict=False)
+        if world_size > 1:
+            # FSDP: state_dict se distribuye automáticamente entre ranks
+            model.load_state_dict(ckpt['model_state_dict'], strict=False)
+        else:
+            raw_model.load_state_dict(ckpt['model_state_dict'], strict=False)
         opt.load_state_dict(ckpt['optimizer_state_dict'])
         start_epoch = ckpt['epoch']
         if 'batch' in ckpt and ckpt['batch'] > 0:
@@ -745,13 +781,11 @@ def main():
                 log("  SNN path + alpha reinitialized (w_in scale=5×, alpha=0.3)")
         del ckpt
         free_memory(device)
-    # Broadcast parámetros a todas las GPUs post-resume
+    # Sincronizar ranks post-resume (FSDP sync_module_states maneja broadcast)
     if world_size > 1:
-        for param in raw_model.parameters():
-            dist.broadcast(param.data, src=0)
         dist.barrier()
         if is_main:
-            log("  DDP broadcast post-resume completed")
+            log("  FSDP barrier post-resume completed")
 
     # ── Stats ──
     stats = {
@@ -774,7 +808,7 @@ def main():
             log_memory(f'epoch-{epoch+1}-start')
 
         train_loss, train_jepa, train_acc = train_epoch(
-            raw_model if world_size > 1 else model, train_loader, opt, sch, device, epoch, epochs, cfg,
+            model, train_loader, opt, sch, device, epoch, epochs, cfg,
             output_dir=output_dir if is_main else None, stats=stats if is_main else None,
             skip_batches=skip_batches if epoch == start_epoch else 0,
             stoi=stoi if is_main else None, itos=itos if is_main else None, sp=sp_model,
@@ -800,7 +834,7 @@ def main():
             log_memory(f'epoch-{epoch+1}-end')
 
             log("  Saving checkpoint...")
-            save_checkpoint(raw_model, opt, epoch, stats, output_dir)
+            save_checkpoint(model if world_size > 1 else raw_model, opt, epoch, stats, output_dir)
 
         # Barrier: todas esperan que termine el checkpoint
         if world_size > 1:
@@ -813,7 +847,10 @@ def main():
         if cfg['logging'].get('plot_metrics', True):
             generate_plots(stats, output_dir)
 
-        save_weights(raw_model, stoi, vocab_size, total, stats, output_dir, sp_model_path=sp_model_path)
+        # Gather full state dict (FSDP reúne en rank 0 automáticamente)
+        full_sd = model.state_dict() if world_size > 1 else raw_model.state_dict()
+        save_weights(raw_model, stoi, vocab_size, total, stats, output_dir,
+                     sp_model_path=sp_model_path, state_dict=full_sd)
 
         csv_path = os.path.join(output_dir, 'training_log.csv')
         with open(csv_path, 'w') as f:

@@ -36,7 +36,7 @@ class HSAQ(nn.Module):
     def __init__(self, init_logit: float = 0.0, temperature: float = 0.01,
                  clamp_min: float = -5, clamp_max: float = 5):
         super().__init__()
-        self.sparsity_logit = nn.Parameter(torch.tensor(init_logit))
+        self.sparsity_logit = nn.Parameter(torch.tensor([init_logit]))
         self.temperature = temperature
         self.clamp_min = clamp_min
         self.clamp_max = clamp_max
