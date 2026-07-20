@@ -1,0 +1,49 @@
+# MATERIA V4 - Config base (~4.7M params)
+name: materia-v4-base
+params_m: 4.7
+description: V4 JEPA-First - GQA+SNN+SSM confluyen en JEPA latent, loss dual
+
+model:
+  dim: 256
+  n_layers: 3
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 256
+  snn_dim: 128
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 32
+  synapsis_slots: 128
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+
+tokenizer:
+  type: char
+  vocab_size: 1024
+
+training:
+  lr: 5.0e-4
+  weight_decay: 0.01
+  epochs: 3
+  batch_size: 4
+  grad_accum: 8
+  seq_len: 64
+  warmup_steps: 100
+  max_lines: 40000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 2
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - wiki_en.txt
+    - wiki_es.txt
+
+logging:
+  log_interval: 25
+  save_interval: 1
+  plot_metrics: true

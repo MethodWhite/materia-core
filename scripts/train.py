@@ -385,7 +385,12 @@ def save_weights(model, stoi, vocab_size, total, final_stats, output_dir, tokeni
         'pad_id': tokenizer.pad_id,
     }
     weight_data = {
-        'config': {'vocab_size': vocab_size, 'dim': model.dim, 'snn': 'lif_real'},
+        'config': {
+            'vocab_size': vocab_size,
+            'dim': model.dim,
+            'snn': 'lif_real',
+            'use_synapsis': getattr(model, 'use_synapsis', True),
+        },
         'state_dict': {k: v.numpy() for k, v in model.state_dict().items()},
         'tokenizer': tok_data,
         'stats': final_stats,
@@ -459,6 +464,8 @@ def main():
                         help='Fraccion de memoria a usar (0.0-1.0, default: 0.80)')
     parser.add_argument('--batch-size', '-b', type=int, default=None,
                         help='Override batch_size del config')
+    parser.add_argument('--no-synapsis', action='store_true',
+                        help='Deshabilitar Synapsis memory (evitar maldicion de repeticion)')
     args = parser.parse_args()
 
     with open(args.config, 'r') as f:
@@ -543,6 +550,9 @@ def main():
 
     # ── Model ──
     log("Creating model...")
+    use_synapsis = not args.no_synapsis
+    if not use_synapsis:
+        log("Synapsis DISABLED (no-synapsis mode)")
     with torch.device('cpu'):
         model = MateriaV3Full(
             vocab_size=vocab_size,
@@ -552,6 +562,7 @@ def main():
             n_kv=cfg['model'].get('n_kv', 4),
             synapsis_slots=cfg['model'].get('synapsis_slots', 128),
             hsaq_sparsity=cfg['model'].get('hsaq_sparsity', 0.3),
+            use_synapsis=use_synapsis,
         )
     model.to(device)
     total = count_params(model)

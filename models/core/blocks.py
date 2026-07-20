@@ -8,9 +8,14 @@ import math
 
 
 class RoPE(nn.Module):
-    def __init__(self, dim, max_seq=8192):
+    def __init__(self, dim, max_seq=8192, rope_theta=10000.0, rope_scaling_factor=1.0):
         super().__init__()
-        inv_freq = 1.0 / (10000 ** (torch.arange(0, dim, 2, dtype=torch.float) / dim))
+        if rope_scaling_factor != 1.0:
+            # NTK-aware scaling: theta' = theta * s^(d/(d-2))
+            theta = rope_theta * (rope_scaling_factor ** (dim / (dim - 2)))
+        else:
+            theta = rope_theta
+        inv_freq = 1.0 / (theta ** (torch.arange(0, dim, 2, dtype=torch.float) / dim))
         self.register_buffer('inv_freq', inv_freq)
 
     def forward(self, x, offset=0):
@@ -29,7 +34,7 @@ class RoPE(nn.Module):
 
 
 class GQA(nn.Module):
-    def __init__(self, dim, n_heads=8, n_kv=4):
+    def __init__(self, dim, n_heads=8, n_kv=4, rope_theta=10000.0, rope_scaling_factor=1.0):
         super().__init__()
         self.n_heads = n_heads
         self.n_kv = n_kv
@@ -39,7 +44,7 @@ class GQA(nn.Module):
         self.wk = nn.Linear(dim, self.head_dim * n_kv, bias=False)
         self.wv = nn.Linear(dim, self.head_dim * n_kv, bias=False)
         self.wo = nn.Linear(dim, dim, bias=False)
-        self.rope = RoPE(self.head_dim)
+        self.rope = RoPE(self.head_dim, rope_theta=rope_theta, rope_scaling_factor=rope_scaling_factor)
 
     def forward(self, x, mask=None):
         B, T, D = x.shape
@@ -61,6 +66,44 @@ class GQA(nn.Module):
         return self.wo(out)
 
 
+class FlashGQA(nn.Module):
+    """
+    GQA con Flash Attention 2 vía torch.nn.functional.scaled_dot_product_attention.
+    Auto-selecciona el kernel óptimo (FlashAttention / memory-efficient / math) según hardware y dtype.
+    Reemplazo directo de GQA con la misma interfaz forward(x, mask).
+    """
+    def __init__(self, dim, n_heads=8, n_kv=4, rope_theta=10000.0, rope_scaling_factor=1.0):
+        super().__init__()
+        self.n_heads = n_heads
+        self.n_kv = n_kv
+        self.head_dim = dim // n_heads
+        assert self.head_dim * n_heads == dim, f'dim={dim} must be divisible by n_heads={n_heads}'
+        self.wq = nn.Linear(dim, dim, bias=False)
+        self.wk = nn.Linear(dim, self.head_dim * n_kv, bias=False)
+        self.wv = nn.Linear(dim, self.head_dim * n_kv, bias=False)
+        self.wo = nn.Linear(dim, dim, bias=False)
+        self.rope = RoPE(self.head_dim, rope_theta=rope_theta, rope_scaling_factor=rope_scaling_factor)
+
+    def forward(self, x, mask=None):
+        B, T, D = x.shape
+        q = self.wq(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
+        k = self.wk(x).view(B, T, self.n_kv, self.head_dim).transpose(1, 2)
+        v = self.wv(x).view(B, T, self.n_kv, self.head_dim).transpose(1, 2)
+        q = self.rope(q)
+        k = self.rope(k)
+        rep = self.n_heads // self.n_kv
+        k = k.repeat_interleave(rep, dim=1)
+        v = v.repeat_interleave(rep, dim=1)
+        # Flash Attention 2 — is_causal=True evita crear mask explícita (más eficiente)
+        out = F.scaled_dot_product_attention(
+            q, k, v,
+            attn_mask=None if mask is None else mask,
+            is_causal=mask is None,
+        )
+        out = out.transpose(1, 2).contiguous().view(B, T, D)
+        return self.wo(out)
+
+
 class SwiGLU(nn.Module):
     def __init__(self, dim, ffn_dim=None):
         super().__init__()
@@ -74,10 +117,14 @@ class SwiGLU(nn.Module):
 
 
 class TransformerBlock(nn.Module):
-    def __init__(self, dim=256, n_heads=8, n_kv=4):
+    def __init__(self, dim=256, n_heads=8, n_kv=4, use_flash=False,
+                 rope_theta=10000.0, rope_scaling_factor=1.0):
         super().__init__()
         self.attn_norm = nn.RMSNorm(dim)
-        self.attn = GQA(dim, n_heads, n_kv)
+        if use_flash:
+            self.attn = FlashGQA(dim, n_heads, n_kv, rope_theta=rope_theta, rope_scaling_factor=rope_scaling_factor)
+        else:
+            self.attn = GQA(dim, n_heads, n_kv, rope_theta=rope_theta, rope_scaling_factor=rope_scaling_factor)
         self.ffn_norm = nn.RMSNorm(dim)
         self.ffn = SwiGLU(dim)
 

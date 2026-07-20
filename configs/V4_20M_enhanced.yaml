@@ -1,0 +1,57 @@
+# MATERIA V4 - Config mejorada 20M params
+# Modelo más grande para mejor generación
+name: materia-v4-20m-enhanced
+params_m: 20
+description: V4 20M - Modelo más grande, BPE vocab, label smoothing, warmup
+
+model:
+  dim: 384
+  n_layers: 6
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 384
+  snn_dim: 192
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 48
+  synapsis_slots: 192
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+
+tokenizer:
+  type: char
+  vocab_size: 1024
+
+training:
+  lr: 3.0e-4
+  weight_decay: 0.01
+  epochs: 10
+  batch_size: 4
+  grad_accum: 8
+  seq_len: 256
+  warmup_steps: 200
+  max_lines: 200000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 0
+  early_stopping_patience: 5
+  label_smoothing: 0.05
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  batch_save_interval: 25000
+  gen_interval: 500
+  plot_metrics: true

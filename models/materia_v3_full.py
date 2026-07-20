@@ -54,9 +54,11 @@ class Tokenizer:
 
 class MateriaV3Full(nn.Module):
     def __init__(self, vocab_size=32000, dim=256, n_layers=4, n_heads=8, n_kv=4,
-                 audio_dim=80, audio_latent=256, synapsis_slots=128, hsaq_sparsity=0.3):
+                 audio_dim=80, audio_latent=256, synapsis_slots=128, hsaq_sparsity=0.3,
+                 use_synapsis=True):
         super().__init__()
         self.dim = dim
+        self.use_synapsis = use_synapsis
         self.tok_emb = nn.Embedding(vocab_size, dim)
         self.layers = nn.ModuleList([
             TransformerBlock(dim, n_heads, n_kv) for _ in range(n_layers)
@@ -64,7 +66,7 @@ class MateriaV3Full(nn.Module):
         self.snn = SNNLayer(dim)
         self.ssm = SSMBlock(dim)
         self.jepa = JEPA(dim)
-        self.synapsis = SynapsisMemory(dim, n_slots=synapsis_slots)
+        self.synapsis = SynapsisMemory(dim, n_slots=synapsis_slots) if use_synapsis else None
         self.hsaq = HSAQ(sparsity=hsaq_sparsity)
         self.norm = nn.RMSNorm(dim)
         self.head = nn.Linear(dim, vocab_size, bias=False)
@@ -83,7 +85,8 @@ class MateriaV3Full(nn.Module):
         x = self.hsaq(x)
         for l in self.layers:
             x = l(x, mask)
-        x = self.synapsis(x)
+        if self.synapsis is not None:
+            x = self.synapsis(x)
         x_enh, rate = self.snn(x[:, -1:])
         x = torch.cat([x[:, :-1], x_enh], dim=1)
         x = self.ssm(x)

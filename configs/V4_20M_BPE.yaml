@@ -1,0 +1,124 @@
+# MATERIA V4 - Config 20M params con BPE tokenizer
+# Basada en V4_20M_enhanced.yaml, adaptada para BPE 32K tokens
+name: materia-v4-20m-bpe
+params_m: 20
+description: V4 20M - BPE 32K vocab, label smoothing 0.1, warmup 500, weight tying, HSAQ 8-bit
+
+model:
+  dim: 384
+  n_layers: 6
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 384
+  snn_dim: 192
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 48
+  synapsis_slots: 192
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+
+  # ============================================================
+  # weight_tying: true
+  #   Comparte los pesos entre la capa de embedding de entrada y
+  #   la proyección de salida (head). Con 32K clases en el vocabulario
+  #   BPE, la capa de salida es enorme (dim × vocab_size = 384 × 32768
+  #   ≈ 12.5M parámetros). Weight tying reduce ~12M params, mejora
+  #   regularización y convergencia, y es práctica estándar en modelos
+  #   con vocab grande (GPT-2, RoBERTa).
+  # ============================================================
+  weight_tying: true
+
+  # ============================================================
+  # hsaq_weight_bits: 8
+  #   Cuantización HSAQ (Hierarchical Structured Adaptive Quantization)
+  #   a 8 bits para los pesos. Ahorra ~4× en memoria de parámetros
+  #   con pérdida mínima de calidad. Compatible con weight_tying.
+  # ============================================================
+  hsaq_weight_bits: 8
+
+tokenizer:
+  # ============================================================
+  # type: bpe | vocab_size: 32768
+  #   Cambio de tokenizer char (1024 tokens) a BPE con 32K tokens.
+  #   BPE comprime ~2.5× más que char-level, lo que permite reducir
+  #   seq_len manteniendo el mismo contexto efectivo. El modelo
+  #   multilingüe pre-entrenado maneja español, francés, alemán e
+  #   inglés con mejor cobertura que char-level.
+  # ============================================================
+  type: bpe
+  vocab_size: 32768
+  model_path: materia_multilingual_v2.model
+
+training:
+  # ============================================================
+  # lr: 1e-4 (antes 3e-4)
+  #   El embedding y head son ~4× más grandes (384 × 32K vs 384 × 1K).
+  #   Una LR más baja estabiliza el entrenamiento con estos parámetros
+  #   adicionales y evita divergencia early-stage.
+  # ============================================================
+  lr: 1.0e-4
+
+  weight_decay: 0.01
+  epochs: 10
+
+  # ============================================================
+  # batch_size: 4 (se mantiene)
+  #   Ya era 4 en la config enhanced. Con BPE la secuencia es más
+  #   corta (128 vs 256), por lo que el batch cabe cómodamente en VRAM.
+  # ============================================================
+  batch_size: 4
+  grad_accum: 8
+
+  # ============================================================
+  # seq_len: 128 (antes 256)
+  #   BPE comprime ~2.5× en texto multilingüe respecto a char-level.
+  #   seq_len 128 con BPE equivale a ~320 caracteres, igual o más
+  #   contexto efectivo que los 256 caracteres anteriores, pero con
+  #   la mitad de tokens → entrenamiento 2× más rápido.
+  # ============================================================
+  seq_len: 128
+
+  # ============================================================
+  # warmup_steps: 500 (antes 200)
+  #   El modelo tiene más parámetros (embedding/head grandes incluso
+  #   con weight_tying). 500 steps de warmup linear permiten que el
+  #   optimizador (AdamW) estabilice sus momentos antes de la LR
+  #   plena. Proporcional al aumento de parámetros entrenables.
+  # ============================================================
+  warmup_steps: 500
+
+  max_lines: 200000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 0
+  early_stopping_patience: 5
+
+  # ============================================================
+  # label_smoothing: 0.1 (antes 0.05)
+  #   Con 32K clases (vs 1K), el modelo puede sobregonfiar fácilmente
+  #   a tokens específicos. Label smoothing al 0.1 distribuye algo de
+  #   probabilidad entre clases alternativas, mejorando generalización
+  #   y reduciendo la confianza excesiva. Valor típico para vocabs
+  #   grandes (Transformer paper usa 0.1).
+  # ============================================================
+  label_smoothing: 0.1
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  batch_save_interval: 25000
+  gen_interval: 500
+  plot_metrics: true

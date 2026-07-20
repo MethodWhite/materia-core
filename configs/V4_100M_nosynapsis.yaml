@@ -1,0 +1,56 @@
+# MATERIA V4 - Config mejorada (~100M params)
+# Tokenizer BPE, secuencias largas, más datos
+name: materia-v4-100m-nosynapsis
+params_m: 100
+description: V4 100M - BPE tokenizer, seq_len 512, más datos, sin Synapsis
+
+model:
+  dim: 512
+  n_layers: 6
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 512
+  snn_dim: 256
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 64
+  synapsis_slots: 256
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+
+tokenizer:
+  type: char
+  vocab_size: 1024
+
+training:
+  lr: 3.0e-4
+  weight_decay: 0.01
+  epochs: 10
+  batch_size: 4
+  grad_accum: 8
+  seq_len: 512
+  warmup_steps: 200
+  max_lines: 500000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 2
+  early_stopping_patience: 5
+  batch_save_interval: 25000
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  batch_save_interval: 25000
+  plot_metrics: true

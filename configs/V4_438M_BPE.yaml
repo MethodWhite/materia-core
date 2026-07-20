@@ -1,0 +1,64 @@
+# MATERIA V4 - Config 302M BPE (seguro para RTX 3050)
+name: materia-v4-302m-bpe
+params_m: 302
+description: V4 302M BPE - dim=1024, 16 layers, 8-bit optimizer, margen 911MB
+
+model:
+  dim: 1024
+  n_layers: 16
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 1024
+  snn_dim: 512
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 64
+  synapsis_slots: 256
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+  use_flash: true
+  use_checkpointing: true
+  weight_tying: true
+  rope_theta: 10000.0
+  rope_scaling_factor: 2.0
+
+tokenizer:
+  type: bpe
+  vocab_size: 32768
+  sp_model: data/multilingual/tokenizer/materia_multilingual_v2.model
+
+training:
+  lr: 8.0e-5
+  weight_decay: 0.01
+  epochs: 10
+  batch_size: 1
+  grad_accum: 16
+  seq_len: 128
+  warmup_steps: 500
+  max_lines: 200000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  optimizer_8bit: true
+  num_workers: 0
+  early_stopping_patience: 5
+  label_smoothing: 0.1
+  batch_save_interval: 25000
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  batch_save_interval: 25000
+  gen_interval: 500
+  plot_metrics: true

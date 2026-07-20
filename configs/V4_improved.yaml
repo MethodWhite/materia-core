@@ -1,0 +1,56 @@
+# MATERIA V4 - Config mejorada (realista para RTX 3050 4GB)
+# Más datos, seq_len mayor, vocab_size correcto
+name: materia-v4-improved
+params_m: 8
+description: V4 mejorado - más datos, seq_len 256, vocab correcto
+
+model:
+  dim: 320
+  n_layers: 4
+  n_heads: 8
+  n_kv: 4
+  latent_dim: 320
+  snn_dim: 160
+  snn_threshold: 0.005
+  snn_tau: 0.8
+  ssm_state: 32
+  synapsis_slots: 128
+  hsaq_sparsity: 0.3
+  jepa_weight: 2.781042
+
+tokenizer:
+  type: char
+  vocab_size: 1024
+
+training:
+  lr: 3.0e-4
+  weight_decay: 0.01
+  epochs: 10
+  batch_size: 4
+  grad_accum: 4
+  seq_len: 256
+  warmup_steps: 100
+  max_lines: 200000
+  val_split: 0.1
+  clip_grad_norm: 1.0
+  mixed_precision: bf16
+  num_workers: 0
+  early_stopping_patience: 5
+  batch_save_interval: 25000
+
+dataset:
+  source: local
+  path: data/multilingual/tokenizer
+  files:
+    - c4_en.txt
+    - combined_for_spm.txt
+    - wiki_en.txt
+    - wiki_es.txt
+    - wiki_fr.txt
+    - wiki_de.txt
+
+logging:
+  log_interval: 50
+  save_interval: 1
+  batch_save_interval: 25000
+  plot_metrics: true
